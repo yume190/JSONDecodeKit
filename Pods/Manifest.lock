@@ -1,0 +1,24 @@
+PODS:
+  - Argo (4.0.0):
+    - Runes (>= 4.0.0)
+  - Himotoki (3.0.0)
+  - Marshal (1.0.0)
+  - Runes (4.0.0)
+  - SwiftyJSON (3.1.1)
+
+DEPENDENCIES:
+  - Argo (= 4.0.0)
+  - Himotoki (= 3.0.0)
+  - Marshal (= 1.0.0)
+  - SwiftyJSON (= 3.1.1)
+
+SPEC CHECKSUMS:
+  Argo: e808d20ee2e95c4498276ca1812d75d3b0b00090
+  Himotoki: df74b01035e86e021b7b04a15b033a7fd189b84f
+  Marshal: a3c5c5dbd388112edf3cdabb718f2b4cfe48658a
+  Runes: 423ee2dac4dedb4626a859c0962c934195ba8433
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+
+PODFILE CHECKSUM: 604c974b943f13ecbc9d394e9d159f7a76e67355
+
+COCOAPODS: 1.1.1
