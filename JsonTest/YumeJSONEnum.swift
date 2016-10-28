@@ -11,7 +11,7 @@ import Foundation
 //extension RawRepresentable {
 //    associatedtype RawValue
 //}
-//public func <| <A: RawRepresentable>(dictionary: MarshaledObject, key: String) throws -> A where A.RawValue: ValueType {
+
 public func <|? <T:RawRepresentable> (dic:NSDictionary?,key:String) -> T? where T.RawValue:PrimitiveType {
     if let value = T.RawValue.decode(any: dic?[key]) {
         let enumValue = T(rawValue: value)
@@ -20,10 +20,7 @@ public func <|? <T:RawRepresentable> (dic:NSDictionary?,key:String) -> T? where 
     return nil
 }
 public func <| <T:RawRepresentable> (dic:NSDictionary?,key:String) throws -> T where T.RawValue:PrimitiveType {
-    guard let r:T = dic <|? key else {
-        //        print("\(key)---\(dic?[key])")
-        //        NSTaggedPointerString
-        
+    guard let r:T = dic <|? key else {        
         throw YumeError.WrongType
     }
     return r

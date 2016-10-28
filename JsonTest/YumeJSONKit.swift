@@ -17,7 +17,6 @@ public func <|? <T:JSONKitDecoder>(dic:NSDictionary?,key:String) -> T? {
 }
 public func <| <T:JSONKitDecoder> (dic:NSDictionary?,key:String) throws -> T {
     guard let r:T = dic <|? key else {
-        //        print("\(key)---\(dic?[key])")
         throw YumeError.WrongType
     }
     return r
@@ -34,9 +33,3 @@ public func toArray <T:JSONKitDecoder>(array:NSArray) -> [T] {
     return array.flatMap { T.decode($0 as? NSDictionary) }
 }
 
-//func dicToPrimitiveTypeArray<T>(dic:NSDictionary?,key:String) -> [T] {
-//    return (dic?[key] as? [T]) ?? []
-//}
-//func <|| <T>(dic:NSDictionary?,key:String) throws -> [T] {
-//    return (dic?[key] as? [T]) ?? []
-//}

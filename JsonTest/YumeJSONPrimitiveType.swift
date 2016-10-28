@@ -13,17 +13,11 @@ public protocol PrimitiveType {
     init?(text: String)
 }
 
-//func dicToPrimitiveType<T:PrimitiveType> (dic:NSDictionary?,key:String) -> T? {
-//    return T.decode(any: dic?[key])
-//}
 public func <|? <T:PrimitiveType> (dic:NSDictionary?,key:String) -> T? {
     return T.decode(any: dic?[key])
 }
 public func <| <T:PrimitiveType> (dic:NSDictionary?,key:String) throws -> T {
     guard let r:T = dic <|? key else {
-        //        print("\(key)---\(dic?[key])")
-        //        NSTaggedPointerString
-        
         throw YumeError.WrongType
     }
     return r
@@ -57,10 +51,6 @@ public extension PrimitiveType {
 extension Int:PrimitiveType{
     public init?(text: String) {
         guard let result = Int(text) else { return nil }
-        
-//        static func value(from object: Any) throws -> Value
-//        let a:Any = 1
-//        Int(a)
         self = result
     }
 }
