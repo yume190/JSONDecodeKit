@@ -8,87 +8,175 @@
 
 import Foundation
 
-protocol PrimitiveType {
-    //    convenience init?(_ text:String, radix: Int = default)
-    static func primitive(any: Any) -> Self?
+public protocol PrimitiveType {
+    static func decode(any: Any) -> Self?
+    init?(text: String)
 }
 
-extension Int:PrimitiveType {
-    static func primitive(any: Any) -> Int? {
-        if let v1 = any as? Int {
-            return v1
+//func dicToPrimitiveType<T:PrimitiveType> (dic:NSDictionary?,key:String) -> T? {
+//    return T.decode(any: dic?[key])
+//}
+public func <|? <T:PrimitiveType> (dic:NSDictionary?,key:String) -> T? {
+    return T.decode(any: dic?[key])
+}
+public func <| <T:PrimitiveType> (dic:NSDictionary?,key:String) throws -> T {
+    guard let r:T = dic <|? key else {
+        //        print("\(key)---\(dic?[key])")
+        //        NSTaggedPointerString
+        
+        throw YumeError.WrongType
+    }
+    return r
+}
+public func <|| <T:PrimitiveType>(dic:NSDictionary?,key:String) -> [T] {
+    if let temp = dic?[key] as? NSArray {
+        return toArray(array: temp)
+    }
+    return []
+}
+
+public func toArray <T:PrimitiveType>(array:NSArray) -> [T] {
+    return array.flatMap { T.decode(any: $0) }
+}
+
+public extension PrimitiveType {
+    static func decode(any: Any) -> Self? {
+        if let result = any as? Self {
+            return result
         }
         
-        if let v2 = any as? String {
-            return Int(v2)
+        if let result = any as? String {
+            return Self(text: result)
         }
         
         return nil
     }
 }
+
+// MARK: Int
+extension Int:PrimitiveType{
+    public init?(text: String) {
+        guard let result = Int(text) else { return nil }
+        
+//        static func value(from object: Any) throws -> Value
+//        let a:Any = 1
+//        Int(a)
+        self = result
+    }
+}
+extension Int8:PrimitiveType{
+    public  init?(text: String) {
+        guard let result = Int8(text) else { return nil }
+        self = result
+    }
+}
+extension Int16:PrimitiveType{
+    public  init?(text: String) {
+        guard let result = Int16(text) else { return nil }
+        self = result
+    }
+}
+extension Int32:PrimitiveType{
+    public  init?(text: String) {
+        guard let result = Int32(text) else { return nil }
+        self = result
+    }
+}
+extension Int64:PrimitiveType{
+    public  init?(text: String) {
+        guard let result = Int64(text) else { return nil }
+        self = result
+    }
+}
+
+// MARK: UInt
+extension UInt:PrimitiveType{
+    public  init?(text: String) {
+        guard let result = UInt(text) else { return nil }
+        self = result
+    }
+}
+extension UInt8:PrimitiveType{
+    public  init?(text: String) {
+        guard let result = UInt8(text) else { return nil }
+        self = result
+    }
+}
+extension UInt16:PrimitiveType{
+    public init?(text: String) {
+        guard let result = UInt16(text) else { return nil }
+        self = result
+    }
+}
+extension UInt32:PrimitiveType{
+    public init?(text: String) {
+        guard let result = UInt32(text) else { return nil }
+        self = result
+    }
+}
+extension UInt64:PrimitiveType{
+    public init?(text: String) {
+        guard let result = UInt64(text) else { return nil }
+        self = result
+    }
+}
+
+// MARK: Float
+//extension Float:PrimitiveType{
+//    internal init?(_ text: String) {
+//        guard let result = Float(text) else { return nil }
+//        self = result
+//    }
+//}
+extension Float32:PrimitiveType{
+    public init?(text: String) {
+        guard let result = Float32(text) else { return nil }
+        self = result
+    }
+}
+extension Float64:PrimitiveType{
+    public init?(text: String) {
+        guard let result = Float64(text) else { return nil }
+        self = result
+    }
+}
+extension Float80:PrimitiveType{
+    public init?(text: String) {
+        guard let result = Float80(text) else { return nil }
+        self = result
+    }
+}
+
+// MARK: Double
+//extension Double:PrimitiveType{
+//    internal init?(_ text: String) {
+//        guard let result = Double(text) else { return nil }
+//        self = result
+//    }
+//}
+
+// Mark: Bool
+extension Bool:PrimitiveType{
+    public init?(text: String) {
+        guard let result = Bool(text) else { return nil }
+        self = result
+    }
+}
+
+// MARK: String
 extension String:PrimitiveType {
-    static func primitive(any: Any) -> String? {
-        if let v2 = any as? String {
-            return v2
+    public static func decode(_ any: Any) -> String? {
+        if let result = any as? String {
+            return result
         }
         return nil
     }
+    
+    public init?(text: String) {
+        self = text
+    }
 }
 
-//extension String: ValueType {}
-//extension Int: ValueType {}
-//extension UInt: ValueType {}
-//extension Float: ValueType {}
-//extension Double: ValueType {}
-//extension Bool: ValueType {}
-
-////
-////  M A R S H A L
-////
-////       ()
-////       /\
-////  ()--'  '--()
-////    `.    .'
-////     / .. \
-////    ()'  '()
-////
-////
-//
-//
-//// MARK: - ValueType
-//
-//public protocol ValueType {
-//    associatedtype Value = Self
-//
-//    static func value(from object: Any) throws -> Value
-//}
-//
-//extension ValueType {
-//    public static func value(from object: Any) throws -> Value {
-//        guard let objectValue = object as? Value else {
-//            throw MarshalError.typeMismatch(expected: Value.self, actual: type(of: object))
-//        }
-//        return objectValue
-//    }
-//}
-//
-//
-//// MARK: - ValueType Implementations
-//
-//extension String: ValueType {}
-//extension Int: ValueType {}
-//extension UInt: ValueType {}
-//extension Float: ValueType {}
-//extension Double: ValueType {}
-//extension Bool: ValueType {}
-//
-//extension Int64: ValueType {
-//    public static func value(from object: Any) throws -> Int64 {
-//        guard let value = object as? NSNumber else { throw MarshalError.typeMismatch(expected: NSNumber.self, actual: type(of: object)) }
-//        return value.int64Value
-//    }
-//}
-//
 //extension Array where Element: ValueType {
 //    public static func value(from object: Any) throws -> [Element] {
 //        guard let anyArray = object as? [AnyObject] else {
@@ -128,65 +216,6 @@ extension String:PrimitiveType {
 //        return objectValue
 //    }
 //}
-//
-//extension Int8: ValueType {
-//    public static func value(from object: Any) throws -> Int8 {
-//        guard let value = object as? Int else {
-//            throw MarshalError.typeMismatch(expected: Value.self, actual: type(of: object))
-//        }
-//        return Int8(value)
-//    }
-//}
-//extension Int16: ValueType {
-//    public static func value(from object: Any) throws -> Int16 {
-//        guard let value = object as? Int else {
-//            throw MarshalError.typeMismatch(expected: Value.self, actual: type(of: object))
-//        }
-//        return Int16(value)
-//    }
-//}
-//extension Int32: ValueType {
-//    public static func value(from object: Any) throws -> Int32 {
-//        guard let value = object as? Int else {
-//            throw MarshalError.typeMismatch(expected: Value.self, actual: type(of: object))
-//        }
-//        return Int32(value)
-//    }
-//}
-//
-//extension UInt8: ValueType {
-//    public static func value(from object: Any) throws -> UInt8 {
-//        guard let value = object as? UInt else {
-//            throw MarshalError.typeMismatch(expected: Value.self, actual: type(of: object))
-//        }
-//        return UInt8(value)
-//    }
-//}
-//extension UInt16: ValueType {
-//    public static func value(from object: Any) throws -> UInt16 {
-//        guard let value = object as? UInt else {
-//            throw MarshalError.typeMismatch(expected: Value.self, actual: type(of: object))
-//        }
-//        return UInt16(value)
-//    }
-//}
-//extension UInt32: ValueType {
-//    public static func value(from object: Any) throws -> UInt32 {
-//        guard let value = object as? UInt else {
-//            throw MarshalError.typeMismatch(expected: Value.self, actual: type(of: object))
-//        }
-//        return UInt32(value)
-//    }
-//}
-//extension UInt64: ValueType {
-//    public static func value(from object: Any) throws -> UInt64 {
-//        guard let value = object as? NSNumber else {
-//            throw MarshalError.typeMismatch(expected: NSNumber.self, actual: type(of: object))
-//        }
-//        return value.uint64Value
-//    }
-//}
-//
 //extension Character: ValueType {
 //    public static func value(from object: Any) throws -> Character {
 //        guard let value = object as? String else {

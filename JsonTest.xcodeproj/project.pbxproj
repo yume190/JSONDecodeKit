@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		692FC6FA512EF49476762DB1 /* Pods_JsonTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5813AE9DFBD0B602E35C226C /* Pods_JsonTest.framework */; };
+		A8104DB41DC1E4EC005E2FF4 /* YumeJSONEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8104DB31DC1E4EC005E2FF4 /* YumeJSONEnum.swift */; };
 		A83877C11DBDEDF300C081AB /* Argo_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83877C01DBDEDF300C081AB /* Argo_Tests.swift */; };
 		A83877C31DBDEE0200C081AB /* Himotoki_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83877C21DBDEE0200C081AB /* Himotoki_Tests.swift */; };
 		A83877C51DBDF9F500C081AB /* Yume_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83877C41DBDF9F500C081AB /* Yume_Tests.swift */; };
@@ -46,6 +47,7 @@
 		5813AE9DFBD0B602E35C226C /* Pods_JsonTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JsonTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		664D8CE6BDB466F598C23734 /* Pods-JsonTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JsonTestTests/Pods-JsonTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		847958EB313F048EF901DC4A /* Pods-JsonTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-JsonTest/Pods-JsonTest.release.xcconfig"; sourceTree = "<group>"; };
+		A8104DB31DC1E4EC005E2FF4 /* YumeJSONEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YumeJSONEnum.swift; sourceTree = "<group>"; };
 		A83877C01DBDEDF300C081AB /* Argo_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Argo_Tests.swift; sourceTree = "<group>"; };
 		A83877C21DBDEE0200C081AB /* Himotoki_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Himotoki_Tests.swift; sourceTree = "<group>"; };
 		A83877C41DBDF9F500C081AB /* Yume_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Yume_Tests.swift; sourceTree = "<group>"; };
@@ -107,9 +109,10 @@
 			isa = PBXGroup;
 			children = (
 				A84E88301DC19FAB00E132B4 /* YumeJSONKit.swift */,
-				A84E88321DC1A04B00E132B4 /* YumeJSONOperator.swift */,
 				A84E88341DC1A05600E132B4 /* YumeJSONPrimitiveType.swift */,
+				A84E88321DC1A04B00E132B4 /* YumeJSONOperator.swift */,
 				A84E88361DC1A0DD00E132B4 /* YumeJSONError.swift */,
+				A8104DB31DC1E4EC005E2FF4 /* YumeJSONEnum.swift */,
 			);
 			name = YumeJSONKit;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A864FC231DBDE0CA006A3395 /* ViewController.swift in Sources */,
+				A8104DB41DC1E4EC005E2FF4 /* YumeJSONEnum.swift in Sources */,
 				A84E88351DC1A05600E132B4 /* YumeJSONPrimitiveType.swift in Sources */,
 				A864FC211DBDE0CA006A3395 /* AppDelegate.swift in Sources */,
 				A84E88311DC19FAB00E132B4 /* YumeJSONKit.swift in Sources */,
@@ -464,6 +468,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -514,6 +519,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -543,6 +549,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D6A24926096E18D7F0FBBAD8 /* Pods-JsonTest.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 37MR9UKGT4;
 				INFOPLIST_FILE = JsonTest/Info.plist;
@@ -557,6 +564,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 847958EB313F048EF901DC4A /* Pods-JsonTest.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 37MR9UKGT4;
 				INFOPLIST_FILE = JsonTest/Info.plist;
