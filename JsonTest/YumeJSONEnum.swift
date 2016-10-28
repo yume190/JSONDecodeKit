@@ -20,7 +20,7 @@ public func <|? <T:RawRepresentable> (dic:NSDictionary?,key:String) -> T? where 
     return nil
 }
 public func <| <T:RawRepresentable> (dic:NSDictionary?,key:String) throws -> T where T.RawValue:PrimitiveType {
-    guard let r:T = dic <|? key else {        
+    guard let r:T = dic <|? key else {
         throw YumeError.WrongType
     }
     return r

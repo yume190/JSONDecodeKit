@@ -29,7 +29,7 @@ class Yume_Tests: XCTestCase {
 }
 
 extension Program: JSONKitDecoder {
-    static func decode(dic j: NSDictionary?) -> Program? {
+    public static func decode(_ j: NSDictionary?) -> Program? {
         return try? Program(
                     title: j <| "Title",
 //                    chanId: j <|? "Channel",
@@ -44,7 +44,7 @@ extension Program: JSONKitDecoder {
 }
 
 extension Recording: JSONKitDecoder{
-    static func decode(dic j: NSDictionary?) -> Recording? {
+    public static func decode(_ j: NSDictionary?) -> Recording? {
         return try? Recording(
             startTsStr: j <| "StartTs",
             recordId: j <| "RecordId"
