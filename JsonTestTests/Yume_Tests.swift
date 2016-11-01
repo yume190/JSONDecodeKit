@@ -13,10 +13,11 @@ class Yume_Tests: XCTestCase {
     
     func testNSDictionaryPerformance() {
         let json = try! JSONSerialization.jsonObject(with: self.data as Data, options: []) as! NSDictionary
-        
+        let array = json.value(forKeyPath: "ProgramList.Programs") as! NSArray
+//        let json = YJSON(any: try! JSONSerialization.jsonObject(with: self.data as Data, options: []))
         self.measure {
-            let array = json.value(forKeyPath: "ProgramList.Programs") as! NSArray
-            let programs:[Program] = toArray(array: array)
+            let myJson = YJSON(any: array)
+            let programs:[Program] = try! myJson.toArray()
             XCTAssert(programs.count > 1000)
         }
     }
@@ -29,8 +30,8 @@ class Yume_Tests: XCTestCase {
 }
 
 extension Program: JSONKitDecoder {
-    public static func decode(_ j: NSDictionary?) -> Program? {
-        return try? Program(
+    public static func decode(_ j: YJSON) throws -> Program {
+        return try Program(
                     title: j <| "Title",
 //                    chanId: j <|? "Channel",
                     description: j <|? "Description",
@@ -44,8 +45,8 @@ extension Program: JSONKitDecoder {
 }
 
 extension Recording: JSONKitDecoder{
-    public static func decode(_ j: NSDictionary?) -> Recording? {
-        return try? Recording(
+    public static func decode(_ j: YJSON) throws -> Recording {
+        return try Recording(
             startTsStr: j <| "StartTs",
             recordId: j <| "RecordId"
         )

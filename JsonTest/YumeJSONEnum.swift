@@ -12,32 +12,28 @@ import Foundation
 //    associatedtype RawValue
 //}
 
-public func <|? <T:RawRepresentable> (dic:NSDictionary?,key:String) -> T? where T.RawValue:PrimitiveType {
-    if let value = T.RawValue.decode(any: dic?[key]) {
+public func <|? <T:RawRepresentable> (json:YJSON,key:String) -> T? where T.RawValue:PrimitiveType {
+    if let value = T.RawValue.decode(json.getBy(key: key).data) {
         let enumValue = T(rawValue: value)
         return enumValue
     }
     return nil
 }
-public func <| <T:RawRepresentable> (dic:NSDictionary?,key:String) throws -> T where T.RawValue:PrimitiveType {
-    guard let r:T = dic <|? key else {
-        throw YumeError.WrongType
+
+public func <| <T:RawRepresentable> (json:YJSON,key:String) throws -> T where T.RawValue:PrimitiveType {
+    guard let r:T = json <|? key else {
+        if let data = json.getBy(key: key).data {
+            if data is NSNull {
+                throw YumeError.nullValue(keyPath: json.traceKeypath.joined(separator: "."), curruntKey: key)
+            }
+            
+            throw YumeError.typeMismatch(keyPath: json.traceKeypath.joined(separator: "."), curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
+        }
+        throw YumeError.keyNotFound(keyPath: json.traceKeypath.joined(separator: "."), curruntKey: key)
     }
     return r
 }
-public func <|| <T:RawRepresentable>(dic:NSDictionary?,key:String) -> [T] where T.RawValue:PrimitiveType {
-    if let temp = dic?[key] as? NSArray {
-        return toArray(array: temp)
-    }
-    return []
-}
 
-public func toArray <T:RawRepresentable>(array:NSArray) -> [T] where T.RawValue:PrimitiveType {
-    return array.flatMap {
-        if let value = T.RawValue.decode(any: $0) {
-            let enumValue = T(rawValue: value)
-            return enumValue
-        }
-        return nil
-    }
+public func <|| <T:RawRepresentable>(json:YJSON,key:String) -> [T] where T.RawValue:PrimitiveType {
+    return json.toArray()
 }

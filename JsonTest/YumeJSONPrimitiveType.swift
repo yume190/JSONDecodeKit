@@ -9,32 +9,59 @@
 import Foundation
 
 public protocol PrimitiveType {
-    static func decode(any: Any) -> Self?
+    static func decode(_ any: Any?) -> Self?
     init?(text: String)
 }
 
-public func <|? <T:PrimitiveType> (dic:NSDictionary?,key:String) -> T? {
-    return T.decode(any: dic?[key])
+public func <|? <T:PrimitiveType>(json:YJSON,key:String) -> T? {
+    return T.decode(json.getBy(key: key).data)
 }
-public func <| <T:PrimitiveType> (dic:NSDictionary?,key:String) throws -> T {
-    guard let r:T = dic <|? key else {
-        throw YumeError.WrongType
+
+public func <| <T:PrimitiveType> (json:YJSON,key:String) throws -> T {
+    guard let r:T = json <|? key else {
+        if let data = json.getBy(key: key).data {
+            if data is NSNull {
+                throw YumeError.nullValue(keyPath: json.traceKeypath.joined(separator: "."), curruntKey: key)
+            }
+            
+            throw YumeError.typeMismatch(keyPath: json.traceKeypath.joined(separator: "."), curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
+        }
+        throw YumeError.keyNotFound(keyPath: json.traceKeypath.joined(separator: "."), curruntKey: key)
     }
     return r
-}
-public func <|| <T:PrimitiveType>(dic:NSDictionary?,key:String) -> [T] {
-    if let temp = dic?[key] as? NSArray {
-        return toArray(array: temp)
-    }
-    return []
+    
 }
 
-public func toArray <T:PrimitiveType>(array:NSArray) -> [T] {
-    return array.flatMap { T.decode(any: $0) }
+public func <|| <T:PrimitiveType>(json:YJSON,key:String) -> [T] {
+    return json.getBy(key: key).toArray()
 }
+
+//
+//public func <|? <T:PrimitiveType> (dic:YJSON,key:String) -> T? {
+//    return T.decode(any: dic?[key])
+//}
+//public func <| <T:PrimitiveType> (dic:YJSON,key:String) throws -> T {
+//    guard let r:T = dic <|? key else {
+//        //        print("\(key)---\(dic?[key])")
+//        //        NSTaggedPointerString
+//
+//        throw YumeError.WrongType
+//    }
+//    return r
+//}
+//public func <|| <T:PrimitiveType>(dic:YJSON,key:String) -> [T] {
+//    if let temp = dic?[key] as? NSArray {
+//        return toArray(array: temp)
+//    }
+//    return []
+//}
+//
+//public func toArray <T:PrimitiveType>(array:NSArray) -> [T] {
+//    return array.flatMap { T.decode(any: $0) }
+//}
 
 public extension PrimitiveType {
-    static func decode(any: Any) -> Self? {
+    static func decode(_ any: Any?) -> Self? {
         if let result = any as? Self {
             return result
         }
@@ -51,6 +78,10 @@ public extension PrimitiveType {
 extension Int:PrimitiveType{
     public init?(text: String) {
         guard let result = Int(text) else { return nil }
+        
+        //        static func value(from object: Any) throws -> Value
+        //        let a:Any = 1
+        //        Int(a)
         self = result
     }
 }
@@ -130,12 +161,12 @@ extension Float64:PrimitiveType{
         self = result
     }
 }
-extension Float80:PrimitiveType{
-    public init?(text: String) {
-        guard let result = Float80(text) else { return nil }
-        self = result
-    }
-}
+//extension Float80:PrimitiveType{
+//    public init?(text: String) {
+//        guard let result = Float80(text) else { return nil }
+//        self = result
+//    }
+//}
 
 // MARK: Double
 //extension Double:PrimitiveType{
@@ -156,10 +187,18 @@ extension Bool:PrimitiveType{
 // MARK: String
 extension String:PrimitiveType {
     public static func decode(_ any: Any) -> String? {
+        print("String decode1")
         if let result = any as? String {
             return result
         }
-        return nil
+        print("String decode2")
+        let _any:Any? = any
+        if _any == nil {
+            return nil
+        }
+        print("String decode3")
+        return String(describing: any)
+        //        return nil
     }
     
     public init?(text: String) {
