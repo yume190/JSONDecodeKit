@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct YJSON {
+public struct JSON {
     public var data:Any?
     lazy var traceKeypath:[String] = []
     private var isTraceKeypath:Bool
@@ -23,7 +23,7 @@ public struct YJSON {
         self.isTraceKeypath = isTraceKeypath
     }
     
-    public func getBy(key:String) -> YJSON {
+    public func getBy(key:String) -> JSON {
         var r = self
         if isTraceKeypath {
             r.traceKeypath.append(key)
@@ -32,7 +32,7 @@ public struct YJSON {
         return r
     }
     
-    public func getBy(index:Int) -> YJSON {
+    public func getBy(index:Int) -> JSON {
         var r = self
         if isTraceKeypath {
             r.traceKeypath.append("[\(index)]")
@@ -41,10 +41,10 @@ public struct YJSON {
         return r
     }
     
-    public func getArray() -> [YJSON] {
+    public func getArray() -> [JSON] {
         guard let array = self.data as? NSArray else {return []}
         var index = -1
-        let r:[YJSON] = array.flatMap {_ in
+        let r:[JSON] = array.flatMap {_ in
             index += 1
             let json = self
             return json.getBy(index: index)
@@ -57,7 +57,7 @@ public struct YJSON {
         return self.getArray().flatMap{T.decode($0.data)}
     }
     
-    public func toArray<T:JSONKitDecoder>() throws -> [T] {
+    public func toArray<T:JSONDecodable>() throws -> [T] {
         return try self.getArray().flatMap{ json in
             return try T.decode(json)
         }
@@ -86,11 +86,11 @@ public struct YJSON {
         return [Key:Value]()
     }
     
-    public func toDictionary<Key:Hashable,Value:JSONKitDecoder>() -> [Key:Value] {
+    public func toDictionary<Key:Hashable,Value:JSONDecodable>() -> [Key:Value] {
         if let dic = self.data as? NSDictionary {
             return dic.reduce([Key:Value](), { (dic:[Key:Value], set:(key: Any, value: Any)) -> [Key:Value] in
                 var dic = dic
-                if let k = set.key as? Key,let v = try? Value.decode(YJSON(any: set.value)) {
+                if let k = set.key as? Key,let v = try? Value.decode(JSON(any: set.value)) {
                     dic[k] = v
                 }
                 return dic

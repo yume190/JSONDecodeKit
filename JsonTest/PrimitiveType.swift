@@ -13,39 +13,39 @@ public protocol PrimitiveType {
     init?(text: String)
 }
 
-public func <|? <T:PrimitiveType>(json:YJSON,key:String) -> T? {
+public func <|? <T:PrimitiveType>(json:JSON,key:String) -> T? {
     return T.decode(json.getBy(key: key).data)
 }
 
-public func <| <T:PrimitiveType> (json:YJSON,key:String) throws -> T {
+public func <| <T:PrimitiveType> (json:JSON,key:String) throws -> T {
     guard let r:T = json <|? key else {
         if let data = json.getBy(key: key).data {
             if data is NSNull {
-                throw YumeError.nullValue(keyPath: json.keypath(), curruntKey: key)
+                throw JSONDecodeError.nullValue(keyPath: json.keypath(), curruntKey: key)
             }
             
-            throw YumeError.typeMismatch(keyPath: json.keypath(), curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
+            throw JSONDecodeError.typeMismatch(keyPath: json.keypath(), curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
         }
-        throw YumeError.keyNotFound(keyPath: json.keypath(), curruntKey: key)
+        throw JSONDecodeError.keyNotFound(keyPath: json.keypath(), curruntKey: key)
     }
     return r
     
 }
 
-public func <|| <T:PrimitiveType>(json:YJSON,key:String) -> [T] {
+public func <|| <T:PrimitiveType>(json:JSON,key:String) -> [T] {
     return json.getBy(key: key).toArray()
 }
 
 // MARK: Lazy Man Operators
-public func <||| <T:PrimitiveType>(json:YJSON,key:String) -> T? {
+public func <||| <T:PrimitiveType>(json:JSON,key:String) -> T? {
     return json <|? key
 }
 
-public func <||| <T:PrimitiveType> (json:YJSON,key:String) throws -> T {
+public func <||| <T:PrimitiveType> (json:JSON,key:String) throws -> T {
     return try json <| key
 }
 
-public func <||| <T:PrimitiveType>(json:YJSON,key:String) -> [T] {
+public func <||| <T:PrimitiveType>(json:JSON,key:String) -> [T] {
     return json <|| key
 }
 

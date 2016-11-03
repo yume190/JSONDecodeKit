@@ -8,13 +8,13 @@
 
 import Foundation
 
-public enum YumeError: Error {
+public enum JSONDecodeError: Error {
     case keyNotFound(keyPath:String,curruntKey:String)
     case nullValue(keyPath:String,curruntKey:String)
     case typeMismatch(keyPath:String,curruntKey:String,expectType:Any,actualType:Any,value:Any)
 }
 
-extension YumeError:CustomStringConvertible {
+extension JSONDecodeError:CustomStringConvertible {
     public var description: String {
         switch self {
         case .keyNotFound(let keyPath, let currentKey):

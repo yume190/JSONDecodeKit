@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		692FC6FA512EF49476762DB1 /* Pods_JsonTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5813AE9DFBD0B602E35C226C /* Pods_JsonTest.framework */; };
-		A8104DB41DC1E4EC005E2FF4 /* YumeJSONEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8104DB31DC1E4EC005E2FF4 /* YumeJSONEnum.swift */; };
+		A8104DB41DC1E4EC005E2FF4 /* Enum+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8104DB31DC1E4EC005E2FF4 /* Enum+RawRepresentable.swift */; };
 		A83877C31DBDEE0200C081AB /* Himotoki_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83877C21DBDEE0200C081AB /* Himotoki_Tests.swift */; };
 		A83877C51DBDF9F500C081AB /* Yume_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83877C41DBDF9F500C081AB /* Yume_Tests.swift */; };
-		A84E88311DC19FAB00E132B4 /* YumeJSONKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84E88301DC19FAB00E132B4 /* YumeJSONKit.swift */; };
-		A84E88331DC1A04B00E132B4 /* YumeJSONOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84E88321DC1A04B00E132B4 /* YumeJSONOperator.swift */; };
-		A84E88351DC1A05600E132B4 /* YumeJSONPrimitiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84E88341DC1A05600E132B4 /* YumeJSONPrimitiveType.swift */; };
-		A84E88371DC1A0DD00E132B4 /* YumeJSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84E88361DC1A0DD00E132B4 /* YumeJSONError.swift */; };
+		A84E88311DC19FAB00E132B4 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84E88301DC19FAB00E132B4 /* JSONDecodable.swift */; };
+		A84E88331DC1A04B00E132B4 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84E88321DC1A04B00E132B4 /* Operators.swift */; };
+		A84E88351DC1A05600E132B4 /* PrimitiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84E88341DC1A05600E132B4 /* PrimitiveType.swift */; };
+		A84E88371DC1A0DD00E132B4 /* JSONDecodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84E88361DC1A0DD00E132B4 /* JSONDecodeError.swift */; };
 		A864FC211DBDE0CA006A3395 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A864FC201DBDE0CA006A3395 /* AppDelegate.swift */; };
 		A864FC231DBDE0CA006A3395 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A864FC221DBDE0CA006A3395 /* ViewController.swift */; };
 		A864FC261DBDE0CA006A3395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A864FC241DBDE0CA006A3395 /* Main.storyboard */; };
@@ -26,7 +26,7 @@
 		A864FC5C1DBDE553006A3395 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = A864FC591DBDE553006A3395 /* Recording.swift */; };
 		A864FC5D1DBDE553006A3395 /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = A864FC5A1DBDE553006A3395 /* Program.swift */; };
 		A864FC5E1DBDE553006A3395 /* NSDate+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A864FC5B1DBDE553006A3395 /* NSDate+JSON.swift */; };
-		A8D7A9431DCAE36A00D95B4F /* YumeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D7A9421DCAE36A00D95B4F /* YumeJSON.swift */; };
+		A8D7A9431DCAE36A00D95B4F /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D7A9421DCAE36A00D95B4F /* JSON.swift */; };
 		FD2B22A36404F8BEDE8EC5AF /* Pods_JsonTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB9CD8D70E68743345DBDBF /* Pods_JsonTestTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,13 +45,13 @@
 		5813AE9DFBD0B602E35C226C /* Pods_JsonTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JsonTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		664D8CE6BDB466F598C23734 /* Pods-JsonTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonTestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JsonTestTests/Pods-JsonTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		847958EB313F048EF901DC4A /* Pods-JsonTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-JsonTest/Pods-JsonTest.release.xcconfig"; sourceTree = "<group>"; };
-		A8104DB31DC1E4EC005E2FF4 /* YumeJSONEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YumeJSONEnum.swift; sourceTree = "<group>"; };
+		A8104DB31DC1E4EC005E2FF4 /* Enum+RawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Enum+RawRepresentable.swift"; sourceTree = "<group>"; };
 		A83877C21DBDEE0200C081AB /* Himotoki_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Himotoki_Tests.swift; sourceTree = "<group>"; };
 		A83877C41DBDF9F500C081AB /* Yume_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Yume_Tests.swift; sourceTree = "<group>"; };
-		A84E88301DC19FAB00E132B4 /* YumeJSONKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YumeJSONKit.swift; sourceTree = "<group>"; };
-		A84E88321DC1A04B00E132B4 /* YumeJSONOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YumeJSONOperator.swift; sourceTree = "<group>"; };
-		A84E88341DC1A05600E132B4 /* YumeJSONPrimitiveType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YumeJSONPrimitiveType.swift; sourceTree = "<group>"; };
-		A84E88361DC1A0DD00E132B4 /* YumeJSONError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YumeJSONError.swift; sourceTree = "<group>"; };
+		A84E88301DC19FAB00E132B4 /* JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
+		A84E88321DC1A04B00E132B4 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		A84E88341DC1A05600E132B4 /* PrimitiveType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimitiveType.swift; sourceTree = "<group>"; };
+		A84E88361DC1A0DD00E132B4 /* JSONDecodeError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodeError.swift; sourceTree = "<group>"; };
 		A864FC1D1DBDE0CA006A3395 /* JsonTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JsonTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A864FC201DBDE0CA006A3395 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A864FC221DBDE0CA006A3395 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 		A864FC591DBDE553006A3395 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		A864FC5A1DBDE553006A3395 /* Program.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		A864FC5B1DBDE553006A3395 /* NSDate+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+JSON.swift"; sourceTree = "<group>"; };
-		A8D7A9421DCAE36A00D95B4F /* YumeJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YumeJSON.swift; sourceTree = "<group>"; };
+		A8D7A9421DCAE36A00D95B4F /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		CEB9CD8D70E68743345DBDBF /* Pods_JsonTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JsonTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6A24926096E18D7F0FBBAD8 /* Pods-JsonTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JsonTest/Pods-JsonTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,17 +101,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A84E882F1DC19F9100E132B4 /* YumeJSONKit */ = {
+		A84E882F1DC19F9100E132B4 /* JSONDecodeKit */ = {
 			isa = PBXGroup;
 			children = (
-				A84E88301DC19FAB00E132B4 /* YumeJSONKit.swift */,
-				A84E88341DC1A05600E132B4 /* YumeJSONPrimitiveType.swift */,
-				A84E88321DC1A04B00E132B4 /* YumeJSONOperator.swift */,
-				A84E88361DC1A0DD00E132B4 /* YumeJSONError.swift */,
-				A8104DB31DC1E4EC005E2FF4 /* YumeJSONEnum.swift */,
-				A8D7A9421DCAE36A00D95B4F /* YumeJSON.swift */,
+				A84E88301DC19FAB00E132B4 /* JSONDecodable.swift */,
+				A84E88341DC1A05600E132B4 /* PrimitiveType.swift */,
+				A84E88321DC1A04B00E132B4 /* Operators.swift */,
+				A84E88361DC1A0DD00E132B4 /* JSONDecodeError.swift */,
+				A8104DB31DC1E4EC005E2FF4 /* Enum+RawRepresentable.swift */,
+				A8D7A9421DCAE36A00D95B4F /* JSON.swift */,
 			);
-			name = YumeJSONKit;
+			name = JSONDecodeKit;
 			sourceTree = "<group>";
 		};
 		A864FC141DBDE0CA006A3395 = {
@@ -137,7 +137,7 @@
 		A864FC1F1DBDE0CA006A3395 /* JsonTest */ = {
 			isa = PBXGroup;
 			children = (
-				A84E882F1DC19F9100E132B4 /* YumeJSONKit */,
+				A84E882F1DC19F9100E132B4 /* JSONDecodeKit */,
 				A864FC201DBDE0CA006A3395 /* AppDelegate.swift */,
 				A864FC221DBDE0CA006A3395 /* ViewController.swift */,
 				A864FC241DBDE0CA006A3395 /* Main.storyboard */,
@@ -388,13 +388,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A864FC231DBDE0CA006A3395 /* ViewController.swift in Sources */,
-				A8104DB41DC1E4EC005E2FF4 /* YumeJSONEnum.swift in Sources */,
-				A84E88351DC1A05600E132B4 /* YumeJSONPrimitiveType.swift in Sources */,
-				A8D7A9431DCAE36A00D95B4F /* YumeJSON.swift in Sources */,
+				A8104DB41DC1E4EC005E2FF4 /* Enum+RawRepresentable.swift in Sources */,
+				A84E88351DC1A05600E132B4 /* PrimitiveType.swift in Sources */,
+				A8D7A9431DCAE36A00D95B4F /* JSON.swift in Sources */,
 				A864FC211DBDE0CA006A3395 /* AppDelegate.swift in Sources */,
-				A84E88311DC19FAB00E132B4 /* YumeJSONKit.swift in Sources */,
-				A84E88371DC1A0DD00E132B4 /* YumeJSONError.swift in Sources */,
-				A84E88331DC1A04B00E132B4 /* YumeJSONOperator.swift in Sources */,
+				A84E88311DC19FAB00E132B4 /* JSONDecodable.swift in Sources */,
+				A84E88371DC1A0DD00E132B4 /* JSONDecodeError.swift in Sources */,
+				A84E88331DC1A04B00E132B4 /* Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

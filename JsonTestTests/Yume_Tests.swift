@@ -15,7 +15,7 @@ class Yume_Tests: XCTestCase {
         let json = try! JSONSerialization.jsonObject(with: self.data as Data, options: []) as! NSDictionary
         let array = json.value(forKeyPath: "ProgramList.Programs") as! NSArray
         self.measure {
-            let myJson = YJSON(any: array)
+            let myJson = JSON(any: array)
             let programs:[Program] = try! myJson.toArray()
             XCTAssert(programs.count > 1000)
         }
@@ -25,7 +25,7 @@ class Yume_Tests: XCTestCase {
         let json = try! JSONSerialization.jsonObject(with: self.data as Data, options: []) as! NSDictionary
         let array = json.value(forKeyPath: "ProgramList.Programs") as! NSArray
         self.measure {
-            let myJson = YJSON(any: array,isTraceKeypath:true)
+            let myJson = JSON(any: array,isTraceKeypath:true)
             let programs:[Program] = try! myJson.toArray()
             XCTAssert(programs.count > 1000)
         }
@@ -38,8 +38,8 @@ class Yume_Tests: XCTestCase {
     }()
 }
 
-extension Program: JSONKitDecoder {
-    public static func decode(_ j: YJSON) throws -> Program {
+extension Program: JSONDecodable {
+    public static func decode(_ j: JSON) throws -> Program {
         return try Program(
                     title: j <| "Title",
                     chanId: j.getBy(key: "Channel") <| "ChanId",
@@ -53,8 +53,8 @@ extension Program: JSONKitDecoder {
     }
 }
 
-extension Recording: JSONKitDecoder{
-    public static func decode(_ j: YJSON) throws -> Recording {
+extension Recording: JSONDecodable {
+    public static func decode(_ j: JSON) throws -> Recording {
         return try Recording(
             startTsStr: j <| "StartTs",
             recordId: j <| "RecordId"
