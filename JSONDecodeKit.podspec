@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name     = 'JSONDecodeKit'
   s.version  = '1.0.0'
   s.license  = 'MIT'
-  s.summary  = "A Light weight Lib, custom a view with xib & live render"
+  s.summary  = "A Light weight JSON Mapper"
   s.homepage = 'https://github.com/yume190/JSONDecodeKit'
   s.authors  = { 'yume190' => 'yume190@gmail.com' }
   s.social_media_url = "https://www.facebook.com/yume190"
