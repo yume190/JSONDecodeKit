@@ -13,16 +13,17 @@ According to [JSONShootout](https://github.com/bwhiteley/JSONShootout), we testi
 
 ## Usage
 
-    struct Sample:JSONDecodable {
-        let temp:Int
-    
-        static func decode(_ dic: JSON) throws -> Sample {
-            return try Sample(temp: dic <| "temp")
-        }
+```swift
+struct Sample:JSONDecodable {
+    let temp:Int
+    static func decode(_ dic: JSON) throws -> Sample {
+        return try Sample(temp: dic <| "temp")
     }
+}
 
-    let data = JSON(any: ["temp":1234])
-    let dcba2:Sample? = try? Sample.decode(data)
+let json = JSON(any: ["temp":1234])
+let sample:Sample? = try? Sample.decode(json)
+```
 
 ---
 
