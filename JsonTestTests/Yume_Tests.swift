@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import JSONDecodeKit
 @testable import JsonTest
 
 class Yume_Tests: XCTestCase {
