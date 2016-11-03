@@ -15,7 +15,7 @@ import SwiftyJSON
 public struct Program {
     
     let title:String
-//    let chanId:String
+    let chanId:String
 // Date parsing is slow. Remove dates to better measure performance.
 //    let startTime:NSDate
 //    let endTime:NSDate
@@ -29,7 +29,7 @@ public struct Program {
 extension Program: Unmarshaling {
     public init(object json: MarshaledObject) throws {
         title = try json.value(for:"Title")
-//        chanId = try json.value(for:"Channel.ChanId")
+        chanId = try json.value(for:"Channel.ChanId")
 //        startTime = try json.value(for:"StartTime")
 //        endTime = try json.value(for:"EndTime")
         description = try json.value(for:"Description")
@@ -71,7 +71,7 @@ extension Program: Unmarshaling {
 extension Program { // SwiftyJSON
     public init(json:JSON) {
         title = json["Title"].stringValue
-//        chanId = json["Channel"]["ChanId"].stringValue
+        chanId = json["Channel"]["ChanId"].stringValue
         description = json["Description"].string
         subtitle = json["SubTitle"].string
         season = json["Season"].string//.int

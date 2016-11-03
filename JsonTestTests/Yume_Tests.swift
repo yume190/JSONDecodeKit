@@ -11,12 +11,21 @@ import XCTest
 
 class Yume_Tests: XCTestCase {
     
-    func testNSDictionaryPerformance() {
+    func testNonTrace() {
         let json = try! JSONSerialization.jsonObject(with: self.data as Data, options: []) as! NSDictionary
         let array = json.value(forKeyPath: "ProgramList.Programs") as! NSArray
-//        let json = YJSON(any: try! JSONSerialization.jsonObject(with: self.data as Data, options: []))
         self.measure {
             let myJson = YJSON(any: array)
+            let programs:[Program] = try! myJson.toArray()
+            XCTAssert(programs.count > 1000)
+        }
+    }
+    
+    func testTrace() {
+        let json = try! JSONSerialization.jsonObject(with: self.data as Data, options: []) as! NSDictionary
+        let array = json.value(forKeyPath: "ProgramList.Programs") as! NSArray
+        self.measure {
+            let myJson = YJSON(any: array,isTraceKeypath:true)
             let programs:[Program] = try! myJson.toArray()
             XCTAssert(programs.count > 1000)
         }
@@ -33,7 +42,7 @@ extension Program: JSONKitDecoder {
     public static func decode(_ j: YJSON) throws -> Program {
         return try Program(
                     title: j <| "Title",
-//                    chanId: j <|? "Channel",
+                    chanId: j.getBy(key: "Channel") <| "ChanId",
                     description: j <|? "Description",
                     subtitle: j <|? "SubTitle",
                     recording: j <| "Recording",

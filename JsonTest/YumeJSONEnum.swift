@@ -24,16 +24,29 @@ public func <| <T:RawRepresentable> (json:YJSON,key:String) throws -> T where T.
     guard let r:T = json <|? key else {
         if let data = json.getBy(key: key).data {
             if data is NSNull {
-                throw YumeError.nullValue(keyPath: json.traceKeypath.joined(separator: "."), curruntKey: key)
+                throw YumeError.nullValue(keyPath: json.keypath(), curruntKey: key)
             }
             
-            throw YumeError.typeMismatch(keyPath: json.traceKeypath.joined(separator: "."), curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
+            throw YumeError.typeMismatch(keyPath: json.keypath(), curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
         }
-        throw YumeError.keyNotFound(keyPath: json.traceKeypath.joined(separator: "."), curruntKey: key)
+        throw YumeError.keyNotFound(keyPath: json.keypath(), curruntKey: key)
     }
     return r
 }
 
 public func <|| <T:RawRepresentable>(json:YJSON,key:String) -> [T] where T.RawValue:PrimitiveType {
     return json.toArray()
+}
+
+// MARK: Lazy Man Operators
+public func <||| <T:RawRepresentable> (json:YJSON,key:String) -> T? where T.RawValue:PrimitiveType {
+    return json <|? key
+}
+
+public func <||| <T:RawRepresentable> (json:YJSON,key:String) throws -> T where T.RawValue:PrimitiveType {
+    return try json <| key
+}
+
+public func <||| <T:RawRepresentable>(json:YJSON,key:String) -> [T] where T.RawValue:PrimitiveType {
+    return json <|| key
 }

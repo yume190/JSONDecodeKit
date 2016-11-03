@@ -20,21 +20,21 @@ extension YumeError:CustomStringConvertible {
         case .keyNotFound(let keyPath, let currentKey):
             return
                 "\nKey Not Found:\n" +
-                    "\tKeypath : \"\(keyPath)\"\n" +
-            "\tKey : \"\(currentKey)\"\n"
+                "\tKeypath : \"\(keyPath)\"\n" +
+                "\tKey : \"\(currentKey)\"\n"
         case .nullValue(let keyPath, let currentKey):
             return
                 "\nNull Value Found At:\n" +
-                    "\tKeypath : \"\(keyPath)\"\n" +
-            "\tKey : \"\(currentKey)\"\n"
+                "\tKeypath : \"\(keyPath)\"\n" +
+                "\tKey : \"\(currentKey)\"\n"
         case .typeMismatch(let keyPath, let currentKey, let expectType, let actualType,let value):
             return
                 "\nType Mismatch:\n" +
-                    "\tKeypath : \"\(keyPath)\"\n" +
-                    "\tKey : \"\(currentKey)\"\n" +
-                    "\tExpected Type : \(expectType)\n" +
-                    "\tActual Type : \(actualType)\n" +
-            "\tActual Value : \(value)\n"
+                "\tKeypath : \"\(keyPath)\"\n" +
+                "\tKey : \"\(currentKey)\"\n" +
+                "\tExpected Type : \(expectType)\n" +
+                "\tActual Type : \(actualType)\n" +
+                "\tActual Value : \(value)\n"
         }
     }
 }

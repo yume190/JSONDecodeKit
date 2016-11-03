@@ -32,7 +32,6 @@ class Marshal_Tests: XCTestCase {
         self.measure {
             let programs:[Program] = try! json.value(for:"ProgramList.Programs")
             XCTAssert(programs.count > 1000)
-//            print("Marshal count\(programs.count)")
         }
     }
     
@@ -40,11 +39,8 @@ class Marshal_Tests: XCTestCase {
         let json = try! JSONSerialization.jsonObject(with: self.data as Data, options: []) as! NSDictionary
         
         self.measure {
-            //for _ in 0..<10 {
-            //while true {
-                let programs:[Program] = try! json.value(for: "ProgramList.Programs")
-                XCTAssert(programs.count > 1000)
-            //}
+            let programs:[Program] = try! json.value(for: "ProgramList.Programs")
+            XCTAssert(programs.count > 1000)
         }
     }
     
