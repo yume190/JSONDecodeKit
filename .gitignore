@@ -79,3 +79,9 @@ xcuserdata
 *.moved-aside
 DerivedData
 *.xcuserstate
+
+
+### Yume ###
+spm/
+MyPod/
+Cart/
