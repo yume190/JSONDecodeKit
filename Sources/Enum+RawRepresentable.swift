@@ -24,12 +24,12 @@ public func <| <T:RawRepresentable> (json:JSON,key:String) throws -> T where T.R
     guard let r:T = json <|? key else {
         if let data = json.getBy(key: key).data {
             if data is NSNull {
-                throw JSONDecodeError.nullValue(keyPath: json.keypath(), curruntKey: key)
+                throw JSONDecodeError.nullValue(keyPath: json.keypath, curruntKey: key)
             }
             
-            throw JSONDecodeError.typeMismatch(keyPath: json.keypath(), curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
+            throw JSONDecodeError.typeMismatch(keyPath: json.keypath, curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
         }
-        throw JSONDecodeError.keyNotFound(keyPath: json.keypath(), curruntKey: key)
+        throw JSONDecodeError.keyNotFound(keyPath: json.keypath, curruntKey: key)
     }
     return r
 }

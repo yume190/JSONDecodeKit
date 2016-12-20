@@ -21,12 +21,12 @@ public func <| <T:PrimitiveType> (json:JSON,key:String) throws -> T {
     guard let r:T = json <|? key else {
         if let data = json.getBy(key: key).data {
             if data is NSNull {
-                throw JSONDecodeError.nullValue(keyPath: json.keypath(), curruntKey: key)
+                throw JSONDecodeError.nullValue(keyPath: json.keypath, curruntKey: key)
             }
             
-            throw JSONDecodeError.typeMismatch(keyPath: json.keypath(), curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
+            throw JSONDecodeError.typeMismatch(keyPath: json.keypath, curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
         }
-        throw JSONDecodeError.keyNotFound(keyPath: json.keypath(), curruntKey: key)
+        throw JSONDecodeError.keyNotFound(keyPath: json.keypath, curruntKey: key)
     }
     return r
     
@@ -157,6 +157,10 @@ extension String:PrimitiveType {
         }
         
         guard let _any = any else { return nil }
+        if _any is NSNull {
+            return nil
+        }
+        
         return String(describing: _any)
     }
     

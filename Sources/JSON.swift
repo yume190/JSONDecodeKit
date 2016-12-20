@@ -9,9 +9,9 @@
 import Foundation
 
 public struct JSON {
-    public var data:Any?
-    lazy var traceKeypath:[String] = []
-    private var isTraceKeypath:Bool
+    internal var data:Any?
+    internal lazy var traceKeypath:[String] = []
+    fileprivate var isTraceKeypath:Bool
     
     public init(data:Data,isTraceKeypath:Bool = false) {
         self.data = try? JSONSerialization.jsonObject(with: data, options: [])
@@ -21,6 +21,23 @@ public struct JSON {
     public init(any:Any,isTraceKeypath:Bool = false) {
         self.data = any
         self.isTraceKeypath = isTraceKeypath
+    }
+    
+    var keypath:String {
+        get {
+            var temp = self
+            return temp.traceKeypath.joined(separator: ".")
+        }
+    }
+}
+
+extension JSON {
+    public subscript(key:String) -> JSON {
+        return getBy(key: key)
+    }
+    
+    public subscript(index:Int) -> JSON {
+        return getBy(index: index)
     }
     
     public func getBy(key:String) -> JSON {
@@ -40,7 +57,9 @@ public struct JSON {
         r.data = (self.data as? NSArray)?[index]
         return r
     }
-    
+}
+
+extension JSON {
     public func getArray() -> [JSON] {
         guard let array = self.data as? NSArray else {return []}
         var index = -1
@@ -72,7 +91,9 @@ public struct JSON {
             return nil
         }
     }
-    
+}
+
+extension JSON {
     public func toDictionary<Key:Hashable,Value:PrimitiveType>() -> [Key:Value] {
         if let dic = self.data as? NSDictionary {
             return dic.reduce([Key:Value](), { (dic:[Key:Value], set:(key: Any, value: Any)) -> [Key:Value] in
@@ -98,10 +119,4 @@ public struct JSON {
         }
         return [Key:Value]()
     }
-    
-    public func keypath() -> String {
-        var temp = self
-        return temp.traceKeypath.joined(separator: ".")
-    }
-    
 }

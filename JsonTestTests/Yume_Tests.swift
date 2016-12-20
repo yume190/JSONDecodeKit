@@ -8,29 +8,40 @@
 
 import XCTest
 import JSONDecodeKit
-@testable import JsonTest
 
 class Yume_Tests: XCTestCase {
     
     func testNonTrace() {
         let json = try! JSONSerialization.jsonObject(with: self.data as Data, options: []) as! NSDictionary
-        let array = json.value(forKeyPath: "ProgramList.Programs") as! NSArray
         self.measure {
-            let myJson = JSON(any: array)
-            let programs:[Program] = try! myJson.toArray()
+            let myJson = JSON(any: json)
+            let programs:[Program] = try! myJson["ProgramList"]["Programs"].toArray()
             XCTAssert(programs.count > 1000)
         }
     }
     
     func testTrace() {
         let json = try! JSONSerialization.jsonObject(with: self.data as Data, options: []) as! NSDictionary
-        let array = json.value(forKeyPath: "ProgramList.Programs") as! NSArray
         self.measure {
-            let myJson = JSON(any: array,isTraceKeypath:true)
-            let programs:[Program] = try! myJson.toArray()
+            let myJson = JSON(any: json,isTraceKeypath:true)
+            let programs:[Program] = try! myJson["ProgramList"]["Programs"].toArray()
             XCTAssert(programs.count > 1000)
         }
     }
+    
+//    func testDD() {
+//        let json = try! JSONSerialization.jsonObject(with: self.data as Data, options: []) as! NSDictionary
+//        let array = json.value(forKeyPath: "ProgramList.Programs") as! NSArray
+//        let myJson = JSON(any: array,isTraceKeypath:true)
+//        let programs:[Program] = try! myJson.toArray()
+//        let p1Before = programs[0]
+//        let p1JSONString = p1Before.toJSON()
+//        
+//        let json2 = try! JSONSerialization.jsonObject(with: p1JSONString.data(using: .utf8)!, options: [])
+//        let myJson2 = JSON(any: json2)
+//        let p1After = try! Program.decode(myJson2)
+//        
+//    }
     
     private lazy var data:Data = {
         let path = Bundle(for: type(of: self)).url(forResource: "Large", withExtension: "json")

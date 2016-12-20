@@ -7,7 +7,6 @@
 //
 
 import XCTest
-//import ModelObjects
 import SwiftyJSON
 
 class SwiftyJSON_Tests: XCTestCase {
