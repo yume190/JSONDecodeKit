@@ -27,6 +27,40 @@ let sample:Sample? = try? Sample.decode(json)
 
 ---
 
+## Protocols
+
+#### PrimitiveType 
+
+PrimitiveType focus on casting type and transform from string 
+
+ * Casting Type
+```swift
+return self as? T
+// return 1 as? Int
+// return "1" as? Int
+```
+ * Transform From String (`String -> T`)
+```swift
+return Int("1")     // "1" -> 1
+return Int("true")  // "true" -> true
+```
+
+ * Support Types
+```swift
+Int     Int8    Int16   Int32   Int64
+UInt    UInt8   UInt16  UInt32  UInt64
+Float   Double
+Bool
+String
+URL
+```
+
+#### JSONDecodable
+
+JSONDecodable is the protocol, mapping `JSON` to your customize struct.
+
+---
+
 #### Operators
 
 |Operator|Decode element|
