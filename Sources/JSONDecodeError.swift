@@ -12,6 +12,7 @@ public enum JSONDecodeError: Error {
     case keyNotFound(keyPath:String,curruntKey:String)
     case nullValue(keyPath:String,curruntKey:String)
     case typeMismatch(keyPath:String,curruntKey:String,expectType:Any,actualType:Any,value:Any)
+    case specialCase(reason:String)
 }
 
 extension JSONDecodeError:CustomStringConvertible {
@@ -35,6 +36,8 @@ extension JSONDecodeError:CustomStringConvertible {
                 "\tExpected Type : \(expectType)\n" +
                 "\tActual Type : \(actualType)\n" +
                 "\tActual Value : \(value)\n"
+        case .specialCase(let reason):
+            return reason
         }
     }
 }

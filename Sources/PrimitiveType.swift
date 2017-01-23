@@ -10,7 +10,10 @@ import Foundation
 
 public protocol PrimitiveType {
     static func decode(_ any: Any?) -> Self?
+    static func decode(json: JSON) -> Self?
     init?(text: String)
+// TODO: init with JSON
+//    init?(json: JSON)
 }
 
 public func <|? <T:PrimitiveType>(json:JSON,key:String) -> T? {
@@ -18,18 +21,18 @@ public func <|? <T:PrimitiveType>(json:JSON,key:String) -> T? {
 }
 
 public func <| <T:PrimitiveType> (json:JSON,key:String) throws -> T {
-    guard let r:T = json <|? key else {
-        if let data = json.getBy(key: key).data {
-            if data is NSNull {
-                throw JSONDecodeError.nullValue(keyPath: json.keypath, curruntKey: key)
-            }
-            
-            throw JSONDecodeError.typeMismatch(keyPath: json.keypath, curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
-        }
-        throw JSONDecodeError.keyNotFound(keyPath: json.keypath, curruntKey: key)
+    if let r:T = json <|? key {
+        return r
     }
-    return r
-    
+
+    if let data = json.getBy(key: key).data {
+        if data is NSNull {
+            throw JSONDecodeError.nullValue(keyPath: json.keypath, curruntKey: key)
+        }
+        
+        throw JSONDecodeError.typeMismatch(keyPath: json.keypath, curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
+    }
+    throw JSONDecodeError.keyNotFound(keyPath: json.keypath, curruntKey: key)
 }
 
 public func <|| <T:PrimitiveType>(json:JSON,key:String) -> [T] {
@@ -50,6 +53,11 @@ public func <||| <T:PrimitiveType>(json:JSON,key:String) -> [T] {
 }
 
 public extension PrimitiveType {
+    
+    static func decode(json: JSON) -> Self? {
+        return decode(json.data)
+    }
+    
     static func decode(_ any: Any?) -> Self? {
         if let result = any as? Self {
             return result
@@ -61,6 +69,12 @@ public extension PrimitiveType {
         
         return nil
     }
+    
+// TODO: init with JSON
+//    init?(json: JSON) {
+//        return Self.decode(json.data)
+//    }
+
 }
 
 // MARK: Int

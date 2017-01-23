@@ -31,6 +31,7 @@ public struct JSON {
     }
 }
 
+// MARK: subscript
 extension JSON {
     public subscript(key:String) -> JSON {
         return getBy(key: key)
@@ -59,6 +60,22 @@ extension JSON {
     }
 }
 
+// TODO:
+//extension JSON {
+//    public func decode<T:PrimitiveType>() -> T? {
+//        return T.decode(self)
+//    }
+//
+//    public func decode<T:JSONDecodable>() -> T? {
+//        return try? T.decode(self)
+//    }
+//
+//    public func decode<T:RawRepresentable>() -> T? where T.RawValue:PrimitiveType {
+//        return T(rawValue: <#T##Self.RawValue#>)
+//    }
+//}
+
+// MARK: Get Array
 extension JSON {
     public func getArray() -> [JSON] {
         guard let array = self.data as? NSArray else {return []}
@@ -93,6 +110,7 @@ extension JSON {
     }
 }
 
+// MARK: Get [Key:Value]
 extension JSON {
     public func toDictionary<Key:Hashable,Value:PrimitiveType>() -> [Key:Value] {
         if let dic = self.data as? NSDictionary {
@@ -118,5 +136,62 @@ extension JSON {
             })
         }
         return [Key:Value]()
+    }
+    
+    public func toDictionary<Key:Hashable,Value:RawRepresentable>() -> [Key:Value] where Value.RawValue:PrimitiveType {
+        if let dic = self.data as? NSDictionary {
+            return dic.reduce([Key:Value](), { (dic:[Key:Value], set:(key: Any, value: Any)) -> [Key:Value] in
+                var dic = dic
+                
+                if let k = set.key as? Key,let v = Value.decode(set.value) {
+                    dic[k] = v
+                }
+                return dic
+            })
+        }
+        return [Key:Value]()
+    }
+}
+    
+// MARK: Get [Key:[Value]]
+extension JSON {
+    public func toDictionaryAndArrayValue<Key:Hashable,Value:PrimitiveType>() -> [Key:[Value]] {
+        if let dic = self.data as? NSDictionary {
+            return dic.reduce([Key:[Value]]()) { (dic:[Key:[Value]], set:(key: Any, value: Any)) -> [Key:[Value]] in
+                var dic = dic
+                if let k = set.key as? Key {
+                    dic[k] = JSON(any: set.value).toArray()
+                }
+                return dic
+            }
+        }
+        return [Key:[Value]]()
+    }
+    
+    public func toDictionaryAndArrayValue<Key:Hashable,Value:JSONDecodable>() -> [Key:[Value]] {
+        if let dic = self.data as? NSDictionary {
+            return dic.reduce([Key:[Value]]()) { (dic:[Key:[Value]], set:(key: Any, value: Any)) -> [Key:[Value]] in
+                var dic = dic
+                if let k = set.key as? Key,let temp:[Value] = try? JSON(any: set.value).toArray() {
+                    dic[k] = temp
+                }
+                return dic
+            }
+        }
+        return [Key:[Value]]()
+    }
+    
+    public func toDictionaryAndArrayValue<Key:Hashable,Value:RawRepresentable>() -> [Key:[Value]] where Value.RawValue:PrimitiveType {
+        if let dic = self.data as? NSDictionary {
+            return dic.reduce([Key:[Value]](), { (dic:[Key:[Value]], set:(key: Any, value: Any)) -> [Key:[Value]] in
+                var dic = dic
+                
+                if let k = set.key as? Key {
+                    dic[k] = JSON(any: set.value).toArray()
+                }
+                return dic
+            })
+        }
+        return [Key:[Value]]()
     }
 }

@@ -17,18 +17,18 @@ public func <|? <T:JSONDecodable>(json:JSON,key:String) throws -> T? {
 }
 
 public func <| <T:JSONDecodable> (json:JSON,key:String) throws -> T {
-    guard let r:T = try json <|? key else {
-        if let data = json.getBy(key: key).data {
-            if data is NSNull {
-                throw JSONDecodeError.nullValue(keyPath: json.keypath, curruntKey: key)
-            }
-            
-            throw JSONDecodeError.typeMismatch(keyPath: json.keypath, curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
-        }
-        throw JSONDecodeError.keyNotFound(keyPath: json.keypath, curruntKey: key)
+    if let r:T = try json <|? key {
+        return r
     }
-    return r
     
+    if let data = json.getBy(key: key).data {
+        if data is NSNull {
+            throw JSONDecodeError.nullValue(keyPath: json.keypath, curruntKey: key)
+        }
+        
+        throw JSONDecodeError.typeMismatch(keyPath: json.keypath, curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
+    }
+    throw JSONDecodeError.keyNotFound(keyPath: json.keypath, curruntKey: key)
 }
 
 public func <|| <T:JSONDecodable>(json:JSON,key:String) throws -> [T] {
