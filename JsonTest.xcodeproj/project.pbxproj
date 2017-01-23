@@ -10,6 +10,8 @@
 		692FC6FA512EF49476762DB1 /* Pods_JsonTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5813AE9DFBD0B602E35C226C /* Pods_JsonTest.framework */; };
 		A83877C31DBDEE0200C081AB /* Himotoki_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83877C21DBDEE0200C081AB /* Himotoki_Tests.swift */; };
 		A83877C51DBDF9F500C081AB /* Yume_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83877C41DBDF9F500C081AB /* Yume_Tests.swift */; };
+		A85B888E1E3608CE001DDFD5 /* DictionaryArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85B888D1E3608CE001DDFD5 /* DictionaryArrayTests.swift */; };
+		A85B88901E36096F001DDFD5 /* test2.json in Resources */ = {isa = PBXBuildFile; fileRef = A85B888F1E36096F001DDFD5 /* test2.json */; };
 		A864E1FE1DD0836900690E0E /* PrimitiveTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A864E1FD1DD0836800690E0E /* PrimitiveTypeTests.swift */; };
 		A864E2001DD0896200690E0E /* JSONDecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A864E1FF1DD0896200690E0E /* JSONDecodableTests.swift */; };
 		A864E2021DD0899200690E0E /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = A864E2011DD0899200690E0E /* test.json */; };
@@ -75,6 +77,8 @@
 		847958EB313F048EF901DC4A /* Pods-JsonTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-JsonTest/Pods-JsonTest.release.xcconfig"; sourceTree = "<group>"; };
 		A83877C21DBDEE0200C081AB /* Himotoki_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Himotoki_Tests.swift; sourceTree = "<group>"; };
 		A83877C41DBDF9F500C081AB /* Yume_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Yume_Tests.swift; sourceTree = "<group>"; };
+		A85B888D1E3608CE001DDFD5 /* DictionaryArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryArrayTests.swift; sourceTree = "<group>"; };
+		A85B888F1E36096F001DDFD5 /* test2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test2.json; sourceTree = "<group>"; };
 		A864E1FD1DD0836800690E0E /* PrimitiveTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimitiveTypeTests.swift; sourceTree = "<group>"; };
 		A864E1FF1DD0896200690E0E /* JSONDecodableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodableTests.swift; sourceTree = "<group>"; };
 		A864E2011DD0899200690E0E /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 				A864FC5F1DBDE55D006A3395 /* model */,
 				A864FC4F1DBDE545006A3395 /* Marshal_Tests.swift */,
 				A864E1FF1DD0896200690E0E /* JSONDecodableTests.swift */,
+				A85B888D1E3608CE001DDFD5 /* DictionaryArrayTests.swift */,
 				A864E1FD1DD0836800690E0E /* PrimitiveTypeTests.swift */,
 				A83877C41DBDF9F500C081AB /* Yume_Tests.swift */,
 				A864FC501DBDE545006A3395 /* SwiftyJSON_Tests.swift */,
@@ -192,6 +197,7 @@
 				A864FC521DBDE545006A3395 /* Large.json */,
 				A864FC371DBDE0CA006A3395 /* Info.plist */,
 				A864E2011DD0899200690E0E /* test.json */,
+				A85B888F1E36096F001DDFD5 /* test2.json */,
 			);
 			path = JsonTestTests;
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A85B88901E36096F001DDFD5 /* test2.json in Resources */,
 				A864FC571DBDE545006A3395 /* Large.json in Resources */,
 				A864E2021DD0899200690E0E /* test.json in Resources */,
 			);
@@ -508,6 +515,7 @@
 				A864FC5D1DBDE553006A3395 /* Program.swift in Sources */,
 				A83877C31DBDEE0200C081AB /* Himotoki_Tests.swift in Sources */,
 				A864FC551DBDE545006A3395 /* SwiftyJSON_Tests.swift in Sources */,
+				A85B888E1E3608CE001DDFD5 /* DictionaryArrayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
