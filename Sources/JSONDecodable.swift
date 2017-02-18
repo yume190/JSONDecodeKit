@@ -12,23 +12,23 @@ public protocol JSONDecodable {
     static func decode(_ json:JSON) throws -> Self
 }
 
-public func <|? <T:JSONDecodable>(json:JSON,key:String) throws -> T? {
-    return try T.decode(json.getBy(key: key))
+public func <|? <T:JSONDecodable>(json:JSON,key:String) -> T? {
+    return try? T.decode(json.getBy(key: key))
 }
 
 public func <| <T:JSONDecodable> (json:JSON,key:String) throws -> T {
-    if let r:T = try json <|? key {
+    if let r:T = json <|? key {
         return r
     }
     
     if let data = json.getBy(key: key).data {
         if data is NSNull {
-            throw JSONDecodeError.nullValue(keyPath: json.keypath, curruntKey: key)
+            throw JSONDecodeError.nullValue(keyPath: json.keypath, curruntKey: key, json:json)
         }
         
-        throw JSONDecodeError.typeMismatch(keyPath: json.keypath, curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
+        throw JSONDecodeError.typeMismatch(keyPath: json.keypath, curruntKey: key, expectType: T.self, actualType: type(of:data),value: data, json:json)
     }
-    throw JSONDecodeError.keyNotFound(keyPath: json.keypath, curruntKey: key)
+    throw JSONDecodeError.keyNotFound(keyPath: json.keypath, curruntKey: key, json:json)
 }
 
 public func <|| <T:JSONDecodable>(json:JSON,key:String) throws -> [T] {
@@ -37,7 +37,7 @@ public func <|| <T:JSONDecodable>(json:JSON,key:String) throws -> [T] {
 
 // MARK: Lazy Man Operators
 public func <||| <T:JSONDecodable>(json:JSON,key:String) throws -> T? {
-    return try json <|? key
+    return json <|? key
 }
 
 public func <||| <T:JSONDecodable> (json:JSON,key:String) throws -> T {

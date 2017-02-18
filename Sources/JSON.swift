@@ -26,7 +26,7 @@ public struct JSON {
     var keypath:String {
         get {
             var temp = self
-            return temp.traceKeypath.joined(separator: ".")
+            return temp.traceKeypath.joined(separator: "")
         }
     }
 }
@@ -44,7 +44,7 @@ extension JSON {
     public func getBy(key:String) -> JSON {
         var r = self
         if isTraceKeypath {
-            r.traceKeypath.append(key)
+            r.traceKeypath.append("." + key)
         }
         r.data = (self.data as? NSDictionary)?[key]
         return r
@@ -152,7 +152,7 @@ extension JSON {
         return [Key:Value]()
     }
 }
-    
+
 // MARK: Get [Key:[Value]]
 extension JSON {
     public func toDictionaryAndArrayValue<Key:Hashable,Value:PrimitiveType>() -> [Key:[Value]] {

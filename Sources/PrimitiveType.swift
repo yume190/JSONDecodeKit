@@ -12,8 +12,8 @@ public protocol PrimitiveType {
     static func decode(_ any: Any?) -> Self?
     static func decode(json: JSON) -> Self?
     init?(text: String)
-// TODO: init with JSON
-//    init?(json: JSON)
+    // TODO: init with JSON
+    //    init?(json: JSON)
 }
 
 public func <|? <T:PrimitiveType>(json:JSON,key:String) -> T? {
@@ -24,15 +24,15 @@ public func <| <T:PrimitiveType> (json:JSON,key:String) throws -> T {
     if let r:T = json <|? key {
         return r
     }
-
+    
     if let data = json.getBy(key: key).data {
         if data is NSNull {
-            throw JSONDecodeError.nullValue(keyPath: json.keypath, curruntKey: key)
+            throw JSONDecodeError.nullValue(keyPath: json.keypath, curruntKey: key, json:json)
         }
         
-        throw JSONDecodeError.typeMismatch(keyPath: json.keypath, curruntKey: key, expectType: T.self, actualType: type(of:data),value: data)
+        throw JSONDecodeError.typeMismatch(keyPath: json.keypath, curruntKey: key, expectType: T.self, actualType: type(of:data),value: data, json:json)
     }
-    throw JSONDecodeError.keyNotFound(keyPath: json.keypath, curruntKey: key)
+    throw JSONDecodeError.keyNotFound(keyPath: json.keypath, curruntKey: key, json:json)
 }
 
 public func <|| <T:PrimitiveType>(json:JSON,key:String) -> [T] {
@@ -70,11 +70,11 @@ public extension PrimitiveType {
         return nil
     }
     
-// TODO: init with JSON
-//    init?(json: JSON) {
-//        return Self.decode(json.data)
-//    }
-
+    // TODO: init with JSON
+    //    init?(json: JSON) {
+    //        return Self.decode(json.data)
+    //    }
+    
 }
 
 // MARK: Int

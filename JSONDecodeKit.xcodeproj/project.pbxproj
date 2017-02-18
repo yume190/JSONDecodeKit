@@ -12,7 +12,6 @@
 		A89A15531E57F31E00FCCA8F /* JSONDecodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89A15421E57F1BF00FCCA8F /* JSONDecodeKit.framework */; };
 		A89A158B1E57F45700FCCA8F /* DictionaryArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A157B1E57F45700FCCA8F /* DictionaryArrayTests.swift */; };
 		A89A158C1E57F45700FCCA8F /* Himotoki_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A157C1E57F45700FCCA8F /* Himotoki_Tests.swift */; };
-		A89A158D1E57F45700FCCA8F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A89A157D1E57F45700FCCA8F /* Info.plist */; };
 		A89A158E1E57F45700FCCA8F /* Large.json in Resources */ = {isa = PBXBuildFile; fileRef = A89A157F1E57F45700FCCA8F /* Large.json */; };
 		A89A158F1E57F45700FCCA8F /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = A89A15801E57F45700FCCA8F /* test.json */; };
 		A89A15901E57F45700FCCA8F /* test2.json in Resources */ = {isa = PBXBuildFile; fileRef = A89A15811E57F45700FCCA8F /* test2.json */; };
@@ -300,7 +299,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A89A15901E57F45700FCCA8F /* test2.json in Resources */,
-				A89A158D1E57F45700FCCA8F /* Info.plist in Resources */,
 				A89A158E1E57F45700FCCA8F /* Large.json in Resources */,
 				A89A158F1E57F45700FCCA8F /* test.json in Resources */,
 			);
@@ -502,6 +500,7 @@
 				INFOPLIST_FILE = JSONDecodeKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = JSONDecodeKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -528,6 +527,7 @@
 				INFOPLIST_FILE = JSONDecodeKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = JSONDecodeKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -545,7 +545,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yume190.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -562,7 +562,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yume190.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
