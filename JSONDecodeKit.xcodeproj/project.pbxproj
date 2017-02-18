@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3966FE494487FA174E3820C7 /* Pods_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C39885CFA0A7C30E233E6B41 /* Pods_Test.framework */; };
-		A866B82C1E584D83006B213A /* JSONDecodeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A866B82A1E584D83006B213A /* JSONDecodeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A866B8371E584D96006B213A /* Enum+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8301E584D96006B213A /* Enum+RawRepresentable.swift */; };
 		A866B8381E584D96006B213A /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8311E584D96006B213A /* JSON.swift */; };
 		A866B8391E584D96006B213A /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8321E584D96006B213A /* JSONDecodable.swift */; };
@@ -175,17 +174,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		A866B8251E584D83006B213A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A866B82C1E584D83006B213A /* JSONDecodeKit.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		A866B8271E584D83006B213A /* JSONDecodeKit */ = {
 			isa = PBXNativeTarget;
@@ -193,8 +181,6 @@
 			buildPhases = (
 				A866B8231E584D83006B213A /* Sources */,
 				A866B8241E584D83006B213A /* Frameworks */,
-				A866B8251E584D83006B213A /* Headers */,
-				A866B8261E584D83006B213A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -267,13 +253,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A866B8261E584D83006B213A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A89A154C1E57F31D00FCCA8F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -561,6 +540,7 @@
 				A866B82F1E584D83006B213A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A89A152E1E57F15C00FCCA8F /* Build configuration list for PBXProject "JSONDecodeKit" */ = {
 			isa = XCConfigurationList;
