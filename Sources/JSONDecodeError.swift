@@ -21,24 +21,24 @@ extension JSONDecodeError:CustomStringConvertible {
         case .keyNotFound(let keyPath, let currentKey, let json):
             return
                 "\nKey Not Found:\n" +
-                    "\tKeypath : \"\(keyPath)\"\n" +
-                    "\tKey : \"\(currentKey)\"\n" +
-            "\tjson: \(json.data)"
+                "\tKeypath : \"\(keyPath)\"\n" +
+                "\tKey : \"\(currentKey)\"\n" +
+                "\tjson: \(json.data ?? "nil")"
         case .nullValue(let keyPath, let currentKey, let json):
             return
                 "\nNull Value Found At:\n" +
-                    "\tKeypath : \"\(keyPath)\"\n" +
-                    "\tKey : \"\(currentKey)\"\n" +
-            "\tjson: \(json.data)"
+                "\tKeypath : \"\(keyPath)\"\n" +
+                "\tKey : \"\(currentKey)\"\n" +
+                "\tjson: \(json.data ?? "nil")"
         case .typeMismatch(let keyPath, let currentKey, let expectType, let actualType,let value, let json):
             return
                 "\nType Mismatch:\n" +
-                    "\tKeypath : \"\(keyPath)\"\n" +
-                    "\tKey : \"\(currentKey)\"\n" +
-                    "\tExpected Type : \(expectType)\n" +
-                    "\tActual Type : \(actualType)\n" +
-                    "\tActual Value : \(value)\n" +
-            "\tjson: \(json.data)"
+                "\tKeypath : \"\(keyPath)\"\n" +
+                "\tKey : \"\(currentKey)\"\n" +
+                "\tExpected Type : \(expectType)\n" +
+                "\tActual Type : \(actualType)\n" +
+                "\tActual Value : \(value)\n" +
+                "\tjson: \(json.data ?? "nil")"
         case .specialCase(let reason):
             return reason
         }
