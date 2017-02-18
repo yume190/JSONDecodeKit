@@ -2,11 +2,11 @@
 //  JSONDecodeKit.h
 //  JSONDecodeKit
 //
-//  Created by Yume on 2016/11/3.
-//  Copyright © 2016年 Yume. All rights reserved.
+//  Created by Yume on 2017/2/18.
+//  Copyright © 2017年 Yume. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Cocoa/Cocoa.h>
 
 //! Project version number for JSONDecodeKit.
 FOUNDATION_EXPORT double JSONDecodeKitVersionNumber;
