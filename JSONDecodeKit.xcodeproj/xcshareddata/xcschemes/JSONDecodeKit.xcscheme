@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A89A15411E57F1BF00FCCA8F"
+               BlueprintIdentifier = "A866B8271E584D83006B213A"
                BuildableName = "JSONDecodeKit.framework"
                BlueprintName = "JSONDecodeKit"
                ReferencedContainer = "container:JSONDecodeKit.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A89A15411E57F1BF00FCCA8F"
+            BlueprintIdentifier = "A866B8271E584D83006B213A"
             BuildableName = "JSONDecodeKit.framework"
             BlueprintName = "JSONDecodeKit"
             ReferencedContainer = "container:JSONDecodeKit.xcodeproj">
@@ -65,7 +65,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A89A15411E57F1BF00FCCA8F"
+            BlueprintIdentifier = "A866B8271E584D83006B213A"
             BuildableName = "JSONDecodeKit.framework"
             BlueprintName = "JSONDecodeKit"
             ReferencedContainer = "container:JSONDecodeKit.xcodeproj">
@@ -84,7 +84,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A89A15411E57F1BF00FCCA8F"
+            BlueprintIdentifier = "A866B8271E584D83006B213A"
             BuildableName = "JSONDecodeKit.framework"
             BlueprintName = "JSONDecodeKit"
             ReferencedContainer = "container:JSONDecodeKit.xcodeproj">
