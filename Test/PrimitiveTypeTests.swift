@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import JSONDecodeKit
+//import JSONDecodeKit
 
 class PrimitiveTypeTests: XCTestCase {
     

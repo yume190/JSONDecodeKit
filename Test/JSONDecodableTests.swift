@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import JSONDecodeKit
+//import JSONDecodeKit
 
 //{
 //    "a":1,

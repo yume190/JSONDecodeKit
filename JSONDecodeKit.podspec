@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'JSONDecodeKit'
-  s.version  = '1.0.7'
+  s.version  = '1.0.8'
   s.license  = 'MIT'
   s.summary  = "A Light weight JSON Mapper"
   s.homepage = 'https://github.com/yume190/JSONDecodeKit'
@@ -8,8 +8,8 @@ Pod::Spec.new do |s|
   s.social_media_url = "https://www.facebook.com/yume190"
   s.source   = { :git => 'https://github.com/yume190/JSONDecodeKit.git', :tag => s.version }
 
-  s.ios.deployment_target = '9.0'
-  s.osx.deployment_target = '10.11'
+  s.ios.deployment_target = '8.0'
+  s.osx.deployment_target = '10.9'
   s.tvos.deployment_target = '9.0'
   s.watchos.deployment_target = '2.0'
   s.source_files = 'Sources/*.swift'

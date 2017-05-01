@@ -69,7 +69,7 @@ extension Program: Unmarshaling {
 //}
 
 extension Program { // SwiftyJSON
-    public init(json:JSON) {
+    public init(json:SwiftyJSON.JSON) {
         title = json["Title"].stringValue
         chanId = json["Channel"]["ChanId"].stringValue
         description = json["Description"].string

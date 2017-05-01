@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import JSONDecodeKit
+//import JSONDecodeKit
 
 class Yume_Tests: XCTestCase {
     
@@ -61,7 +61,6 @@ extension Program: JSONDecodable {
                     season: j <|? "Season",
                     episode: j <|? "Episode"
                 )
-
     }
 }
 

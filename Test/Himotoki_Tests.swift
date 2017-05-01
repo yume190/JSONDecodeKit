@@ -19,16 +19,16 @@ class Himotoki_Tests: XCTestCase {
     }
     
     
-    func testNSDictionaryPerformance() {
-        let json = try! JSONSerialization.jsonObject(with: self.data as Data, options: []) as! NSDictionary
-        let array = json.value(forKeyPath: "ProgramList.Programs") as! NSArray
-        
-        
-        self.measure {
-            let programs:[Program] = array.flatMap {try! Program.decodeValue($0)}
-            XCTAssert(programs.count > 1000)
-        }
-    }
+//    func testNSDictionaryPerformance() {
+//        let json = try! JSONSerialization.jsonObject(with: self.data as Data, options: []) as! NSDictionary
+//        let array = json.value(forKeyPath: "ProgramList.Programs") as! NSArray
+//        
+//        
+//        self.measure {
+//            let programs:[Program] = array.flatMap {try! Program.decodeValue($0)}
+//            XCTAssert(programs.count > 1000)
+//        }
+//    }
     
     private lazy var data:Data = {
         let path = Bundle(for: type(of: self)).url(forResource: "Large", withExtension: "json")

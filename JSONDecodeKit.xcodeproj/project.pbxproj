@@ -28,6 +28,13 @@
 		A89A15961E57F45700FCCA8F /* PrimitiveTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A15881E57F45700FCCA8F /* PrimitiveTypeTests.swift */; };
 		A89A15971E57F45700FCCA8F /* SwiftyJSON_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A15891E57F45700FCCA8F /* SwiftyJSON_Tests.swift */; };
 		A89A15981E57F45700FCCA8F /* Yume_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A158A1E57F45700FCCA8F /* Yume_Tests.swift */; };
+		A8DEF0A31E67F8CD0007A182 /* Enum+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8301E584D96006B213A /* Enum+RawRepresentable.swift */; };
+		A8DEF0A41E67F8D70007A182 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8311E584D96006B213A /* JSON.swift */; };
+		A8DEF0A51E67F8D70007A182 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8321E584D96006B213A /* JSONDecodable.swift */; };
+		A8DEF0A61E67F8D70007A182 /* JSONDecodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8331E584D96006B213A /* JSONDecodeError.swift */; };
+		A8DEF0A71E67F8D70007A182 /* JSONSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8341E584D96006B213A /* JSONSerializable.swift */; };
+		A8DEF0A81E67F8D70007A182 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8351E584D96006B213A /* Operators.swift */; };
+		A8DEF0A91E67F8D70007A182 /* PrimitiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8361E584D96006B213A /* PrimitiveType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -334,12 +341,19 @@
 			files = (
 				A89A15921E57F45700FCCA8F /* Marshal_Tests.swift in Sources */,
 				A89A15961E57F45700FCCA8F /* PrimitiveTypeTests.swift in Sources */,
+				A8DEF0A31E67F8CD0007A182 /* Enum+RawRepresentable.swift in Sources */,
+				A8DEF0A41E67F8D70007A182 /* JSON.swift in Sources */,
 				A89A158B1E57F45700FCCA8F /* DictionaryArrayTests.swift in Sources */,
+				A8DEF0A91E67F8D70007A182 /* PrimitiveType.swift in Sources */,
 				A89A15981E57F45700FCCA8F /* Yume_Tests.swift in Sources */,
+				A8DEF0A61E67F8D70007A182 /* JSONDecodeError.swift in Sources */,
 				A89A15941E57F45700FCCA8F /* Program.swift in Sources */,
+				A8DEF0A51E67F8D70007A182 /* JSONDecodable.swift in Sources */,
+				A8DEF0A81E67F8D70007A182 /* Operators.swift in Sources */,
 				A89A15911E57F45700FCCA8F /* JSONDecodableTests.swift in Sources */,
 				A89A15971E57F45700FCCA8F /* SwiftyJSON_Tests.swift in Sources */,
 				A89A15931E57F45700FCCA8F /* NSDate+JSON.swift in Sources */,
+				A8DEF0A71E67F8D70007A182 /* JSONSerializable.swift in Sources */,
 				A89A15951E57F45700FCCA8F /* Recording.swift in Sources */,
 				A89A158C1E57F45700FCCA8F /* Himotoki_Tests.swift in Sources */,
 			);
@@ -362,9 +376,9 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = JSONDecodeKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yume190.JSONDecodeKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -393,9 +407,9 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = JSONDecodeKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yume190.JSONDecodeKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -449,11 +463,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -491,9 +508,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};

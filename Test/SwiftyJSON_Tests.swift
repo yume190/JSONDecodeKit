@@ -13,13 +13,13 @@ class SwiftyJSON_Tests: XCTestCase {
     
     func testDeserialization() {
         self.measure {
-            let json = JSON(data:self.data as Data)
+            let json = SwiftyJSON.JSON(data:self.data as Data)
             XCTAssert(json.count > 0)
         }
     }
 
     func testPerformance() {
-        let json = JSON(data:self.data as Data)
+        let json = SwiftyJSON.JSON(data:self.data as Data)
         self.measure {
             let programRA = json["ProgramList"]["Programs"].arrayValue
             let programs = programRA.map(Program.init)
