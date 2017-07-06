@@ -19,26 +19,32 @@ extension JSONDecodeError:CustomStringConvertible {
     public var description: String {
         switch self {
         case .keyNotFound(let keyPath, let currentKey, let json):
-            return
-                "\nKey Not Found:\n" +
-                "\tKeypath : \"\(keyPath)\"\n" +
-                "\tKey : \"\(currentKey)\"\n" +
-                "\tjson: \(json.data ?? "nil")"
+            return [
+                "",
+                "Key Not Found:",
+                "\tKeypath : \"\(keyPath)\"",
+                "\tKey : \"\(currentKey)\"",
+                "\tjson: \(json.data ?? "nil")",
+            ].joined(separator: "\n")
         case .nullValue(let keyPath, let currentKey, let json):
-            return
-                "\nNull Value Found At:\n" +
-                "\tKeypath : \"\(keyPath)\"\n" +
-                "\tKey : \"\(currentKey)\"\n" +
-                "\tjson: \(json.data ?? "nil")"
+            return [
+                "",
+                "Null Value Found At:",
+                "\tKeypath : \"\(keyPath)\"",
+                "\tKey : \"\(currentKey)\"",
+                "\tjson: \(json.data ?? "nil")",
+            ].joined(separator: "\n")
         case .typeMismatch(let keyPath, let currentKey, let expectType, let actualType,let value, let json):
-            return
-                "\nType Mismatch:\n" +
-                "\tKeypath : \"\(keyPath)\"\n" +
-                "\tKey : \"\(currentKey)\"\n" +
-                "\tExpected Type : \(expectType)\n" +
-                "\tActual Type : \(actualType)\n" +
-                "\tActual Value : \(value)\n" +
-                "\tjson: \(json.data ?? "nil")"
+            return [
+                "",
+                "Type Mismatch:",
+                "\tKeypath : \"\(keyPath)\"",
+                "\tKey : \"\(currentKey)\"",
+                "\tExpected Type : \(expectType)",
+                "\tActual Type : \(actualType)",
+                "\tActual Value : \(value)",
+                "\tjson: \(json.data ?? "nil")",
+            ].joined(separator: "\n")
         case .specialCase(let reason):
             return reason
         }

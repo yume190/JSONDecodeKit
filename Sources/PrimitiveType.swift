@@ -16,40 +16,44 @@ public protocol PrimitiveType {
     //    init?(json: JSON)
 }
 
-public func <|? <T:PrimitiveType>(json:JSON,key:String) -> T? {
-    return T.decode(json.getBy(key: key).data)
-}
-
-public func <| <T:PrimitiveType> (json:JSON,key:String) throws -> T {
-    if let r:T = json <|? key {
-        return r
+extension JSON {
+    static public func <|? <T:PrimitiveType>(json:JSON,key:String) -> T? {
+        return T.decode(json.getBy(key: key).data)
     }
     
-    if let data = json.getBy(key: key).data {
-        if data is NSNull {
-            throw JSONDecodeError.nullValue(keyPath: json.keypath, curruntKey: key, json:json)
+    static public func <| <T:PrimitiveType> (json:JSON,key:String) throws -> T {
+        if let r:T = json <|? key {
+            return r
         }
         
-        throw JSONDecodeError.typeMismatch(keyPath: json.keypath, curruntKey: key, expectType: T.self, actualType: type(of:data),value: data, json:json)
+        if let data = json.getBy(key: key).data {
+            if data is NSNull {
+                throw JSONDecodeError.nullValue(keyPath: json.keypath, curruntKey: key, json:json)
+            }
+            
+            throw JSONDecodeError.typeMismatch(keyPath: json.keypath, curruntKey: key, expectType: T.self, actualType: type(of:data),value: data, json:json)
+        }
+        throw JSONDecodeError.keyNotFound(keyPath: json.keypath, curruntKey: key, json:json)
     }
-    throw JSONDecodeError.keyNotFound(keyPath: json.keypath, curruntKey: key, json:json)
-}
-
-public func <|| <T:PrimitiveType>(json:JSON,key:String) -> [T] {
-    return json.getBy(key: key).toArray()
+    
+    static public func <|| <T:PrimitiveType>(json:JSON,key:String) -> [T] {
+        return json.getBy(key: key).toArray()
+    }
 }
 
 // MARK: Lazy Man Operators
-public func <||| <T:PrimitiveType>(json:JSON,key:String) -> T? {
-    return json <|? key
-}
-
-public func <||| <T:PrimitiveType> (json:JSON,key:String) throws -> T {
-    return try json <| key
-}
-
-public func <||| <T:PrimitiveType>(json:JSON,key:String) -> [T] {
-    return json <|| key
+extension JSON {
+    static public func <||| <T:PrimitiveType>(json:JSON,key:String) -> T? {
+        return json <|? key
+    }
+    
+    static public func <||| <T:PrimitiveType> (json:JSON,key:String) throws -> T {
+        return try json <| key
+    }
+    
+    static public func <||| <T:PrimitiveType>(json:JSON,key:String) -> [T] {
+        return json <|| key
+    }
 }
 
 public extension PrimitiveType {
@@ -85,25 +89,25 @@ extension Int:PrimitiveType{
     }
 }
 extension Int8:PrimitiveType{
-    public  init?(text: String) {
+    public init?(text: String) {
         guard let result = Int8(text) else { return nil }
         self = result
     }
 }
 extension Int16:PrimitiveType{
-    public  init?(text: String) {
+    public init?(text: String) {
         guard let result = Int16(text) else { return nil }
         self = result
     }
 }
 extension Int32:PrimitiveType{
-    public  init?(text: String) {
+    public init?(text: String) {
         guard let result = Int32(text) else { return nil }
         self = result
     }
 }
 extension Int64:PrimitiveType{
-    public  init?(text: String) {
+    public init?(text: String) {
         guard let result = Int64(text) else { return nil }
         self = result
     }

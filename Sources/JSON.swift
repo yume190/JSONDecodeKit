@@ -14,7 +14,7 @@ public struct JSON {
     fileprivate var isTraceKeypath:Bool
     
     public init(data:Data,isTraceKeypath:Bool = false) {
-        self.data = try? JSONSerialization.jsonObject(with: data, options: [])
+        self.data = try? JSONSerialization.jsonObject(with: data, options: [.allowFragments])
         self.isTraceKeypath = isTraceKeypath
     }
     
@@ -78,12 +78,11 @@ extension JSON {
 // MARK: Get Array
 extension JSON {
     public func getArray() -> [JSON] {
-        guard let array = self.data as? NSArray else {return []}
-        var index = -1
-        let r:[JSON] = array.flatMap {_ in
-            index += 1
-            let json = self
-            return json.getBy(index: index)
+        guard let array = self.data as? NSArray else { return [] }
+        
+        var r:[JSON] = []
+        for index in 0..<array.count {
+            r.append(self.getBy(index: index))
         }
         
         return r
@@ -112,7 +111,7 @@ extension JSON {
 
 // MARK: Get [Key:Value]
 extension JSON {
-    public func toDictionary<Key:Hashable,Value:PrimitiveType>() -> [Key:Value] {
+    public func toDictionary<Key,Value:PrimitiveType>() -> [Key:Value] {
         if let dic = self.data as? NSDictionary {
             return dic.reduce([Key:Value](), { (dic:[Key:Value], set:(key: Any, value: Any)) -> [Key:Value] in
                 var dic = dic
@@ -125,7 +124,7 @@ extension JSON {
         return [Key:Value]()
     }
     
-    public func toDictionary<Key:Hashable,Value:JSONDecodable>() -> [Key:Value] {
+    public func toDictionary<Key,Value:JSONDecodable>() -> [Key:Value] {
         if let dic = self.data as? NSDictionary {
             return dic.reduce([Key:Value](), { (dic:[Key:Value], set:(key: Any, value: Any)) -> [Key:Value] in
                 var dic = dic
@@ -138,7 +137,7 @@ extension JSON {
         return [Key:Value]()
     }
     
-    public func toDictionary<Key:Hashable,Value:RawRepresentable>() -> [Key:Value] where Value.RawValue:PrimitiveType {
+    public func toDictionary<Key,Value:RawRepresentable>() -> [Key:Value] where Value.RawValue:PrimitiveType {
         if let dic = self.data as? NSDictionary {
             return dic.reduce([Key:Value](), { (dic:[Key:Value], set:(key: Any, value: Any)) -> [Key:Value] in
                 var dic = dic
@@ -155,7 +154,7 @@ extension JSON {
 
 // MARK: Get [Key:[Value]]
 extension JSON {
-    public func toDictionaryAndArrayValue<Key:Hashable,Value:PrimitiveType>() -> [Key:[Value]] {
+    public func toDictionaryAndArrayValue<Key,Value:PrimitiveType>() -> [Key:[Value]] {
         if let dic = self.data as? NSDictionary {
             return dic.reduce([Key:[Value]]()) { (dic:[Key:[Value]], set:(key: Any, value: Any)) -> [Key:[Value]] in
                 var dic = dic
@@ -168,7 +167,7 @@ extension JSON {
         return [Key:[Value]]()
     }
     
-    public func toDictionaryAndArrayValue<Key:Hashable,Value:JSONDecodable>() -> [Key:[Value]] {
+    public func toDictionaryAndArrayValue<Key,Value:JSONDecodable>() -> [Key:[Value]] {
         if let dic = self.data as? NSDictionary {
             return dic.reduce([Key:[Value]]()) { (dic:[Key:[Value]], set:(key: Any, value: Any)) -> [Key:[Value]] in
                 var dic = dic
@@ -181,7 +180,7 @@ extension JSON {
         return [Key:[Value]]()
     }
     
-    public func toDictionaryAndArrayValue<Key:Hashable,Value:RawRepresentable>() -> [Key:[Value]] where Value.RawValue:PrimitiveType {
+    public func toDictionaryAndArrayValue<Key,Value:RawRepresentable>() -> [Key:[Value]] where Value.RawValue:PrimitiveType {
         if let dic = self.data as? NSDictionary {
             return dic.reduce([Key:[Value]](), { (dic:[Key:[Value]], set:(key: Any, value: Any)) -> [Key:[Value]] in
                 var dic = dic

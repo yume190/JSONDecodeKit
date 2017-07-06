@@ -42,7 +42,7 @@ extension Program: Decodable {
     public static func decode(_ j: Extractor) throws -> Program {
         return try Program(
             title: j <| "Title",
-            chanId: j <| ["Channel", "ChanId"],
+//            chanId: j <| ["Channel", "ChanId"],
             description: j <|? "Description",
             subtitle: j <|? "SubTitle",
             recording: j <| "Recording",

@@ -8,6 +8,8 @@ public protocol JSONRepresentable {
     var JSONRepresentation: Any { get }
 }
 
+public protocol JSONSerializable: JSONRepresentable {}
+
 extension JSONSerializable {
     public var JSONRepresentation: Any {
         var representation = [String: Any]()
@@ -21,14 +23,11 @@ extension JSONSerializable {
                 representation[label] = value
                 break
             }
-            
         }
         
         return representation
     }
 }
-
-public protocol JSONSerializable: JSONRepresentable {}
 
 extension JSONSerializable {
     public func toJSON() -> String {

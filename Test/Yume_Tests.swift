@@ -21,11 +21,26 @@ class Yume_Tests: XCTestCase {
     }
     
     func testTrace() {
-        let json = try! JSONSerialization.jsonObject(with: self.data as Data, options: []) as! NSDictionary
+        let json = try! JSONSerialization.jsonObject(with: self.data, options: []) as! NSDictionary
         self.measure {
             let myJson = JSON(any: json,isTraceKeypath:true)
             let programs:[Program] = try! myJson["ProgramList"]["Programs"].toArray()
             XCTAssert(programs.count > 1000)
+        }
+    }
+    
+    func testDirection() {
+        let directions1:[Route] = try! JSON(data: self.directionData).toArray()
+        
+        let directionsJSONString1 = JSONEncoder.encodeArray(value: directions1)
+        let directionsData1 = directionsJSONString1.data(using: .utf8)!
+        do {
+            let directions2:[Route] = try JSON(data: directionsData1).toArray()
+            let directionsJSONString2 = JSONEncoder.encodeArray(value: directions2)
+            XCTAssertEqual(directionsJSONString1, directionsJSONString2)
+        } catch {
+            print(error)
+            fatalError()
         }
     }
     
@@ -48,19 +63,24 @@ class Yume_Tests: XCTestCase {
         let data = try! Data(contentsOf: path!)
         return data
     }()
+    
+    private lazy var directionData:Data = {
+        let path = Bundle(for: type(of: self)).url(forResource: "direction", withExtension: "json")
+        let data = try! Data(contentsOf: path!)
+        return data
+    }()
 }
 
 extension Program: JSONDecodable {
     public static func decode(_ j: JSON) throws -> Program {
         return try Program(
-                    title: j <| "Title",
-                    chanId: j.getBy(key: "Channel") <| "ChanId",
-                    description: j <|? "Description",
-                    subtitle: j <|? "SubTitle",
-                    recording: j <| "Recording",
-                    season: j <|? "Season",
-                    episode: j <|? "Episode"
-                )
+            title: j <| "Title",
+            description: j <|? "Description",
+            subtitle: j <|? "SubTitle",
+            recording: j <| "Recording",
+            season: j <|? "Season",
+            episode: j <|? "Episode"
+        )
     }
 }
 

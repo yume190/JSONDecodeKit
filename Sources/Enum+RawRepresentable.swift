@@ -25,42 +25,46 @@ extension RawRepresentable {
     }
 }
 
-public func <|? <T:RawRepresentable> (json:JSON,key:String) -> T? where T.RawValue:PrimitiveType {
-    if let value = T.RawValue.decode(json.getBy(key: key).data) {
-        let enumValue = T(rawValue: value)
-        return enumValue
-    }
-    return nil
-}
-
-public func <| <T:RawRepresentable> (json:JSON,key:String) throws -> T where T.RawValue:PrimitiveType {
-    if let r:T = json <|? key {
-        return r
+extension JSON {
+    static public func <|? <T:RawRepresentable> (json:JSON,key:String) -> T? where T.RawValue:PrimitiveType {
+        if let value = T.RawValue.decode(json.getBy(key: key).data) {
+            let enumValue = T(rawValue: value)
+            return enumValue
+        }
+        return nil
     }
     
-    if let data = json.getBy(key: key).data {
-        if data is NSNull {
-            throw JSONDecodeError.nullValue(keyPath: json.keypath, curruntKey: key, json:json)
+    static public func <| <T:RawRepresentable> (json:JSON,key:String) throws -> T where T.RawValue:PrimitiveType {
+        if let r:T = json <|? key {
+            return r
         }
         
-        throw JSONDecodeError.typeMismatch(keyPath: json.keypath, curruntKey: key, expectType: T.self, actualType: type(of:data),value: data, json:json)
+        if let data = json.getBy(key: key).data {
+            if data is NSNull {
+                throw JSONDecodeError.nullValue(keyPath: json.keypath, curruntKey: key, json:json)
+            }
+            
+            throw JSONDecodeError.typeMismatch(keyPath: json.keypath, curruntKey: key, expectType: T.self, actualType: type(of:data),value: data, json:json)
+        }
+        throw JSONDecodeError.keyNotFound(keyPath: json.keypath, curruntKey: key, json:json)
     }
-    throw JSONDecodeError.keyNotFound(keyPath: json.keypath, curruntKey: key, json:json)
-}
-
-public func <|| <T:RawRepresentable>(json:JSON,key:String) -> [T] where T.RawValue:PrimitiveType {
-    return json.toArray()
+    
+    static public func <|| <T:RawRepresentable>(json:JSON,key:String) -> [T] where T.RawValue:PrimitiveType {
+        return json.toArray()
+    }
 }
 
 // MARK: Lazy Man Operators
-public func <||| <T:RawRepresentable> (json:JSON,key:String) -> T? where T.RawValue:PrimitiveType {
-    return json <|? key
-}
-
-public func <||| <T:RawRepresentable> (json:JSON,key:String) throws -> T where T.RawValue:PrimitiveType {
-    return try json <| key
-}
-
-public func <||| <T:RawRepresentable>(json:JSON,key:String) -> [T] where T.RawValue:PrimitiveType {
-    return json <|| key
+extension JSON {
+    static public func <||| <T:RawRepresentable> (json:JSON,key:String) -> T? where T.RawValue:PrimitiveType {
+        return json <|? key
+    }
+    
+    static public func <||| <T:RawRepresentable> (json:JSON,key:String) throws -> T where T.RawValue:PrimitiveType {
+        return try json <| key
+    }
+    
+    static public func <||| <T:RawRepresentable>(json:JSON,key:String) -> [T] where T.RawValue:PrimitiveType {
+        return json <|| key
+    }
 }

@@ -15,6 +15,7 @@
 		A866B83B1E584D96006B213A /* JSONSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8341E584D96006B213A /* JSONSerializable.swift */; };
 		A866B83C1E584D96006B213A /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8351E584D96006B213A /* Operators.swift */; };
 		A866B83D1E584D96006B213A /* PrimitiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8361E584D96006B213A /* PrimitiveType.swift */; };
+		A878CBF31EEA50490048F41D /* Swift4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A878CBF21EEA50490048F41D /* Swift4Tests.swift */; };
 		A89A158B1E57F45700FCCA8F /* DictionaryArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A157B1E57F45700FCCA8F /* DictionaryArrayTests.swift */; };
 		A89A158C1E57F45700FCCA8F /* Himotoki_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A157C1E57F45700FCCA8F /* Himotoki_Tests.swift */; };
 		A89A158E1E57F45700FCCA8F /* Large.json in Resources */ = {isa = PBXBuildFile; fileRef = A89A157F1E57F45700FCCA8F /* Large.json */; };
@@ -28,6 +29,10 @@
 		A89A15961E57F45700FCCA8F /* PrimitiveTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A15881E57F45700FCCA8F /* PrimitiveTypeTests.swift */; };
 		A89A15971E57F45700FCCA8F /* SwiftyJSON_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A15891E57F45700FCCA8F /* SwiftyJSON_Tests.swift */; };
 		A89A15981E57F45700FCCA8F /* Yume_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A158A1E57F45700FCCA8F /* Yume_Tests.swift */; };
+		A8DABD6B1F0B632100B88C9F /* JSONEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DABD6A1F0B632100B88C9F /* JSONEncodable.swift */; };
+		A8DABD6C1F0B665000B88C9F /* JSONEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DABD6A1F0B632100B88C9F /* JSONEncodable.swift */; };
+		A8DABD6E1F0C867400B88C9F /* direction.json in Resources */ = {isa = PBXBuildFile; fileRef = A8DABD6D1F0C867400B88C9F /* direction.json */; };
+		A8DABD701F0C86AE00B88C9F /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DABD6F1F0C86AE00B88C9F /* Direction.swift */; };
 		A8DEF0A31E67F8CD0007A182 /* Enum+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8301E584D96006B213A /* Enum+RawRepresentable.swift */; };
 		A8DEF0A41E67F8D70007A182 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8311E584D96006B213A /* JSON.swift */; };
 		A8DEF0A51E67F8D70007A182 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8321E584D96006B213A /* JSONDecodable.swift */; };
@@ -49,6 +54,7 @@
 		A866B8341E584D96006B213A /* JSONSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONSerializable.swift; path = Sources/JSONSerializable.swift; sourceTree = SOURCE_ROOT; };
 		A866B8351E584D96006B213A /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Sources/Operators.swift; sourceTree = SOURCE_ROOT; };
 		A866B8361E584D96006B213A /* PrimitiveType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrimitiveType.swift; path = Sources/PrimitiveType.swift; sourceTree = SOURCE_ROOT; };
+		A878CBF21EEA50490048F41D /* Swift4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift4Tests.swift; sourceTree = "<group>"; };
 		A89A154E1E57F31D00FCCA8F /* Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Test.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89A157B1E57F45700FCCA8F /* DictionaryArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryArrayTests.swift; sourceTree = "<group>"; };
 		A89A157C1E57F45700FCCA8F /* Himotoki_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Himotoki_Tests.swift; sourceTree = "<group>"; };
@@ -64,6 +70,9 @@
 		A89A15881E57F45700FCCA8F /* PrimitiveTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimitiveTypeTests.swift; sourceTree = "<group>"; };
 		A89A15891E57F45700FCCA8F /* SwiftyJSON_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON_Tests.swift; sourceTree = "<group>"; };
 		A89A158A1E57F45700FCCA8F /* Yume_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Yume_Tests.swift; sourceTree = "<group>"; };
+		A8DABD6A1F0B632100B88C9F /* JSONEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncodable.swift; sourceTree = "<group>"; };
+		A8DABD6D1F0C867400B88C9F /* direction.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = direction.json; sourceTree = "<group>"; };
+		A8DABD6F1F0C86AE00B88C9F /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		AE8E96B9579009A55FF2D47B /* Pods_JSONDecodeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JSONDecodeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C39885CFA0A7C30E233E6B41 /* Pods_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4481DA7B3A3E4656ED6DEC /* Pods-Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test.release.xcconfig"; path = "Pods/Target Support Files/Pods-Test/Pods-Test.release.xcconfig"; sourceTree = "<group>"; };
@@ -103,6 +112,7 @@
 				A866B8301E584D96006B213A /* Enum+RawRepresentable.swift */,
 				A866B8311E584D96006B213A /* JSON.swift */,
 				A866B8321E584D96006B213A /* JSONDecodable.swift */,
+				A8DABD6A1F0B632100B88C9F /* JSONEncodable.swift */,
 				A866B8331E584D96006B213A /* JSONDecodeError.swift */,
 				A866B8341E584D96006B213A /* JSONSerializable.swift */,
 				A866B8351E584D96006B213A /* Operators.swift */,
@@ -145,6 +155,7 @@
 				A89A15881E57F45700FCCA8F /* PrimitiveTypeTests.swift */,
 				A89A15891E57F45700FCCA8F /* SwiftyJSON_Tests.swift */,
 				A89A158A1E57F45700FCCA8F /* Yume_Tests.swift */,
+				A878CBF21EEA50490048F41D /* Swift4Tests.swift */,
 				A89A157D1E57F45700FCCA8F /* Info.plist */,
 			);
 			path = Test;
@@ -156,6 +167,7 @@
 				A89A157F1E57F45700FCCA8F /* Large.json */,
 				A89A15801E57F45700FCCA8F /* test.json */,
 				A89A15811E57F45700FCCA8F /* test2.json */,
+				A8DABD6D1F0C867400B88C9F /* direction.json */,
 			);
 			path = json;
 			sourceTree = "<group>";
@@ -166,6 +178,7 @@
 				A89A15851E57F45700FCCA8F /* NSDate+JSON.swift */,
 				A89A15861E57F45700FCCA8F /* Program.swift */,
 				A89A15871E57F45700FCCA8F /* Recording.swift */,
+				A8DABD6F1F0C86AE00B88C9F /* Direction.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -225,7 +238,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Yume;
 				TargetAttributes = {
 					A866B8271E584D83006B213A = {
@@ -253,8 +266,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A89A154D1E57F31D00FCCA8F /* Test */,
 				A866B8271E584D83006B213A /* JSONDecodeKit */,
+				A89A154D1E57F31D00FCCA8F /* Test */,
 			);
 		};
 /* End PBXProject section */
@@ -267,6 +280,7 @@
 				A89A15901E57F45700FCCA8F /* test2.json in Resources */,
 				A89A158E1E57F45700FCCA8F /* Large.json in Resources */,
 				A89A158F1E57F45700FCCA8F /* test.json in Resources */,
+				A8DABD6E1F0C867400B88C9F /* direction.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +344,7 @@
 				A866B83B1E584D96006B213A /* JSONSerializable.swift in Sources */,
 				A866B8371E584D96006B213A /* Enum+RawRepresentable.swift in Sources */,
 				A866B83D1E584D96006B213A /* PrimitiveType.swift in Sources */,
+				A8DABD6B1F0B632100B88C9F /* JSONEncodable.swift in Sources */,
 				A866B8381E584D96006B213A /* JSON.swift in Sources */,
 				A866B83C1E584D96006B213A /* Operators.swift in Sources */,
 			);
@@ -342,8 +357,10 @@
 				A89A15921E57F45700FCCA8F /* Marshal_Tests.swift in Sources */,
 				A89A15961E57F45700FCCA8F /* PrimitiveTypeTests.swift in Sources */,
 				A8DEF0A31E67F8CD0007A182 /* Enum+RawRepresentable.swift in Sources */,
+				A8DABD701F0C86AE00B88C9F /* Direction.swift in Sources */,
 				A8DEF0A41E67F8D70007A182 /* JSON.swift in Sources */,
 				A89A158B1E57F45700FCCA8F /* DictionaryArrayTests.swift in Sources */,
+				A8DABD6C1F0B665000B88C9F /* JSONEncodable.swift in Sources */,
 				A8DEF0A91E67F8D70007A182 /* PrimitiveType.swift in Sources */,
 				A89A15981E57F45700FCCA8F /* Yume_Tests.swift in Sources */,
 				A8DEF0A61E67F8D70007A182 /* JSONDecodeError.swift in Sources */,
@@ -355,6 +372,7 @@
 				A89A15931E57F45700FCCA8F /* NSDate+JSON.swift in Sources */,
 				A8DEF0A71E67F8D70007A182 /* JSONSerializable.swift in Sources */,
 				A89A15951E57F45700FCCA8F /* Recording.swift in Sources */,
+				A878CBF31EEA50490048F41D /* Swift4Tests.swift in Sources */,
 				A89A158C1E57F45700FCCA8F /* Himotoki_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,7 +450,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -440,7 +460,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -483,7 +507,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -491,7 +517,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
