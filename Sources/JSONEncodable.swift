@@ -89,7 +89,7 @@ extension JSONEncoder {
     }
     
     public static func encodeArray<T:JSONEncodable>(value:[T]) -> String {
-        let values = value.flatMap{T.encode($0)}
+        let values:[String] = value.flatMap{T.encode($0)}
         return "[" + values.joined(separator: ",") + "]"
     }
     

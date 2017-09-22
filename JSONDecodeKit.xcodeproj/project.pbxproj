@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3966FE494487FA174E3820C7 /* Pods_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C39885CFA0A7C30E233E6B41 /* Pods_Test.framework */; };
+		A859B0601F74EA7E0097FF0E /* JSONEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859B05F1F74EA7D0097FF0E /* JSONEncodable.swift */; };
+		A859B0611F74EA7E0097FF0E /* JSONEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859B05F1F74EA7D0097FF0E /* JSONEncodable.swift */; };
 		A866B8371E584D96006B213A /* Enum+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8301E584D96006B213A /* Enum+RawRepresentable.swift */; };
 		A866B8381E584D96006B213A /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8311E584D96006B213A /* JSON.swift */; };
 		A866B8391E584D96006B213A /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8321E584D96006B213A /* JSONDecodable.swift */; };
@@ -29,8 +31,6 @@
 		A89A15961E57F45700FCCA8F /* PrimitiveTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A15881E57F45700FCCA8F /* PrimitiveTypeTests.swift */; };
 		A89A15971E57F45700FCCA8F /* SwiftyJSON_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A15891E57F45700FCCA8F /* SwiftyJSON_Tests.swift */; };
 		A89A15981E57F45700FCCA8F /* Yume_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A158A1E57F45700FCCA8F /* Yume_Tests.swift */; };
-		A8DABD6B1F0B632100B88C9F /* JSONEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DABD6A1F0B632100B88C9F /* JSONEncodable.swift */; };
-		A8DABD6C1F0B665000B88C9F /* JSONEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DABD6A1F0B632100B88C9F /* JSONEncodable.swift */; };
 		A8DABD6E1F0C867400B88C9F /* direction.json in Resources */ = {isa = PBXBuildFile; fileRef = A8DABD6D1F0C867400B88C9F /* direction.json */; };
 		A8DABD701F0C86AE00B88C9F /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DABD6F1F0C86AE00B88C9F /* Direction.swift */; };
 		A8DEF0A31E67F8CD0007A182 /* Enum+RawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8301E584D96006B213A /* Enum+RawRepresentable.swift */; };
@@ -44,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		7741271706BFF747520A0195 /* Pods-Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Test/Pods-Test.debug.xcconfig"; sourceTree = "<group>"; };
+		A859B05F1F74EA7D0097FF0E /* JSONEncodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JSONEncodable.swift; path = Sources/JSONEncodable.swift; sourceTree = SOURCE_ROOT; };
 		A866B8281E584D83006B213A /* JSONDecodeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONDecodeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A866B82A1E584D83006B213A /* JSONDecodeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONDecodeKit.h; sourceTree = "<group>"; };
 		A866B82B1E584D83006B213A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,7 +71,6 @@
 		A89A15881E57F45700FCCA8F /* PrimitiveTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimitiveTypeTests.swift; sourceTree = "<group>"; };
 		A89A15891E57F45700FCCA8F /* SwiftyJSON_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON_Tests.swift; sourceTree = "<group>"; };
 		A89A158A1E57F45700FCCA8F /* Yume_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Yume_Tests.swift; sourceTree = "<group>"; };
-		A8DABD6A1F0B632100B88C9F /* JSONEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncodable.swift; sourceTree = "<group>"; };
 		A8DABD6D1F0C867400B88C9F /* direction.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = direction.json; sourceTree = "<group>"; };
 		A8DABD6F1F0C86AE00B88C9F /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		AE8E96B9579009A55FF2D47B /* Pods_JSONDecodeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JSONDecodeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,10 +109,10 @@
 		A866B8291E584D83006B213A /* JSONDecodeKit */ = {
 			isa = PBXGroup;
 			children = (
+				A859B05F1F74EA7D0097FF0E /* JSONEncodable.swift */,
 				A866B8301E584D96006B213A /* Enum+RawRepresentable.swift */,
 				A866B8311E584D96006B213A /* JSON.swift */,
 				A866B8321E584D96006B213A /* JSONDecodable.swift */,
-				A8DABD6A1F0B632100B88C9F /* JSONEncodable.swift */,
 				A866B8331E584D96006B213A /* JSONDecodeError.swift */,
 				A866B8341E584D96006B213A /* JSONSerializable.swift */,
 				A866B8351E584D96006B213A /* Operators.swift */,
@@ -243,12 +243,12 @@
 				TargetAttributes = {
 					A866B8271E584D83006B213A = {
 						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					A89A154D1E57F31D00FCCA8F = {
 						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -344,7 +344,7 @@
 				A866B83B1E584D96006B213A /* JSONSerializable.swift in Sources */,
 				A866B8371E584D96006B213A /* Enum+RawRepresentable.swift in Sources */,
 				A866B83D1E584D96006B213A /* PrimitiveType.swift in Sources */,
-				A8DABD6B1F0B632100B88C9F /* JSONEncodable.swift in Sources */,
+				A859B0601F74EA7E0097FF0E /* JSONEncodable.swift in Sources */,
 				A866B8381E584D96006B213A /* JSON.swift in Sources */,
 				A866B83C1E584D96006B213A /* Operators.swift in Sources */,
 			);
@@ -355,12 +355,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A89A15921E57F45700FCCA8F /* Marshal_Tests.swift in Sources */,
+				A859B0611F74EA7E0097FF0E /* JSONEncodable.swift in Sources */,
 				A89A15961E57F45700FCCA8F /* PrimitiveTypeTests.swift in Sources */,
 				A8DEF0A31E67F8CD0007A182 /* Enum+RawRepresentable.swift in Sources */,
 				A8DABD701F0C86AE00B88C9F /* Direction.swift in Sources */,
 				A8DEF0A41E67F8D70007A182 /* JSON.swift in Sources */,
 				A89A158B1E57F45700FCCA8F /* DictionaryArrayTests.swift in Sources */,
-				A8DABD6C1F0B665000B88C9F /* JSONEncodable.swift in Sources */,
 				A8DEF0A91E67F8D70007A182 /* PrimitiveType.swift in Sources */,
 				A89A15981E57F45700FCCA8F /* Yume_Tests.swift in Sources */,
 				A8DEF0A61E67F8D70007A182 /* JSONDecodeError.swift in Sources */,
@@ -403,7 +403,8 @@
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx appletvsimulator appletvos watchsimulator watchos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -433,7 +434,8 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx appletvsimulator appletvos watchsimulator watchos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -560,7 +562,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -576,7 +579,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yume190.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
