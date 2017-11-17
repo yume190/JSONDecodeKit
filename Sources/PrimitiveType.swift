@@ -47,7 +47,7 @@ extension JSON {
         return json <|? key
     }
     
-    static public func <||| <T:PrimitiveType> (json:JSON,key:String) throws -> T {
+    static public func <||| <T:PrimitiveType>(json:JSON,key:String) throws -> T {
         return try json <| key
     }
     
@@ -82,31 +82,31 @@ public extension PrimitiveType {
 }
 
 // MARK: Int
-extension Int:PrimitiveType{
+extension Int:PrimitiveType {
     public init?(text: String) {
         guard let result = Int(text) else { return nil }
         self = result
     }
 }
-extension Int8:PrimitiveType{
+extension Int8:PrimitiveType {
     public init?(text: String) {
         guard let result = Int8(text) else { return nil }
         self = result
     }
 }
-extension Int16:PrimitiveType{
+extension Int16:PrimitiveType {
     public init?(text: String) {
         guard let result = Int16(text) else { return nil }
         self = result
     }
 }
-extension Int32:PrimitiveType{
+extension Int32:PrimitiveType {
     public init?(text: String) {
         guard let result = Int32(text) else { return nil }
         self = result
     }
 }
-extension Int64:PrimitiveType{
+extension Int64:PrimitiveType {
     public init?(text: String) {
         guard let result = Int64(text) else { return nil }
         self = result
@@ -114,31 +114,31 @@ extension Int64:PrimitiveType{
 }
 
 // MARK: UInt
-extension UInt:PrimitiveType{
+extension UInt:PrimitiveType {
     public init?(text: String) {
         guard let result = UInt(text) else { return nil }
         self = result
     }
 }
-extension UInt8:PrimitiveType{
+extension UInt8:PrimitiveType {
     public init?(text: String) {
         guard let result = UInt8(text) else { return nil }
         self = result
     }
 }
-extension UInt16:PrimitiveType{
+extension UInt16:PrimitiveType {
     public init?(text: String) {
         guard let result = UInt16(text) else { return nil }
         self = result
     }
 }
-extension UInt32:PrimitiveType{
+extension UInt32:PrimitiveType {
     public init?(text: String) {
         guard let result = UInt32(text) else { return nil }
         self = result
     }
 }
-extension UInt64:PrimitiveType{
+extension UInt64:PrimitiveType {
     public init?(text: String) {
         guard let result = UInt64(text) else { return nil }
         self = result
@@ -146,13 +146,13 @@ extension UInt64:PrimitiveType{
 }
 
 // MARK: Float
-extension Float:PrimitiveType{
+extension Float:PrimitiveType {
     public init?(text: String) {
         guard let result = Float(text) else { return nil }
         self = result
     }
 }
-extension Double:PrimitiveType{
+extension Double:PrimitiveType {
     public init?(text: String) {
         guard let result = Double(text) else { return nil }
         self = result
@@ -160,7 +160,7 @@ extension Double:PrimitiveType{
 }
 
 // Mark: Bool
-extension Bool:PrimitiveType{
+extension Bool:PrimitiveType {
     public init?(text: String) {
         guard let result = Bool(text) else { return nil }
         self = result

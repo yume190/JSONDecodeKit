@@ -14,7 +14,7 @@ public protocol JSONEncodable {
 
 public struct JSONEncoder {
     public static func encode(strings:String? ...) -> String {
-        let result = strings.flatMap{$0}.joined(separator: ",")
+        let result = strings.flatMap{ $0 }.joined(separator: ",")
         return "{" + result + "}"
     }
 }
@@ -25,7 +25,7 @@ extension JSONEncoder {
         return [
           key.debugDescription,
           ":",
-          _value,
+          _value
         ].joined()
     }
     
@@ -43,7 +43,7 @@ extension JSONEncoder {
         return [
             key.debugDescription,
             ":",
-            _value,
+            _value
         ].joined()
     }
     
@@ -79,7 +79,7 @@ extension JSONEncoder {
         return [
             key.debugDescription,
             ":",
-            _value,
+            _value
         ].joined()
     }
     
@@ -89,7 +89,7 @@ extension JSONEncoder {
     }
     
     public static func encodeArray<T:JSONEncodable>(value:[T]) -> String {
-        let values:[String] = value.flatMap{T.encode($0)}
+        let values:[String] = value.flatMap{ T.encode($0) }
         return "[" + values.joined(separator: ",") + "]"
     }
     
@@ -98,7 +98,7 @@ extension JSONEncoder {
         return [
             key.debugDescription,
             ":",
-            _value,
+            _value
         ].joined()
     }
 }
