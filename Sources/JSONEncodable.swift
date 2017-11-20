@@ -14,7 +14,7 @@ public protocol JSONEncodable {
 
 public struct JSONEncoder {
     public static func encode(strings:String? ...) -> String {
-        let result = strings.flatMap{ $0 }.joined(separator: ",")
+        let result = strings.flatMap {$0}.joined(separator: ",")
         return "{" + result + "}"
     }
 }
@@ -22,11 +22,7 @@ public struct JSONEncoder {
 extension JSONEncoder {
     public static func encodeSingle<T:PrimitiveType>(value:T,key:String) -> String {
         let _value = encodeToString(value: value)
-        return [
-          key.debugDescription,
-          ":",
-          _value
-        ].joined()
+        return "\(key.debugDescription):\(_value)"
     }
     
     public static func encodeOptional<T:PrimitiveType>(value:T?,key:String) -> String? {
@@ -40,22 +36,15 @@ extension JSONEncoder {
     
     public static func encodeArray<T:PrimitiveType>(value:[T],key:String) -> String {
         let _value = encodeArray(value: value)
-        return [
-            key.debugDescription,
-            ":",
-            _value
-        ].joined()
+        return "\(key.debugDescription):\(_value)"
     }
     
-    public static func encodeToString<T:PrimitiveType>(value:T) -> String {
-        let _value:String
+    public static func encodeToString<T:PrimitiveType>(value:T) -> String {        
         if let v = value as? String {
-            _value = v.debugDescription
+            return v.debugDescription
         } else {
-            _value = "\(value)"
+            return "\(value)"
         }
-        
-        return _value
     }
 }
 
@@ -76,11 +65,7 @@ extension String {
 extension JSONEncoder {
     public static func encodeSingle<T:JSONEncodable>(value:T,key:String) -> String {
         let _value = T.encode(value)
-        return [
-            key.debugDescription,
-            ":",
-            _value
-        ].joined()
+        return "\(key.debugDescription):\(_value)"
     }
     
     public static func encodeOptional<T:JSONEncodable>(value:T?,key:String) -> String? {
@@ -89,17 +74,13 @@ extension JSONEncoder {
     }
     
     public static func encodeArray<T:JSONEncodable>(value:[T]) -> String {
-        let values:[String] = value.flatMap{ T.encode($0) }
+        let values:[String] = value.flatMap(T.encode)
         return "[" + values.joined(separator: ",") + "]"
     }
     
     public static func encodeArray<T:JSONEncodable>(value:[T],key:String) -> String {
         let _value = encodeArray(value: value)
-        return [
-            key.debugDescription,
-            ":",
-            _value
-        ].joined()
+        return "\(key.debugDescription):\(_value)"
     }
 }
 
