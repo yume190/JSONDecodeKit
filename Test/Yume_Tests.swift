@@ -7,7 +7,7 @@
 //
 
 import XCTest
-//import JSONDecodeKit
+@testable import JSONDecodeKit
 
 class Yume_Tests: XCTestCase {
     
@@ -15,7 +15,7 @@ class Yume_Tests: XCTestCase {
         let json = try! JSONSerialization.jsonObject(with: self.data as Data, options: []) as! NSDictionary
         self.measure {
             let myJson = JSON(any: json)
-            let programs:[Program] = try! myJson["ProgramList"]["Programs"].toArray()
+            let programs:[Program] = try! myJson["ProgramList"]["Programs"].array()
             XCTAssert(programs.count > 1000)
         }
     }
@@ -24,18 +24,18 @@ class Yume_Tests: XCTestCase {
         let json = try! JSONSerialization.jsonObject(with: self.data, options: []) as! NSDictionary
         self.measure {
             let myJson = JSON(any: json,isTraceKeypath:true)
-            let programs:[Program] = try! myJson["ProgramList"]["Programs"].toArray()
+            let programs:[Program] = try! myJson["ProgramList"]["Programs"].array()
             XCTAssert(programs.count > 1000)
         }
     }
     
     func testDirection() {
-        let directions1:[Route] = try! JSON(data: self.directionData).toArray()
+        let directions1:[Route] = try! JSON(data: self.directionData).array()
         
         let directionsJSONString1 = JSONEncoder.encodeArray(value: directions1)
         let directionsData1 = directionsJSONString1.data(using: .utf8)!
         do {
-            let directions2:[Route] = try JSON(data: directionsData1).toArray()
+            let directions2:[Route] = try JSON(data: directionsData1).array()
             let directionsJSONString2 = JSONEncoder.encodeArray(value: directions2)
             XCTAssertEqual(directionsJSONString1, directionsJSONString2)
         } catch {
@@ -72,23 +72,23 @@ class Yume_Tests: XCTestCase {
 }
 
 extension Program: JSONDecodable {
-    public static func decode(_ j: JSON) throws -> Program {
+    public static func decode(json: JSON) throws -> Program {
         return try Program(
-            title: j <| "Title",
-            description: j <|? "Description",
-            subtitle: j <|? "SubTitle",
-            recording: j <| "Recording",
-            season: j <|? "Season",
-            episode: j <|? "Episode"
+            title: json <| "Title",
+            description: json <|? "Description",
+            subtitle: json <|? "SubTitle",
+            recording: json <| "Recording",
+            season: json <|? "Season",
+            episode: json <|? "Episode"
         )
     }
 }
 
 extension Recording: JSONDecodable {
-    public static func decode(_ j: JSON) throws -> Recording {
+    public static func decode(json: JSON) throws -> Recording {
         return try Recording(
-            startTsStr: j <| "StartTs",
-            recordId: j <| "RecordId"
+            startTsStr: json <| "StartTs",
+            recordId: json <| "RecordId"
         )
     }
 }

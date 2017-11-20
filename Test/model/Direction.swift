@@ -8,13 +8,14 @@
 
 import Foundation
 import CoreLocation
+@testable import JSONDecodeKit
 
 struct Location:JSONDecodable,JSONEncodable {
     let name:String
     let lat:String
     let lng:String
     
-    static func decode(_ json: JSON) throws -> Location {
+    static func decode(json: JSON) throws -> Location {
         return try Location(name: json <| "name", lat: json <| "lat", lng: json <| "lng")
     }
     
@@ -43,7 +44,7 @@ struct Route:JSONDecodable,JSONEncodable {
     let overview_polyline:String
     let steps:[Step]
     
-    static func decode(_ json: JSON) throws -> Route {
+    static func decode(json: JSON) throws -> Route {
         let steps:[Step] = try json <|| "steps"
         return try Route(
             from: json <| "from" ,
@@ -79,7 +80,7 @@ struct Step:JSONDecodable,JSONEncodable {
     let msg:String
     let travel_mode:String
     
-    static func decode(_ json: JSON) throws -> Step {
+    static func decode(json: JSON) throws -> Step {
         return try Step(
             polyline: json <| "polyline",
             from: json <| "from",

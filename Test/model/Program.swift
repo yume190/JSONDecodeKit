@@ -7,12 +7,21 @@
 //
 
 import Foundation
-import Marshal
+//import Marshal
 //import Unbox
 //import Mapper
-import SwiftyJSON
+//import SwiftyJSON
 
-public struct Program {
+public struct Program:Codable {
+
+    private enum CodingKeys:String, CodingKey {
+        case title = "Title"
+        case description = "Description"
+        case subtitle = "SubTitle"
+        case recording = "Recording"
+        case season = "Season"
+        case episode = "Episode"
+    }
     
     let title:String
 //    let chanId:String
@@ -26,19 +35,19 @@ public struct Program {
     let episode:String?
 }
 
-extension Program: Unmarshaling {
-    public init(object json: MarshaledObject) throws {
-        title = try json.value(for:"Title")
-//        chanId = try json.value(for:"Channel.ChanId")
-//        startTime = try json.value(for:"StartTime")
-//        endTime = try json.value(for:"EndTime")
-        description = try json.value(for:"Description")
-        subtitle = try json.value(for:"SubTitle")
-        recording = try json.value(for:"Recording")
-        season = (try json.value(for:"Season") as String?)//.flatMap({Int($0)})
-        episode = (try json.value(for:"Episode") as String?)//.flatMap({Int($0)})
-    }
-}
+//extension Program: Unmarshaling {
+//    public init(object json: MarshaledObject) throws {
+//        title = try json.value(for:"Title")
+////        chanId = try json.value(for:"Channel.ChanId")
+////        startTime = try json.value(for:"StartTime")
+////        endTime = try json.value(for:"EndTime")
+//        description = try json.value(for:"Description")
+//        subtitle = try json.value(for:"SubTitle")
+//        recording = try json.value(for:"Recording")
+//        season = (try json.value(for:"Season") as String?)//.flatMap({Int($0)})
+//        episode = (try json.value(for:"Episode") as String?)//.flatMap({Int($0)})
+//    }
+//}
 
 //extension Program: Unboxable {
 //    public init(unboxer: Unboxer) throws {
@@ -68,14 +77,15 @@ extension Program: Unmarshaling {
 //    }
 //}
 
-extension Program { // SwiftyJSON
-    public init(json:SwiftyJSON.JSON) {
-        title = json["Title"].stringValue
-//        chanId = json["Channel"]["ChanId"].stringValue
-        description = json["Description"].string
-        subtitle = json["SubTitle"].string
-        season = json["Season"].string//.int
-        episode = json["Episode"].string//.int
-        recording = Recording(json: json["Recording"])
-    }
-}
+//extension Program { // SwiftyJSON
+//    public init(json:SwiftyJSON.JSON) {
+//        title = json["Title"].stringValue
+////        chanId = json["Channel"]["ChanId"].stringValue
+//        description = json["Description"].string
+//        subtitle = json["SubTitle"].string
+//        season = json["Season"].string//.int
+//        episode = json["Episode"].string//.int
+//        recording = Recording(json: json["Recording"])
+//    }
+//}
+

@@ -8,14 +8,19 @@
 
 import Foundation
 
-import Marshal
+//import Marshal
 //import Unbox
 //import Mapper
-import SwiftyJSON
+//import SwiftyJSON
 //import Argo
 //import Himotoki
 
-public struct Recording {
+public struct Recording:Codable {
+    private enum CodingKeys:String, CodingKey {
+        case startTsStr = "StartTs"
+        case recordId = "RecordId"
+    }
+    
     enum Status: String {
         case None = "0"
         case Recorded = "-3"
@@ -48,15 +53,15 @@ public struct Recording {
 //    let recGroup:RecGroup
 }
 
-extension Recording: Unmarshaling {
-    public init(object json:MarshaledObject) throws {
-//        startTs = try? json.value(for:"StartTs")Z//        endTs = try? json.value(for:"EndTs")
-        startTsStr = try json.value(for:"StartTs")
-        recordId = try json.value(for:"RecordId")
-//        status = (try? json.value(for:"Status")) ?? .Unknown
-//        recGroup = (try? json.value(for:"RecGroup")) ?? .Unknown
-    }
-}
+//extension Recording: Unmarshaling {
+//    public init(object json:MarshaledObject) throws {
+////        startTs = try? json.value(for:"StartTs")Z//        endTs = try? json.value(for:"EndTs")
+//        startTsStr = try json.value(for:"StartTs")
+//        recordId = try json.value(for:"RecordId")
+////        status = (try? json.value(for:"Status")) ?? .Unknown
+////        recGroup = (try? json.value(for:"RecGroup")) ?? .Unknown
+//    }
+//}
 
 
 
@@ -84,23 +89,23 @@ extension Recording: Unmarshaling {
 //    }
 //}
 
-extension Recording { // SwiftyJSON
-    init(json:SwiftyJSON.JSON) {
-        startTsStr = json["StartTs"].stringValue
-        recordId = json["RecordId"].stringValue
-        
-//        if let raw = json["Status"].string {
-//            status = Status(rawValue: raw) ?? .Unknown
-//        }
-//        else {
-//            status = .Unknown
-//        }
-//        if let raw = json["RecGroup"].string {
-//            recGroup = RecGroup(rawValue: raw) ?? .Unknown
-//        }
-//        else {
-//            recGroup = .Unknown
-//        }
-    }
-}
-
+//extension Recording { // SwiftyJSON
+//    init(json:SwiftyJSON.JSON) {
+//        startTsStr = json["StartTs"].stringValue
+//        recordId = json["RecordId"].stringValue
+//        
+////        if let raw = json["Status"].string {
+////            status = Status(rawValue: raw) ?? .Unknown
+////        }
+////        else {
+////            status = .Unknown
+////        }
+////        if let raw = json["RecGroup"].string {
+////            recGroup = RecGroup(rawValue: raw) ?? .Unknown
+////        }
+////        else {
+////            recGroup = .Unknown
+////        }
+//    }
+//}
+//

@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import JSONDecodeKit
 //import JSONDecodeKit
 
 //{
@@ -39,7 +40,7 @@ import XCTest
 
 struct Res:JSONDecodable {
     let res:Int
-    static func decode(_ json: JSON) throws -> Res {
+    static func decode(json: JSON) throws -> Res {
         return try Res(res: json <| "res")
     }
 }
@@ -58,24 +59,21 @@ class DictionaryArrayTests: XCTestCase {
         let data = try! Data(contentsOf: path!)
         let json = JSON(data: data)
         
-        let dic_primitive_int:[String:Int] = json["dic"]["primitive"].toDictionary()
-        let dic_primitive_res_int:[String:ResInt] = json["dic"]["primitive"].toDictionary()
-        let dic_primitive_decode:[String:Res] = json["dic"]["decodeable"].toDictionary()
+        let dic_primitive_int:[String:Int] = json["dic"]["primitive"].dictionary()
+        let dic_primitive_res_int:[String:ResInt] = json["dic"]["primitive"].dictionary()
+        let dic_primitive_decode:[String:Res] = json["dic"]["decodeable"].dictionary()
         XCTAssertEqual(dic_primitive_int["c"], 3)
         XCTAssertEqual(dic_primitive_res_int["c"], ResInt.c)
         XCTAssertEqual(dic_primitive_decode["c"]!.res, 3)
         
-        let dicArray_primitive_int:[String:[Int]] = json["dicArray"]["primitive"].toDictionaryAndArrayValue()
-        let dicArray_primitive_res_int:[String:[ResInt]] = json["dicArray"]["primitive"].toDictionaryAndArrayValue()
-        let dicArray_primitive_decode:[String:[Res]] = json["dicArray"]["decodeable"].toDictionaryAndArrayValue()
+        let dicArray_primitive_int:[String:[Int]] = json["dicArray"]["primitive"].dictionaryValueArray()
+        let dicArray_primitive_res_int:[String:[ResInt]] = json["dicArray"]["primitive"].dictionaryValueArray()
+        let dicArray_primitive_decode:[String:[Res]] = json["dicArray"]["decodeable"].dictionaryValueArray()
         
         XCTAssertEqual(dicArray_primitive_int["c"]!, [3,4])
         XCTAssertEqual(dicArray_primitive_res_int["c"]!, [ResInt.c,ResInt.d])
         XCTAssertEqual(dicArray_primitive_decode["c"]![0].res, 3)
         
         print("abc")
-        
     }
-    
-    
 }

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-//import JSONDecodeKit
+@testable import JSONDecodeKit
 
 class PrimitiveTypeTests: XCTestCase {
     
@@ -18,24 +18,24 @@ class PrimitiveTypeTests: XCTestCase {
     
     func testPrimitiveType() {
         // Bool
-        XCTAssertEqual(true, Bool.decode(true))
-        XCTAssertEqual(true, Bool.decode("true"))
-        XCTAssertEqual(false, Bool.decode(false))
-        XCTAssertEqual(false, Bool.decode("false"))
-        XCTAssertNil(Bool.decode(nil))
+        XCTAssertEqual(true, Bool.decode(any: true))
+        XCTAssertEqual(true, Bool.decode(any: "true"))
+        XCTAssertEqual(false, Bool.decode(any: false))
+        XCTAssertEqual(false, Bool.decode(any: "false"))
+        XCTAssertNil(Bool.decode(any: nil))
         
         // Int
-        XCTAssertEqual(1, Int.decode(1))
-        XCTAssertEqual(1, Int.decode("1"))
-        XCTAssertEqual(-1, Int.decode(-1))
-        XCTAssertEqual(-1, Int.decode("-1"))
-        XCTAssertNil(Int.decode(nil))
+        XCTAssertEqual(1, Int.decode(any: 1))
+        XCTAssertEqual(1, Int.decode(any: "1"))
+        XCTAssertEqual(-1, Int.decode(any: -1))
+        XCTAssertEqual(-1, Int.decode(any: "-1"))
+        XCTAssertNil(Int.decode(any: nil))
         
         // String
-        XCTAssertEqual("1", String.decode(1))
-        XCTAssertEqual("true", String.decode(true))
-        XCTAssertEqual("1.2", String.decode(1.2))
-        XCTAssertNil(String.decode(nil))       
+        XCTAssertEqual("1", String.decode(any: 1))
+        XCTAssertEqual("true", String.decode(any: true))
+        XCTAssertEqual("1.2", String.decode(any: 1.2))
+        XCTAssertNil(String.decode(any: nil))       
     }
     
 }
