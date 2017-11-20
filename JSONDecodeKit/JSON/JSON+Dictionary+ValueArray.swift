@@ -11,42 +11,38 @@ import Foundation
 // MARK: Get [Key:[Value]]
 extension JSON {
         public func dictionaryValueArray<Key,Value:PrimitiveType>() -> [Key:[Value]] {
-            if let dic = self.data as? NSDictionary {
-                return dic.reduce([Key:[Value]]()) { (dic:[Key:[Value]], set:(key: Any, value: Any)) -> [Key:[Value]] in
-                    var dic = dic
-                    if let k = set.key as? Key {
-                        dic[k] = JSON(any: set.value).array()
-                    }
-                    return dic
-                }
+            return self.toDictionaryValueArray { (any:Any) -> [Value] in
+                JSON(any: any).array()
             }
-            return [Key:[Value]]()
         }
     
     public func dictionaryValueArray<Key,Value:JSONDecodable>() -> [Key:[Value]] {
-        if let dic = self.data as? NSDictionary {
-            return dic.reduce([Key:[Value]]()) { (dic:[Key:[Value]], set:(key: Any, value: Any)) -> [Key:[Value]] in
-                var dic = dic
-                if let k = set.key as? Key,let temp:[Value] = try? JSON(any: set.value).array() {
-                    dic[k] = temp
-                }
-                return dic
-            }
+        return self.toDictionaryValueArray { (any:Any) -> [Value] in
+            (try? JSON(any: any).array()) ?? []
         }
-        return [Key:[Value]]()
     }
     
     public func dictionaryValueArray<Key,Value:RawRepresentable>() -> [Key:[Value]] where Value.RawValue:PrimitiveType {
-        if let dic = self.data as? NSDictionary {
-            return dic.reduce([Key:[Value]](), { (dic:[Key:[Value]], set:(key: Any, value: Any)) -> [Key:[Value]] in
-                var dic = dic
-                
-                if let k = set.key as? Key {
-                    dic[k] = JSON(any: set.value).array()
-                }
-                return dic
-            })
+        return self.toDictionaryValueArray { (any:Any) -> [Value] in
+            JSON(any: any).array()
         }
-        return [Key:[Value]]()
+    }
+    
+    private func toDictionaryValueArray<Key,Value>(valueTransform:(Any) -> [Value]) -> [Key:[Value]] {
+        guard let dic = self.data as? NSDictionary else {
+            return [Key:[Value]]()
+        }
+        
+        return dic.reduce([Key:[Value]]()) { (result:[Key:[Value]], set:(key: Any, value: Any)) -> [Key:[Value]] in
+            guard let key = set.key as? Key else {
+                    return result
+            }
+            
+            let values = valueTransform(set.value)
+            
+            var result = result
+            result[key] = values
+            return result
+        }
     }
 }
