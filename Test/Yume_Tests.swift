@@ -29,20 +29,20 @@ class Yume_Tests: XCTestCase {
         }
     }
     
-    func testDirection() {
-        let directions1:[Route] = try! JSON(data: self.directionData).array()
-        
-        let directionsJSONString1 = JSONEncoder.encodeArray(value: directions1)
-        let directionsData1 = directionsJSONString1.data(using: .utf8)!
-        do {
-            let directions2:[Route] = try JSON(data: directionsData1).array()
-            let directionsJSONString2 = JSONEncoder.encodeArray(value: directions2)
-            XCTAssertEqual(directionsJSONString1, directionsJSONString2)
-        } catch {
-            print(error)
-            fatalError()
-        }
-    }
+//    func testDirection() {
+//        let directions1:[Route] = try! JSON(data: self.directionData).array()
+//        
+//        let directionsJSONString1 = JSONEncoder.encodeArray(value: directions1)
+//        let directionsData1 = directionsJSONString1.data(using: .utf8)!
+//        do {
+//            let directions2:[Route] = try JSON(data: directionsData1).array()
+//            let directionsJSONString2 = JSONEncoder.encodeArray(value: directions2)
+//            XCTAssertEqual(directionsJSONString1, directionsJSONString2)
+//        } catch {
+//            print(error)
+//            fatalError()
+//        }
+//    }
     
 //    func testDD() {
 //        let json = try! JSONSerialization.jsonObject(with: self.data as Data, options: []) as! NSDictionary
