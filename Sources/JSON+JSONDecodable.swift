@@ -26,17 +26,18 @@ extension JSON {
     }
 }
 
-// MARK: Lazy Man Operators
-extension JSON {
-    static public func <||| <T:JSONDecodable>(json:JSON,key:String) throws -> T? {
-        return json <|? key
-    }
-    
-    static public func <||| <T:JSONDecodable> (json:JSON,key:String) throws -> T {
-        return try json <| key
-    }
-    
-    static public func <||| <T:JSONDecodable>(json:JSON,key:String) throws -> [T] {
-        return try json <|| key
-    }
-}
+//// MARK: Lazy Man Operators
+//extension JSON {
+//    static public func <||| <T:JSONDecodable>(json:JSON,key:String) throws -> T? {
+//        return json <|? key
+//    }
+//    
+//    static public func <||| <T:JSONDecodable> (json:JSON,key:String) throws -> T {
+//        return try json <| key
+//    }
+//    
+//    static public func <||| <T:JSONDecodable>(json:JSON,key:String) throws -> [T] {
+//        return try json <|| key
+//    }
+//}
+

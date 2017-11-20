@@ -30,17 +30,18 @@ extension JSON {
     }
 }
 
-// MARK: Lazy Man Operators
-extension JSON {
-    static public func <||| <T:RawRepresentable> (json:JSON,key:String) -> T? where T.RawValue:PrimitiveType {
-        return json <|? key
-    }
-    
-    static public func <||| <T:RawRepresentable> (json:JSON,key:String) throws -> T where T.RawValue:PrimitiveType {
-        return try json <| key
-    }
-    
-    static public func <||| <T:RawRepresentable>(json:JSON,key:String) -> [T] where T.RawValue:PrimitiveType {
-        return json <|| key
-    }
-}
+//// MARK: Lazy Man Operators
+//extension JSON {
+//    static public func <||| <T:RawRepresentable> (json:JSON,key:String) -> T? where T.RawValue:PrimitiveType {
+//        return json <|? key
+//    }
+//    
+//    static public func <||| <T:RawRepresentable> (json:JSON,key:String) throws -> T where T.RawValue:PrimitiveType {
+//        return try json <| key
+//    }
+//    
+//    static public func <||| <T:RawRepresentable>(json:JSON,key:String) -> [T] where T.RawValue:PrimitiveType {
+//        return json <|| key
+//    }
+//}
+

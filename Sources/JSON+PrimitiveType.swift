@@ -26,20 +26,18 @@ extension JSON {
     }
 }
 
-// MARK: Lazy Man Operators
-extension JSON {
-    static public func <||| <T:PrimitiveType>(json:JSON,key:String) -> T? {
-        return json <|? key
-    }
-
-    static public func <||| <T:PrimitiveType>(json:JSON,key:String) throws -> T {
-        return try json <| key
-    }
-
-    static public func <||| <T:PrimitiveType>(json:JSON,key:String) -> [T] {
-        return json <|| key
-    }
-}
-
-
+//// MARK: Lazy Man Operators
+//extension JSON {
+//    static public func <||| <T:PrimitiveType>(json:JSON,key:String) -> T? {
+//        return json <|? key
+//    }
+//
+//    static public func <||| <T:PrimitiveType>(json:JSON,key:String) throws -> T {
+//        return try json <| key
+//    }
+//
+//    static public func <||| <T:PrimitiveType>(json:JSON,key:String) -> [T] {
+//        return json <|| key
+//    }
+//}
 
