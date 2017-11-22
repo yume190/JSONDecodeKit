@@ -21,11 +21,7 @@ extension JSON {
     }
 }
 
-extension JSON {
-    public func array<T:PrimitiveType>() -> [T] {
-        return self.jsonArray().flatMap {T.decode(any: $0.data)}
-    }
-    
+extension JSON {    
     public func array<T:JSONDecodable>() throws -> [T] {
         return try self.jsonArray().flatMap { json in
             return try T.decode(json: json)
@@ -34,11 +30,8 @@ extension JSON {
     
     public func array<T:RawRepresentable>() -> [T] where T.RawValue:PrimitiveType {
         return self.jsonArray().flatMap {
-            if let value = T.RawValue.decode(any: $0.data) {
-                let enumValue = T(rawValue: value)
-                return enumValue
-            }
-            return nil
+            guard let value = try? T.RawValue.decode(any: $0.data) else { return nil }
+            return T(rawValue: value)
         }
     }
 }

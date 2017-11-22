@@ -9,13 +9,7 @@
 import Foundation
 
 // MARK: Get [Key:[Value]]
-extension JSON {
-        public func dictionaryValueArray<Key,Value:PrimitiveType>() -> [Key:[Value]] {
-            return toDictionaryValueArray(json: self) { (any:Any) -> [Value] in
-                JSON(any: any).array()
-            }
-        }
-    
+extension JSON {    
     public func dictionaryValueArray<Key,Value:JSONDecodable>() -> [Key:[Value]] {
         return toDictionaryValueArray(json: self) { (any:Any) -> [Value] in
             (try? JSON(any: any).array()) ?? []

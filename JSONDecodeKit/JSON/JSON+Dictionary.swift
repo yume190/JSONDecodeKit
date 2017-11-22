@@ -8,13 +8,7 @@
 
 import Foundation
 
-extension JSON {
-    public func dictionary<Key,Value:PrimitiveType>() -> [Key:Value] {
-        return toDictionary(json: self) { (any:Any) -> Value? in
-            Value.decode(any: any)
-        }
-    }
-    
+extension JSON {    
     public func dictionary<Key,Value:JSONDecodable>() -> [Key:Value] {
         return toDictionary(json: self) { (any:Any) -> Value? in
             try? Value.decode(json: JSON(any: any))
@@ -23,7 +17,7 @@ extension JSON {
     
     public func dictionary<Key,Value:RawRepresentable>() -> [Key:Value] where Value.RawValue:PrimitiveType {
         return toDictionary(json: self) { (any:Any) -> Value? in
-            Value.decode(any: any)
+            try? Value.decode(any: any)
         }
     }
 }
