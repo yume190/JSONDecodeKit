@@ -21,9 +21,23 @@ public enum JSONDecodeError: Error {
             ].joined(separator: "\n")
         }
     }
+    
+    public struct ExtraInfo {
+        let expectType:Any
+        let actualType:Any
+        let value:Any
+        var description:String {
+            return [
+                "\tExpected Type : \(expectType)",
+                "\tActual Type : \(actualType)",
+                "\tActual Value : \(value)"
+            ].joined(separator: "\n")
+        }
+    }
+    
     case keyNotFound(baseInfo:BaseInfo)
     case nullValue(baseInfo:BaseInfo)
-    case typeMismatch(baseInfo:BaseInfo,expectType:Any,actualType:Any,value:Any)
+    case typeMismatch(baseInfo:BaseInfo,extraInfo:ExtraInfo)
     case specialCase(reason:String)
     
     static public func produceError<T> (targetType:T.Type, json:JSON, key:String) -> JSONDecodeError {
@@ -36,7 +50,8 @@ public enum JSONDecodeError: Error {
             return JSONDecodeError.nullValue(baseInfo: baseInfo)
         }
         
-        return JSONDecodeError.typeMismatch(baseInfo: baseInfo, expectType: T.self, actualType: type(of:data),value: data)
+        let extraInfo = ExtraInfo(expectType: T.self, actualType: type(of:data), value: data)
+        return JSONDecodeError.typeMismatch(baseInfo: baseInfo, extraInfo: extraInfo)
     }
 }
 
@@ -44,35 +59,22 @@ extension JSONDecodeError:CustomStringConvertible {
     public var description: String {
         switch self {
         case .keyNotFound(let baseInfo):
-            return errorMessage(messageType: "Key Not Found::", baseInfo: baseInfo,
-                                expectType: nil, actualType: nil, value: nil)
+            return errorMessage(messageType: "Key Not Found::", baseInfo: baseInfo, extraInfo: nil)
         case .nullValue(let baseInfo):
-            return errorMessage(messageType: "Null Value Found At:", baseInfo: baseInfo,
-                                expectType: nil, actualType: nil, value: nil)
-        case .typeMismatch(let baseInfo, let expectType, let actualType,let value):
-            return errorMessage(messageType: "Type Mismatch:", baseInfo: baseInfo,
-                                expectType: expectType, actualType: actualType, value: value)
+            return errorMessage(messageType: "Null Value Found At:", baseInfo: baseInfo, extraInfo: nil)
+        case .typeMismatch(let baseInfo, let extraInfo):
+            return errorMessage(messageType: "Type Mismatch:", baseInfo: baseInfo, extraInfo: extraInfo)
         case .specialCase(let reason):
             return reason
         }
     }
-}
-
-fileprivate func errorMessage(messageType: String, baseInfo:JSONDecodeError.BaseInfo,
-                              expectType: Any?, actualType: Any?, value: Any?) -> String {
-    let baseResult:String = [
-        "",
-        messageType,
-        baseInfo.description
-    ].joined(separator: "\n")
-    guard let expectType = expectType, let actualType = actualType, let value = value else {
-        return baseResult
-    }
     
-    return [
-        baseResult,
-        "\tExpected Type : \(expectType)",
-        "\tActual Type : \(actualType)",
-        "\tActual Value : \(value)",
-    ].joined(separator: "\n")
+    private func errorMessage(messageType: String, baseInfo: BaseInfo, extraInfo: ExtraInfo?) -> String {
+        return [
+            "",
+            messageType,
+            baseInfo.description,
+            extraInfo?.description
+        ].flatMap {$0}.joined(separator: "\n")
+    }
 }
