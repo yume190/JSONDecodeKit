@@ -52,7 +52,6 @@ UInt    UInt8   UInt16  UInt32  UInt64
 Float   Double
 Bool
 String
-URL
 ```
 
 #### JSONDecodable
@@ -65,7 +64,6 @@ JSONDecodable is the protocol, mapping `JSON` to your customize struct.
 
 |Operator|Decode element|
 |:------:|:------------:|
-| `<|?`  | `T?` |
-| `<|`   | `T` |
-| `<||`  | `[T]` |
-| `<|||` | `T?`,`T`,`[T]` |
+| `<\|?`  | `T?` |
+| `<\|`   | `T` |
+| `<\|\|`  | `[T]` |
