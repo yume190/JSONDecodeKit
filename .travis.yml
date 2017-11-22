@@ -1,6 +1,6 @@
 language: swift # or objective-c
 xcode_project: JSONDecodeKit.xcodeproj # path to your xcodeproj folder
-xcode_scheme: JSONDecodeKitTests
+xcode_scheme: JSONDecodeKit
 osx_image: xcode9.1
 script:
   # - xcodebuild \
