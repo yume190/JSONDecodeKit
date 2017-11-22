@@ -35,8 +35,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A89A154D1E57F31D00FCCA8F"
-               BuildableName = "Test.xctest"
-               BlueprintName = "Test"
+               BuildableName = "JSONDecodeKitTests.xctest"
+               BlueprintName = "JSONDecodeKitTests"
                ReferencedContainer = "container:JSONDecodeKit.xcodeproj">
             </BuildableReference>
          </TestableReference>

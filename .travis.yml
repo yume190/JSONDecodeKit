@@ -1,0 +1,15 @@
+language: swift # or objective-c
+xcode_project: JSONDecodeKit.xcodeproj # path to your xcodeproj folder
+xcode_scheme: JSONDecodeKitTests
+osx_image: xcode9.1
+script:
+  # - xcodebuild \
+  #   -project JSONDecodeKit.xcodeproj \
+  #   -scheme JSONDecodeKitTests \
+  #   -sdk iphonesimulator \
+  #   -destination 'platform=iOS Simulator,name=iPhone 6S,OS=8.0' build test
+  
+  - xcodebuild -project JSONDecodeKit.xcodeproj -scheme JSONDecodeKitTests -sdk MacOSX-destination 'platform=OS X,arch=x86_64' build test
+#clean test
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
