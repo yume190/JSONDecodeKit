@@ -9,7 +9,7 @@ script:
   #   -sdk iphonesimulator \
   #   -destination 'platform=iOS Simulator,name=iPhone 6S,OS=8.0' build test
   
-  - xcodebuild -project JSONDecodeKit.xcodeproj -scheme JSONDecodeKitTests -sdk MacOSX-destination 'platform=OS X,arch=x86_64' build test
+  xcodebuild -project JSONDecodeKit.xcodeproj -scheme JSONDecodeKit -sdk macosx -destination 'platform=OS X,arch=x86_64' build test
 #clean test
 after_success:
   - bash <(curl -s https://codecov.io/bash)
