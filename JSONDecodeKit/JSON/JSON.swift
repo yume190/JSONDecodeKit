@@ -24,9 +24,7 @@ public struct JSON {
     }
     
     internal var keypath:String {
-        get {
-            var temp = self
-            return temp.traceKeypath.joined(separator: "")
-        }
+        var temp = self
+        return temp.traceKeypath.joined(separator: "")
     }
 }

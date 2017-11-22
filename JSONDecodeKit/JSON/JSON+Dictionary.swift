@@ -40,4 +40,3 @@ private func toDictionary<Key,Value>(json: JSON, valueTransform:(Any) -> Value?)
         return result
     }
 }
-
