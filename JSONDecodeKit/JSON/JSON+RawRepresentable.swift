@@ -10,7 +10,7 @@ import Foundation
 
 extension JSON {
     static public func <|? <T:RawRepresentable> (json:JSON,key:String) -> T? where T.RawValue:PrimitiveType {
-        if let value = T.RawValue.decode(any: json[key].data) {
+        if let value = try? T.RawValue.decode(any: json[key].data) {
             let enumValue = T(rawValue: value)
             return enumValue
         }
@@ -21,27 +21,11 @@ extension JSON {
         guard let r:T = json <|? key else {
             throw JSONDecodeError.produceError(targetType: T.self, json: json, key: key)
         }
-        
+
         return r
     }
-    
+
     static public func <|| <T:RawRepresentable>(json:JSON,key:String) -> [T] where T.RawValue:PrimitiveType {
         return json.array()
     }
 }
-
-//// MARK: Lazy Man Operators
-//extension JSON {
-//    static public func <||| <T:RawRepresentable> (json:JSON,key:String) -> T? where T.RawValue:PrimitiveType {
-//        return json <|? key
-//    }
-//    
-//    static public func <||| <T:RawRepresentable> (json:JSON,key:String) throws -> T where T.RawValue:PrimitiveType {
-//        return try json <| key
-//    }
-//    
-//    static public func <||| <T:RawRepresentable>(json:JSON,key:String) -> [T] where T.RawValue:PrimitiveType {
-//        return json <|| key
-//    }
-//}
-
