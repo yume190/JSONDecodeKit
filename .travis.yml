@@ -12,7 +12,7 @@ branches:
   only:
     - master
 env:
-  - RELEASE=Release
+  # - RELEASE=Release
   - RELEASE=Debug
   matrix:
     - DESTINATION="OS=4.1,name=Apple Watch - 42mm"
