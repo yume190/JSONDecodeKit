@@ -34,7 +34,7 @@ matrix:
 script:
   - set -o pipefail
   # -sdk macosx
-  - xcodebuild -project JSONDecodeKit.xcodeproj -scheme JSONDecodeKit -configuration $RELEASE -destination $DESTINATION test | xcpretty
+  - xcodebuild -project JSONDecodeKit.xcodeproj -scheme JSONDecodeKit -configuration $RELEASE -destination $DESTINATION clean build test | xcpretty
 
 #clean test
 after_success:
