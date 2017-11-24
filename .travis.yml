@@ -1,16 +1,41 @@
+# osx_image: xcode9.1 settings
+# https://docs.travis-ci.com/user/reference/osx#Xcode-version
 language: swift # or objective-c
 xcode_project: JSONDecodeKit.xcodeproj # path to your xcodeproj folder
 xcode_scheme: JSONDecodeKit
 podfile: pod # Disable `pod install`
 osx_image: xcode9.1
+git:
+  depth: 1
+  submodules: false
+branches:
+  only:
+    - master
+matrix:
+  env:
+    - DESTINATION="OS=4.1,name=Apple Watch - 42mm"
+    - DESTINATION="OS=3.2,name=Apple Watch - 42mm"
+    - DESTINATION="OS=2.0,name=Apple Watch - 42mm"
+
+    - DESTINATION="OS=11.,name=iPhone X"
+    - DESTINATION="OS=10.3.1,name=iPhone 7 Plus"
+    - DESTINATION="OS=9.0,name=iPhone 6"
+    - DESTINATION="OS=8.1,name=iPhone 4S"
+
+    - DESTINATION="OS=11.1,name=Apple TV 1080p"
+    - DESTINATION="OS=10.2,name=Apple TV 1080p"
+    - DESTINATION="OS=9.0,name=Apple TV 1080p"
+
+    # 'platform=OS X,arch=x86_64'
+    - DESTINATION="arch=x86_64"
+  env:
+    - RELEASE=Release
+    - RELEASE=Debug
 script:
-  # - xcodebuild \
-  #   -project JSONDecodeKit.xcodeproj \
-  #   -scheme JSONDecodeKitTests \
-  #   -sdk iphonesimulator \
-  #   -destination 'platform=iOS Simulator,name=iPhone 6S,OS=8.0' build test
-  
-  xcodebuild -project JSONDecodeKit.xcodeproj -scheme JSONDecodeKit -sdk macosx -destination 'platform=OS X,arch=x86_64' build test
+  - set -o pipefail
+  # -sdk macosx
+  - xcodebuild -project JSONDecodeKit.xcodeproj -scheme JSONDecodeKit -configuration $RELEASE -destination $DESTINATION test | xcpretty
+
 #clean test
 after_success:
   - bash <(curl -s https://codecov.io/bash)
