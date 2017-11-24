@@ -42,7 +42,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7741271706BFF747520A0195 /* Pods-Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Test/Pods-Test.debug.xcconfig"; sourceTree = "<group>"; };
 		A85859F41FBEDC1600B44E82 /* PrimitiveType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitiveType.swift; sourceTree = "<group>"; };
 		A85859F61FBEEABF00B44E82 /* JSONDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
 		A85859F81FBEEB2600B44E82 /* RawRepresentableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawRepresentableExtension.swift; sourceTree = "<group>"; };
@@ -82,7 +81,6 @@
 		A8DABD6F1F0C86AE00B88C9F /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		AE8E96B9579009A55FF2D47B /* Pods_JSONDecodeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JSONDecodeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C39885CFA0A7C30E233E6B41 /* Pods_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC4481DA7B3A3E4656ED6DEC /* Pods-Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test.release.xcconfig"; path = "Pods/Target Support Files/Pods-Test/Pods-Test.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,15 +101,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04463941361A7FEBEA14AFBC /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7741271706BFF747520A0195 /* Pods-Test.debug.xcconfig */,
-				CC4481DA7B3A3E4656ED6DEC /* Pods-Test.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		A858D97F1FC550A200073969 /* OtherJSONLibTest */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +134,6 @@
 				A866B8291E584D83006B213A /* JSONDecodeKit */,
 				A89A154F1E57F31D00FCCA8F /* Test */,
 				A89A15341E57F15C00FCCA8F /* Products */,
-				04463941361A7FEBEA14AFBC /* Pods */,
 				C0DE52C5DB1F98C8505AE9D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -548,7 +536,6 @@
 		};
 		A89A15561E57F31E00FCCA8F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7741271706BFF747520A0195 /* Pods-Test.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -566,7 +553,6 @@
 		};
 		A89A15571E57F31E00FCCA8F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC4481DA7B3A3E4656ED6DEC /* Pods-Test.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
