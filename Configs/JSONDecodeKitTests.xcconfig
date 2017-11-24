@@ -1,0 +1,16 @@
+//
+//  JSONDecodeKitTests-Debug.xcconfig
+//  JSONDecodeKit
+//
+//  Created by Yume on 2017/11/24.
+//  Copyright © 2017年 Yume. All rights reserved.
+//
+
+EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) $(PLATFORM_DIR)/Developer/Library/Frameworks
+HEADER_SEARCH_PATHS = $(inherited)
+INFOPLIST_FILE = JSONDecodeKit/Info.plist
+LD_RUNPATH_SEARCH_PATHS = @loader_path/../Frameworks @loader_path/Frameworks
+OTHER_LDFLAGS = $(inherited)
+OTHER_SWIFT_FLAGS = $(inherited)
+TARGET_NAME = JSONDecodeKitTests

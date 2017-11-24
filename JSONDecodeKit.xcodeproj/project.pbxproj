@@ -42,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A835F2D11FC821710044E978 /* JSONDecodeKitTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JSONDecodeKitTests.xcconfig; sourceTree = "<group>"; };
+		A835F2D21FC822E40044E978 /* JSONDecodeKit.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = JSONDecodeKit.xcconfig; sourceTree = "<group>"; };
 		A85859F41FBEDC1600B44E82 /* PrimitiveType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimitiveType.swift; sourceTree = "<group>"; };
 		A85859F61FBEEABF00B44E82 /* JSONDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
 		A85859F81FBEEB2600B44E82 /* RawRepresentableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawRepresentableExtension.swift; sourceTree = "<group>"; };
@@ -101,6 +103,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A835F2D01FC8214C0044E978 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				A835F2D21FC822E40044E978 /* JSONDecodeKit.xcconfig */,
+				A835F2D11FC821710044E978 /* JSONDecodeKitTests.xcconfig */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
 		A858D97F1FC550A200073969 /* OtherJSONLibTest */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +142,7 @@
 		A89A152A1E57F15C00FCCA8F = {
 			isa = PBXGroup;
 			children = (
+				A835F2D01FC8214C0044E978 /* Configs */,
 				A866B8291E584D83006B213A /* JSONDecodeKit */,
 				A89A154F1E57F31D00FCCA8F /* Test */,
 				A89A15341E57F15C00FCCA8F /* Products */,
@@ -367,6 +379,7 @@
 /* Begin XCBuildConfiguration section */
 		A866B82E1E584D83006B213A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A835F2D21FC822E40044E978 /* JSONDecodeKit.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -399,6 +412,7 @@
 		};
 		A866B82F1E584D83006B213A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A835F2D21FC822E40044E978 /* JSONDecodeKit.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -536,6 +550,7 @@
 		};
 		A89A15561E57F31E00FCCA8F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A835F2D11FC821710044E978 /* JSONDecodeKitTests.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -544,6 +559,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yume190.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -553,6 +569,7 @@
 		};
 		A89A15571E57F31E00FCCA8F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A835F2D11FC821710044E978 /* JSONDecodeKitTests.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -561,6 +578,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yume190.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;

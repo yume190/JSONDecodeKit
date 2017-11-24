@@ -15,12 +15,22 @@ env:
   global:
   - RELEASE=Debug
   - SCHEME=JSONDecodeKit
-  - DESTINATION='platform=OS X,arch=x86_64'
-  - SDK=macosx
+  matrix:
+    - SDK=macosx
+      DESTINATION='platform=OS X,arch=x86_64'
+
+    - SDK=iphonesimulator
+      DESTINATION='platform=iOS Simulator,OS=11.1,name=iPhone X'
+    - SDK=iphonesimulator
+      DESTINATION='platform=iOS Simulator,OS=10.3,name=iPhone 7 Plus'
+    - SDK=iphonesimulator
+      DESTINATION='platform=iOS Simulator,OS=9.0,name=iPhone 6'
+    - SDK=iphonesimulator
+      DESTINATION='platform=iOS Simulator,OS=8.1,name=iPhone 4S'
 script:
   - set -o pipefail
   - echo $DESTINATION, $RELEASE
-  - xcodebuild -project JSONDecodeKit.xcodeproj -scheme $SCHEME -configuration $RELEASE -sdk $SDK -destination $DESTINATION clean build test | xcpretty
+  - xcodebuild -project JSONDecodeKit.xcodeproj -scheme $SCHEME -configuration $RELEASE -sdk $SDK -destination "$DESTINATION" clean build test | xcpretty
 #clean test
 after_success:
   - bash <(curl -s https://codecov.io/bash)
