@@ -1,6 +1,10 @@
 JSONDecodeKit
 ==========
 
+[![Build Status](https://travis-ci.org/yume190/JSONDecodeKit.svg?branch=master)](https://travis-ci.org/yume190/JSONDecodeKit)
+[![codecov](https://codecov.io/gh/yume190/JSONDecodeKit/branch/master/graph/badge.svg)](https://codecov.io/gh/yume190/JSONDecodeKit)
+[![codebeat badge](https://codebeat.co/badges/8a9cacec-df7b-4e25-8134-25bcc5eeb345)](https://codebeat.co/projects/github-com-yume190-jsondecodekit-master)
+
 A light weight JSON Mapper.
 
 Inspired by some JSON libraries :
