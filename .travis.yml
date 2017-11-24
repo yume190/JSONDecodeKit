@@ -12,31 +12,15 @@ branches:
   only:
     - master
 env:
-  # - RELEASE=Release
+  global:
   - RELEASE=Debug
-  matrix:
-    - DESTINATION="OS=4.1,name=Apple Watch - 42mm"
-    - DESTINATION="OS=3.2,name=Apple Watch - 42mm"
-    - DESTINATION="OS=2.0,name=Apple Watch - 42mm"
-
-    - DESTINATION="OS=11.,name=iPhone X"
-    - DESTINATION="OS=10.3.1,name=iPhone 7 Plus"
-    - DESTINATION="OS=9.0,name=iPhone 6"
-    - DESTINATION="OS=8.1,name=iPhone 4S"
-
-    - DESTINATION="OS=11.1,name=Apple TV 1080p"
-    - DESTINATION="OS=10.2,name=Apple TV 1080p"
-    - DESTINATION="OS=9.0,name=Apple TV 1080p"
-
-    # 'platform=OS X,arch=x86_64'
-    # - DESTINATION="arch=x86_64"
-    - DESTINATION="platform=OS X,arch=x86_64"    
+  - SCHEME=JSONDecodeKit
+  - DESTINATION='platform=OS X,arch=x86_64'
+  - SDK=macosx
 script:
   - set -o pipefail
   - echo $DESTINATION, $RELEASE
-  # -sdk macosx
-  - xcodebuild -project JSONDecodeKit.xcodeproj -scheme JSONDecodeKit -configuration $RELEASE -destination $DESTINATION clean build test | xcpretty
-
+  - xcodebuild -project JSONDecodeKit.xcodeproj -scheme $SCHEME -configuration $RELEASE -sdk $SDK -destination $DESTINATION clean build test | xcpretty
 #clean test
 after_success:
   - bash <(curl -s https://codecov.io/bash)
