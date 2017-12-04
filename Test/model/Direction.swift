@@ -10,20 +10,10 @@ import Foundation
 import CoreLocation
 @testable import JSONDecodeKit
 
-struct Location:JSONDecodable {
+struct Location {
     let name:String
     let lat:String
     let lng:String
-    
-    static func decode(json: JSON) throws -> Location {
-        return try Location(name: json <| "name", lat: json <| "lat", lng: json <| "lng")
-    }
-    
-//    static func encode(_ json: Location) -> String {
-//        return JSONEncoder.encode(strings:
-//            json.name <| "name", json.lat <| "lat", json.lng <| "lng"
-//        )
-//    }
     
     func location() -> CLLocationCoordinate2D {
         guard let _lat = Double(lat),let _lng = Double(lng) else {
@@ -33,7 +23,13 @@ struct Location:JSONDecodable {
     }
 }
 
-struct Route:JSONDecodable {
+extension Location: JSONDecodable {
+    static func decode(json: JSON) throws -> Location {
+        return try Location(name: json <| "name", lat: json <| "lat", lng: json <| "lng")
+    }
+}
+
+struct Route {
     let from: Location
     let to:Location
     let departure_time:String //"17:30 PM",
@@ -43,7 +39,9 @@ struct Route:JSONDecodable {
     let fare:String?// null,
     let overview_polyline:String
     let steps:[Step]
-    
+}
+
+extension Route: JSONDecodable {
     static func decode(json: JSON) throws -> Route {
         let steps:[Step] = try json <|| "steps"
         return try Route(
@@ -58,28 +56,16 @@ struct Route:JSONDecodable {
             steps: steps
         )
     }
-    
-//    static func encode(_ json: Route) -> String {
-//        return JSONEncoder.encode(strings:
-//            json.from <| "from" ,
-//            json.to <| "to" ,
-//            json.departure_time <| "departure_time" ,
-//            json.arrival_time <| "arrival_time" ,
-//            json.duration <| "duration" ,
-//            json.distance <| "distance" ,
-//            json.fare <|? "fare" ,
-//            json.overview_polyline <| "overview_polyline" ,
-//            json.steps <|| "steps"
-//        )
-//    }
 }
 
-struct Step:JSONDecodable {
+struct Step {
     let polyline:String
     let from:Location
     let msg:String
     let travel_mode:String
-    
+}
+
+extension Step: JSONDecodable {
     static func decode(json: JSON) throws -> Step {
         return try Step(
             polyline: json <| "polyline",
@@ -88,14 +74,5 @@ struct Step:JSONDecodable {
             travel_mode: json <| "travel_mode"
         )
     }
-    
-//    static func encode(_ json: Step) -> String {
-//        return JSONEncoder.encode(strings:
-//            json.polyline <| "polyline",
-//            json.from <| "from",
-//            json.msg <| "msg",
-//            json.travel_mode <| "travel_mode"
-//        )
-//    }
 }
 

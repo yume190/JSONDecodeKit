@@ -21,17 +21,14 @@
 		A866B83D1E584D96006B213A /* JSON+PrimitiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866B8361E584D96006B213A /* JSON+PrimitiveType.swift */; };
 		A878CBF31EEA50490048F41D /* Swift4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A878CBF21EEA50490048F41D /* Swift4Tests.swift */; };
 		A89A158B1E57F45700FCCA8F /* CollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A157B1E57F45700FCCA8F /* CollectionTests.swift */; };
-		A89A158C1E57F45700FCCA8F /* Himotoki_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A157C1E57F45700FCCA8F /* Himotoki_Tests.swift */; };
 		A89A158E1E57F45700FCCA8F /* Large.json in Resources */ = {isa = PBXBuildFile; fileRef = A89A157F1E57F45700FCCA8F /* Large.json */; };
 		A89A158F1E57F45700FCCA8F /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = A89A15801E57F45700FCCA8F /* test.json */; };
 		A89A15901E57F45700FCCA8F /* test2.json in Resources */ = {isa = PBXBuildFile; fileRef = A89A15811E57F45700FCCA8F /* test2.json */; };
 		A89A15911E57F45700FCCA8F /* JSONDecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A15821E57F45700FCCA8F /* JSONDecodableTests.swift */; };
-		A89A15921E57F45700FCCA8F /* Marshal_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A15831E57F45700FCCA8F /* Marshal_Tests.swift */; };
 		A89A15931E57F45700FCCA8F /* NSDate+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A15851E57F45700FCCA8F /* NSDate+JSON.swift */; };
 		A89A15941E57F45700FCCA8F /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A15861E57F45700FCCA8F /* Program.swift */; };
 		A89A15951E57F45700FCCA8F /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A15871E57F45700FCCA8F /* Recording.swift */; };
 		A89A15961E57F45700FCCA8F /* PrimitiveTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A15881E57F45700FCCA8F /* PrimitiveTypeTests.swift */; };
-		A89A15971E57F45700FCCA8F /* SwiftyJSON_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A15891E57F45700FCCA8F /* SwiftyJSON_Tests.swift */; };
 		A89A15981E57F45700FCCA8F /* Yume_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A158A1E57F45700FCCA8F /* Yume_Tests.swift */; };
 		A8BF87971FC27B18004341E6 /* JSON+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF87961FC27B18004341E6 /* JSON+Subscript.swift */; };
 		A8BF87991FC27B4C004341E6 /* JSON+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF87981FC27B4C004341E6 /* JSON+Array.swift */; };
@@ -62,18 +59,15 @@
 		A878CBF21EEA50490048F41D /* Swift4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift4Tests.swift; sourceTree = "<group>"; };
 		A89A154E1E57F31D00FCCA8F /* JSONDecodeKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONDecodeKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89A157B1E57F45700FCCA8F /* CollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTests.swift; sourceTree = "<group>"; };
-		A89A157C1E57F45700FCCA8F /* Himotoki_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Himotoki_Tests.swift; sourceTree = "<group>"; };
 		A89A157D1E57F45700FCCA8F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A89A157F1E57F45700FCCA8F /* Large.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Large.json; sourceTree = "<group>"; };
 		A89A15801E57F45700FCCA8F /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		A89A15811E57F45700FCCA8F /* test2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test2.json; sourceTree = "<group>"; };
 		A89A15821E57F45700FCCA8F /* JSONDecodableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodableTests.swift; sourceTree = "<group>"; };
-		A89A15831E57F45700FCCA8F /* Marshal_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marshal_Tests.swift; sourceTree = "<group>"; };
 		A89A15851E57F45700FCCA8F /* NSDate+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+JSON.swift"; sourceTree = "<group>"; };
 		A89A15861E57F45700FCCA8F /* Program.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		A89A15871E57F45700FCCA8F /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		A89A15881E57F45700FCCA8F /* PrimitiveTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimitiveTypeTests.swift; sourceTree = "<group>"; };
-		A89A15891E57F45700FCCA8F /* SwiftyJSON_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON_Tests.swift; sourceTree = "<group>"; };
 		A89A158A1E57F45700FCCA8F /* Yume_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Yume_Tests.swift; sourceTree = "<group>"; };
 		A8BF87961FC27B18004341E6 /* JSON+Subscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Subscript.swift"; sourceTree = "<group>"; };
 		A8BF87981FC27B4C004341E6 /* JSON+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSON+Array.swift"; sourceTree = "<group>"; };
@@ -110,16 +104,6 @@
 				A835F2D11FC821710044E978 /* JSONDecodeKitTests.xcconfig */,
 			);
 			path = Configs;
-			sourceTree = "<group>";
-		};
-		A858D97F1FC550A200073969 /* OtherJSONLibTest */ = {
-			isa = PBXGroup;
-			children = (
-				A89A157C1E57F45700FCCA8F /* Himotoki_Tests.swift */,
-				A89A15831E57F45700FCCA8F /* Marshal_Tests.swift */,
-				A89A15891E57F45700FCCA8F /* SwiftyJSON_Tests.swift */,
-			);
-			path = OtherJSONLibTest;
 			sourceTree = "<group>";
 		};
 		A866B8291E584D83006B213A /* JSONDecodeKit */ = {
@@ -162,13 +146,12 @@
 		A89A154F1E57F31D00FCCA8F /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				A858D97F1FC550A200073969 /* OtherJSONLibTest */,
 				A89A15841E57F45700FCCA8F /* model */,
 				A89A157E1E57F45700FCCA8F /* json */,
 				A89A157B1E57F45700FCCA8F /* CollectionTests.swift */,
-				A89A15821E57F45700FCCA8F /* JSONDecodableTests.swift */,
 				A89A15881E57F45700FCCA8F /* PrimitiveTypeTests.swift */,
 				A858D97D1FC5509000073969 /* RawRepresentableTests.swift */,
+				A89A15821E57F45700FCCA8F /* JSONDecodableTests.swift */,
 				A89A158A1E57F45700FCCA8F /* Yume_Tests.swift */,
 				A878CBF21EEA50490048F41D /* Swift4Tests.swift */,
 				A89A157D1E57F45700FCCA8F /* Info.plist */,
@@ -358,19 +341,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A89A15921E57F45700FCCA8F /* Marshal_Tests.swift in Sources */,
 				A89A15961E57F45700FCCA8F /* PrimitiveTypeTests.swift in Sources */,
 				A8DABD701F0C86AE00B88C9F /* Direction.swift in Sources */,
 				A89A158B1E57F45700FCCA8F /* CollectionTests.swift in Sources */,
 				A89A15981E57F45700FCCA8F /* Yume_Tests.swift in Sources */,
 				A89A15941E57F45700FCCA8F /* Program.swift in Sources */,
 				A89A15911E57F45700FCCA8F /* JSONDecodableTests.swift in Sources */,
-				A89A15971E57F45700FCCA8F /* SwiftyJSON_Tests.swift in Sources */,
 				A89A15931E57F45700FCCA8F /* NSDate+JSON.swift in Sources */,
 				A89A15951E57F45700FCCA8F /* Recording.swift in Sources */,
 				A858D97E1FC5509000073969 /* RawRepresentableTests.swift in Sources */,
 				A878CBF31EEA50490048F41D /* Swift4Tests.swift in Sources */,
-				A89A158C1E57F45700FCCA8F /* Himotoki_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

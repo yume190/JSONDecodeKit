@@ -10,102 +10,58 @@ import XCTest
 @testable import JSONDecodeKit
 
 //{
-//    "a":1,
-//    "b":"B",
-//    "c":null
+//    "a": 1,
+//    "b": "B",
+//    "c": null,
+//    "d": [1, 2, 3],
+//    "e": ["1", "2", "3"]
 //}
 
+struct ABCDE {
+    let a: Int
+    let b: String
+    let c: Int?
+    let d: [Int]
+    let e: [String]
+}
+
+extension ABCDE: JSONDecodable {
+    static func decode(json: JSON) throws -> ABCDE {
+        return try ABCDE(
+            a: json <| "a",
+            b: json <| "b",
+            c: json <|? "c",
+            d: json <|| "d",
+            e: json <|| "e"
+        )
+    }
+}
+
+extension ABCDE: JSONSerializable {}
+
 class JSONDecodableTests: XCTestCase {
-    
-    func testDecodeFromFile() {
+    private lazy var json:JSON = {
         let path = Bundle(for: type(of: self)).url(forResource: "test", withExtension: "json")
         let data = try! Data(contentsOf: path!)
         let json = JSON(data: data)
-        
-        let a:Int = try! json <| "a"
-        XCTAssertEqual(1, a)
-        let b:String = try! json <| "b"
-        XCTAssertEqual("B", b)
-        let c:String? = json <|? "c"
-        XCTAssertNil(c)
-        
-        
-        do {
-            let _:Int = try json <| "b"
-            fatalError()
-        } catch let error {
-            if error is JSONDecodeError {
-                print(error)
-            } else {
-                fatalError()
-            }
-        }
-        do {
-            let _:Int = try json <| "c"
-            fatalError()
-        } catch let error {
-            if error is JSONDecodeError {
-                print(error)
-            } else {
-                fatalError()
-            }
-        }
-        do {
-            let _:Int = try json <| "d"
-            fatalError()
-        } catch let error {
-            if error is JSONDecodeError {
-                print(error)
-            } else {
-                fatalError()
-            }
-        }
-        
-    }
+        return json
+    }()
     
-    func testDecodeFromDictionary() {
+    func testDecodeFromFile() {
+        var abcde = try! ABCDE.decode(json: self.json)
+        XCTAssertEqual(abcde.a, 1)
+        XCTAssertEqual(abcde.b, "B")
+        XCTAssertNil(abcde.c)
+        XCTAssertEqual(abcde.d, [1,2,3])
+        XCTAssertEqual(abcde.e, ["1", "2", "3"])
         
-        let json = JSON(any: ["a":"1","b":"B","c":nil])
-        
-        let a:Int = try! json <| "a"
-        XCTAssertEqual(1, a)
-        let b:String = try! json <| "b"
-        XCTAssertEqual("B", b)
-        let c:String? = json <|? "c"
-        XCTAssertNil(c)
-        
-        
-        do {
-            let _:Int = try json <| "b"
-            fatalError()
-        } catch let error {
-            if error is JSONDecodeError {
-                print(error)
-            } else {
-                fatalError()
-            }
-        }
-        do {
-            let _:Int = try json <| "c"
-            fatalError()
-        } catch let error {
-            if error is JSONDecodeError {
-                print(error)
-            } else {
-                fatalError()
-            }
-        }
-        do {
-            let _:Int = try json <| "d"
-            fatalError()
-        } catch let error {
-            if error is JSONDecodeError {
-                print(error)
-            } else {
-                fatalError()
-            }
-        }
-        
+        let serializeData = abcde.toJSON().data(using: .utf8)!
+        let serializeJson = JSON(data: serializeData)
+        abcde = try! ABCDE.decode(json: serializeJson)
+        XCTAssertEqual(abcde.a, 1)
+        XCTAssertEqual(abcde.b, "B")
+        XCTAssertNil(abcde.c)
+        XCTAssertEqual(abcde.d, [1,2,3])
+        XCTAssertEqual(abcde.e, ["1", "2", "3"])
     }
-    
 }

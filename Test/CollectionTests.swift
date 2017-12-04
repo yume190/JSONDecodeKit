@@ -40,7 +40,6 @@ import XCTest
 //    }
 //}
 
-
 struct Res:JSONDecodable {
     let res:Int
     static func decode(json: JSON) throws -> Res {
