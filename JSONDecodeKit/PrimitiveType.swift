@@ -10,14 +10,13 @@ import Foundation
 
 public protocol PrimitiveType:JSONDecodable {
     static func decode(any: Any?) throws -> Self
-    static func number(number: NSNumber) -> Self
     init?(_ description: String)
 }
 
 public extension PrimitiveType {
     static func decode(any: Any?) throws -> Self {
-        if let number = any as? NSNumber {
-            return Self.number(number: number)
+        if let number = any as? Self {
+            return number
         }
         
         guard let string = any as? String, let result = Self(string) else {
@@ -33,92 +32,37 @@ public extension PrimitiveType {
 }
 
 // MARK: Int
-extension Int:PrimitiveType {
-    public static func number(number: NSNumber) -> Int {
-        return number.intValue
-    }
-}
-extension Int8:PrimitiveType {
-    public static func number(number: NSNumber) -> Int8 {
-        return number.int8Value
-    }
-}
-extension Int16:PrimitiveType {
-    public static func number(number: NSNumber) -> Int16 {
-        return number.int16Value
-    }
-}
-extension Int32:PrimitiveType {
-    public static func number(number: NSNumber) -> Int32 {
-        return number.int32Value
-    }
-}
-extension Int64:PrimitiveType {
-    public static func number(number: NSNumber) -> Int64 {
-        return number.int64Value
-    }
-}
+extension Int:PrimitiveType {}
+extension Int8:PrimitiveType {}
+extension Int16:PrimitiveType {}
+extension Int32:PrimitiveType {}
+extension Int64:PrimitiveType {}
 
 // MARK: UInt
-extension UInt:PrimitiveType {
-    public static func number(number: NSNumber) -> UInt {
-        return number.uintValue
-    }
-}
-extension UInt8:PrimitiveType {
-    public static func number(number: NSNumber) -> UInt8 {
-        return number.uint8Value
-    }
-}
-extension UInt16:PrimitiveType {
-    public static func number(number: NSNumber) -> UInt16 {
-        return number.uint16Value
-    }
-}
-extension UInt32:PrimitiveType {
-    public static func number(number: NSNumber) -> UInt32 {
-        return number.uint32Value
-    }
-}
-extension UInt64:PrimitiveType {
-    public static func number(number: NSNumber) -> UInt64 {
-        return number.uint64Value
-    }
-}
+extension UInt:PrimitiveType {}
+extension UInt8:PrimitiveType {}
+extension UInt16:PrimitiveType {}
+extension UInt32:PrimitiveType {}
+extension UInt64:PrimitiveType {}
 
 // MARK: Float
-extension Float:PrimitiveType {
-    public static func number(number: NSNumber) -> Float {
-        return number.floatValue
-    }
-}
-extension Double:PrimitiveType {
-    public static func number(number: NSNumber) -> Double {
-        return number.doubleValue
-    }
-}
+extension Float:PrimitiveType {}
+extension Double:PrimitiveType {}
 
 // Mark: Bool
-extension Bool:PrimitiveType {
-    public static func number(number: NSNumber) -> Bool {
-        return number.boolValue
-    }
-}
+extension Bool:PrimitiveType {}
 
 // MARK: String
 extension String:PrimitiveType {
-//    public static func decode(any: Any?) -> String? {
     public static func decode(any: Any?) throws -> String {
         if let result = any as? String { return result }
         guard let any = any else { throw JSONDecodeError.specialCase(reason: "...") }
         if any is NSNull { throw JSONDecodeError.specialCase(reason: "...") }
         return String(describing: any)
     }
+    
     public init?(_ description: String) {
         self = description
-    }
-    public static func number(number: NSNumber) -> String {
-        return number.stringValue
     }
 }
 
