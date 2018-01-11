@@ -26,6 +26,6 @@ extension JSON {
     }
 
     static public func <|| <T:RawRepresentable>(json:JSON,key:String) -> [T] where T.RawValue:PrimitiveType {
-        return json.array()
+        return json[key].array()
     }
 }
