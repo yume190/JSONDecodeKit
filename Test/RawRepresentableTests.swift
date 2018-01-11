@@ -7,6 +7,40 @@
 //
 
 import XCTest
+@testable import JSONDecodeKit
+
+//{
+//    "array": {
+//        "primitive":[1,2,3],
+//        "decodeable":[{"res":1},{"res":2},{"res":3},],
+//    },
+//    "dic": {
+//        "primitive":{
+//            "a":1,
+//            "b":2,
+//            "c":3,
+//            "d": null,
+//            "f": 5.5,
+//        },
+//        "decodeable":{
+//            "a":{"res":1},
+//            "b":{"res":2},
+//            "c":{"res":3},
+//        },
+//    },
+//    "dicArray": {
+//        "primitive":{
+//            "a":[1,2],
+//            "b":[2,3],
+//            "c":[3,4],
+//        },
+//        "decodeable":{
+//            "a":[{"res":1},{"res":2},],
+//            "b":[{"res":2},{"res":3},],
+//            "c":[{"res":3},{"res":4},],
+//        },
+//    }
+//}
 
 class RawRepresentableTests: XCTestCase {
     
@@ -28,6 +62,8 @@ class RawRepresentableTests: XCTestCase {
         XCTAssertEqual(TestTarget.b, try! TestTarget.decode(any: 2))
         XCTAssertEqual(TestTarget.c, try! TestTarget.decode(any: 3))
         XCTAssertNil(try? TestTarget.decode(any: 4))
+        
+        XCTAssertEqual(TestTarget.a, try! TestTarget.decode(json: JSON(any: 1)))
     }
     
     func testString() {
@@ -37,4 +73,30 @@ class RawRepresentableTests: XCTestCase {
         XCTAssertEqual(TestTarget.c, try! TestTarget.decode(any: "C"))
         XCTAssertNil(try? TestTarget.decode(any: "c"))
     }
+    
+    func testOperator() {
+        let json = JSON(data: self.data)
+        
+        //    "dicArray": {
+        //        "primitive":{
+        //            "a":[1,2],
+        let array: [ResInt] = json["dicArray"]["primitive"] <|| "a"
+        XCTAssertEqual(2, array.count)
+        
+        //    "dic": {
+        //        "primitive":{
+        //            "a":1,
+        let i: ResInt = try! json["dic"]["primitive"] <| "a"
+        XCTAssertEqual(ResInt.a, i)
+        
+        let optI: ResInt? = json["dic"]["primitive"] <|? "a"
+        XCTAssertEqual(ResInt.a, optI)
+        
+    }
+    
+    private lazy var data:Data = {
+        let path = Bundle(for: type(of: self)).url(forResource: "test2", withExtension: "json")
+        let data = try! Data(contentsOf: path!)
+        return data
+    }()
 }

@@ -9,17 +9,7 @@
 import Foundation
 @testable import JSONDecodeKit
 
-public struct Program:Codable {
-
-    private enum CodingKeys:String, CodingKey {
-        case title = "Title"
-        case description = "Description"
-        case subtitle = "SubTitle"
-        case recording = "Recording"
-        case season = "Season"
-        case episode = "Episode"
-    }
-    
+public struct Program {
     let title:String
 //    let chanId:String
 // Date parsing is slow. Remove dates to better measure performance.

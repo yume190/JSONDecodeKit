@@ -9,12 +9,7 @@
 import Foundation
 @testable import JSONDecodeKit
 
-public struct Recording:Codable {
-    private enum CodingKeys:String, CodingKey {
-        case startTsStr = "StartTs"
-        case recordId = "RecordId"
-    }
-    
+public struct Recording{
     enum Status: String {
         case None = "0"
         case Recorded = "-3"

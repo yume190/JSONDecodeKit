@@ -48,20 +48,24 @@ class JSONDecodableTests: XCTestCase {
     }()
     
     func testDecodeFromFile() {
-        var abcde = try! ABCDE.decode(json: self.json)
-        XCTAssertEqual(abcde.a, 1)
-        XCTAssertEqual(abcde.b, "B")
-        XCTAssertNil(abcde.c)
-        XCTAssertEqual(abcde.d, [1,2,3])
-        XCTAssertEqual(abcde.e, ["1", "2", "3"])
-        
-        let serializeData = abcde.toJSON().data(using: .utf8)!
-        let serializeJson = JSON(data: serializeData)
-        abcde = try! ABCDE.decode(json: serializeJson)
-        XCTAssertEqual(abcde.a, 1)
-        XCTAssertEqual(abcde.b, "B")
-        XCTAssertNil(abcde.c)
-        XCTAssertEqual(abcde.d, [1,2,3])
-        XCTAssertEqual(abcde.e, ["1", "2", "3"])
+        do {
+            var abcde = try ABCDE.decode(json: self.json)
+            XCTAssertEqual(abcde.a, 1)
+            XCTAssertEqual(abcde.b, "B")
+            XCTAssertNil(abcde.c)
+            XCTAssertEqual(abcde.d, [1,2,3])
+            XCTAssertEqual(abcde.e, ["1", "2", "3"])
+            
+            let serializeData = abcde.toJSON().data(using: .utf8)!
+            let serializeJson = JSON(data: serializeData)
+            abcde = try ABCDE.decode(json: serializeJson)
+            XCTAssertEqual(abcde.a, 1)
+            XCTAssertEqual(abcde.b, "B")
+            XCTAssertNil(abcde.c)
+            XCTAssertEqual(abcde.d, [1,2,3])
+            XCTAssertEqual(abcde.e, ["1", "2", "3"])
+        } catch {
+            fatalError()
+        }
     }
 }

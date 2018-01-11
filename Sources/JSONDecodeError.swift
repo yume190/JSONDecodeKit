@@ -10,28 +10,27 @@ import Foundation
 
 public enum JSONDecodeError: Error {
     public struct BaseInfo {
-        let keyPath:String
-        let currentKey:String
-        let json:JSON
-        var description:String {
-            return [
-                "\tKeypath : \"\(keyPath)\"",
-                "\tKey : \"\(currentKey)\""
-//                "\tjson: \(json.data ?? "nil")"
-            ].joined(separator: "\n")
+        public let keyPath:String
+        public let currentKey:String
+        public let json:JSON
+        public var description:String {
+            return """
+                Keypath : \(keyPath.debugDescription)
+                Key : \(currentKey.debugDescription)
+            """
         }
     }
     
     public struct ExtraInfo {
-        let expectType:Any
-        let actualType:Any
-        let value:Any
-        var description:String {
-            return [
-                "\tExpected Type : \(expectType)",
-                "\tActual Type : \(actualType)",
-                "\tActual Value : \(value)"
-            ].joined(separator: "\n")
+        public let expectType:Any
+        public let actualType:Any
+        public let value:Any
+        public var description:String {
+            return """
+                Expected Type : \(expectType)
+                Actual Type : \(actualType)
+                Actual Value : \(value)
+            """
         }
     }
     
@@ -59,7 +58,7 @@ extension JSONDecodeError:CustomStringConvertible {
     public var description: String {
         switch self {
         case .keyNotFound(let baseInfo):
-            return errorMessage(messageType: "Key Not Found::", baseInfo: baseInfo, extraInfo: nil)
+            return errorMessage(messageType: "Key Not Found:", baseInfo: baseInfo, extraInfo: nil)
         case .nullValue(let baseInfo):
             return errorMessage(messageType: "Null Value Found At:", baseInfo: baseInfo, extraInfo: nil)
         case .typeMismatch(let baseInfo, let extraInfo):
@@ -70,11 +69,12 @@ extension JSONDecodeError:CustomStringConvertible {
     }
     
     private func errorMessage(messageType: String, baseInfo: BaseInfo, extraInfo: ExtraInfo?) -> String {
-        return [
-            "",
-            messageType,
-            baseInfo.description,
-            extraInfo?.description
-        ].flatMap {$0}.joined(separator: "\n")
+        let extra =  extraInfo?.description ?? ""
+        return """
+        
+        \(messageType)
+        \(baseInfo.description)
+        \(extra)
+        """
     }
 }

@@ -11,12 +11,6 @@ import XCTest
 
 class PrimitiveTypeTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    
     // Mark: Bool
     func testBool() {
         typealias TestTarget = Bool
@@ -33,13 +27,13 @@ class PrimitiveTypeTests: XCTestCase {
         typealias TestTarget = Int8
         
         // upper bound
-        XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: 0x7F))
-        XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: 127))
+        let max:TestTarget = 0x7F
+        XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: max))
         XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: TestTarget.max))
         
         // lower bound
-        XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: 0x80))
-        XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: -128))
+        let min:TestTarget = -128
+        XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: min))
         XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: TestTarget.min))
         
         XCTAssertEqual(1, try! TestTarget.decode(any: "1"))
@@ -50,13 +44,13 @@ class PrimitiveTypeTests: XCTestCase {
         typealias TestTarget = Int16
         
         // upper bound
-        XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: 0x7FFF))
-        XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: 32767))
+        let max:TestTarget = 0x7FFF
+        XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: max))
         XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: TestTarget.max))
         
         // lower bound
-        XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: 0x8000))
-        XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: -32768))
+        let min:TestTarget = -32768
+        XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: min))
         XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: TestTarget.min))
         
         XCTAssertEqual(1, try! TestTarget.decode(any: "1"))
@@ -103,11 +97,13 @@ class PrimitiveTypeTests: XCTestCase {
         typealias TestTarget = UInt8
         
         // upper bound
-        XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: 0xFF))
+        let max:TestTarget = 0xFF
+        XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: max))
         XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: TestTarget.max))
         
         // lower bound
-        XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: 0))
+        let min:TestTarget = 0
+        XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: min))
         XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: TestTarget.min))
         
         XCTAssertEqual(1, try! TestTarget.decode(any: "1"))
@@ -118,11 +114,13 @@ class PrimitiveTypeTests: XCTestCase {
         typealias TestTarget = UInt16
         
         // upper bound
-        XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: 0xFFFF))
+        let max:TestTarget = 0xFFFF
+        XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: max))
         XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: TestTarget.max))
         
         // lower bound
-        XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: 0))
+        let min:TestTarget = 0
+        XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: min))
         XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: TestTarget.min))
         
         XCTAssertEqual(1, try! TestTarget.decode(any: "1"))
@@ -138,7 +136,8 @@ class PrimitiveTypeTests: XCTestCase {
         XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: TestTarget.max))
         
         // lower bound
-        XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: 0))
+        let min:TestTarget = 0
+        XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: min))
         XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: TestTarget.min))
         
         XCTAssertEqual(1, try! TestTarget.decode(any: "1"))
@@ -154,7 +153,8 @@ class PrimitiveTypeTests: XCTestCase {
         XCTAssertEqual(TestTarget.max, try! TestTarget.decode(any: TestTarget.max))
         
         // lower bound
-        XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: 0))
+        let min:TestTarget = 0
+        XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: min))
         XCTAssertEqual(TestTarget.min, try! TestTarget.decode(any: TestTarget.min))
         
         XCTAssertEqual(1, try! TestTarget.decode(any: "1"))
@@ -165,8 +165,9 @@ class PrimitiveTypeTests: XCTestCase {
     // MARK: Float
     func testFloat() {
         typealias TestTarget = Float
-        XCTAssertEqual(1.0, try! TestTarget.decode(any: 1.0))
-        XCTAssertEqual(1.0, try! TestTarget.decode(any: "1.0"))
+        let target: Float = 1.0
+        XCTAssertEqual(target, try! TestTarget.decode(any: target))
+        XCTAssertEqual(target, try! TestTarget.decode(any: "1.0"))
         XCTAssertNil(try? TestTarget.decode(any: nil))
     }
     
@@ -187,4 +188,3 @@ class PrimitiveTypeTests: XCTestCase {
     //extension URL:PrimitiveType {}
     
 }
-

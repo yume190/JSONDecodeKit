@@ -19,6 +19,8 @@ import XCTest
 //            "a":1,
 //            "b":2,
 //            "c":3,
+//            "d": null,
+//            "f": 5.5,
 //        },
 //        "decodeable":{
 //            "a":{"res":1},
