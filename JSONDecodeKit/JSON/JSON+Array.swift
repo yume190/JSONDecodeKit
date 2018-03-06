@@ -21,7 +21,7 @@ extension JSON {
     }
 }
 
-extension JSON {    
+extension JSON {
     public func array<T:JSONDecodable>() throws -> [T] {
         return try self.jsonArray().flatMap { json in
             return try T.decode(json: json)
