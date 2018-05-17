@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol PrimitiveType:JSONDecodable {
+public protocol PrimitiveType: JSONDecodable {
     static func decode(any: Any?) throws -> Self
     init?(_ description: String)
 }
@@ -32,28 +32,28 @@ public extension PrimitiveType {
 }
 
 // MARK: Int
-extension Int:PrimitiveType {}
-extension Int8:PrimitiveType {}
-extension Int16:PrimitiveType {}
-extension Int32:PrimitiveType {}
-extension Int64:PrimitiveType {}
+extension Int: PrimitiveType {}
+extension Int8: PrimitiveType {}
+extension Int16: PrimitiveType {}
+extension Int32: PrimitiveType {}
+extension Int64: PrimitiveType {}
 
 // MARK: UInt
-extension UInt:PrimitiveType {}
-extension UInt8:PrimitiveType {}
-extension UInt16:PrimitiveType {}
-extension UInt32:PrimitiveType {}
-extension UInt64:PrimitiveType {}
+extension UInt: PrimitiveType {}
+extension UInt8: PrimitiveType {}
+extension UInt16: PrimitiveType {}
+extension UInt32: PrimitiveType {}
+extension UInt64: PrimitiveType {}
 
 // MARK: Float
-extension Float:PrimitiveType {}
-extension Double:PrimitiveType {}
+extension Float: PrimitiveType {}
+extension Double: PrimitiveType {}
 
 // Mark: Bool
-extension Bool:PrimitiveType {}
+extension Bool: PrimitiveType {}
 
 // MARK: String
-extension String:PrimitiveType {
+extension String: PrimitiveType {
     public static func decode(any: Any?) throws -> String {
         if let result = any as? String { return result }
         guard let any = any else { throw JSONDecodeError.specialCase(reason: "...") }
@@ -66,7 +66,7 @@ extension String:PrimitiveType {
     }
 }
 
-//extension URL:PrimitiveType {
+//extension URL: PrimitiveType {
 //    public init?(_ description: String) {
 //        guard let result = URL(string: description) else { return nil }
 //        self = result

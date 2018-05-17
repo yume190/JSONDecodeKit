@@ -16,7 +16,7 @@ extension JSON {
         }
     }
     
-    public func dictionaryValueArray<Key,Value:RawRepresentable>() -> [Key:[Value]] where Value.RawValue:PrimitiveType {
+    public func dictionaryValueArray<Key,Value:RawRepresentable>() -> [Key:[Value]] where Value.RawValue: PrimitiveType {
         return toDictionaryValueArray(json: self) { (any:Any) -> [Value] in
             JSON(any: any).array()
         }

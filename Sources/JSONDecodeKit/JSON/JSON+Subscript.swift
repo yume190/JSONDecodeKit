@@ -9,7 +9,7 @@
 import Foundation
 
 extension JSON {
-    public subscript(key:String) -> JSON {
+    public subscript(key: String) -> JSON {
         var copy = self
         if isTraceKeypath {
             copy.traceKeypath.append("." + key)
@@ -18,7 +18,7 @@ extension JSON {
         return copy
     }
     
-    public subscript(index:Int) -> JSON {
+    public subscript(index: Int) -> JSON {
         var copy = self
         if isTraceKeypath {
             copy.traceKeypath.append("[\(index)]")

@@ -10,10 +10,10 @@ import Foundation
 
 public enum JSONDecodeError: Error {
     public struct BaseInfo {
-        public let keyPath:String
-        public let currentKey:String
-        public let json:JSON
-        public var description:String {
+        public let keyPath: String
+        public let currentKey: String
+        public let json: JSON
+        public var description: String {
             return """
                 Keypath : \(keyPath.debugDescription)
                 Key : \(currentKey.debugDescription)
@@ -22,10 +22,10 @@ public enum JSONDecodeError: Error {
     }
     
     public struct ExtraInfo {
-        public let expectType:Any
-        public let actualType:Any
-        public let value:Any
-        public var description:String {
+        public let expectType: Any
+        public let actualType: Any
+        public let value: Any
+        public var description: String {
             return """
                 Expected Type : \(expectType)
                 Actual Type : \(actualType)
@@ -34,12 +34,12 @@ public enum JSONDecodeError: Error {
         }
     }
     
-    case keyNotFound(baseInfo:BaseInfo)
-    case nullValue(baseInfo:BaseInfo)
-    case typeMismatch(baseInfo:BaseInfo,extraInfo:ExtraInfo)
-    case specialCase(reason:String)
+    case keyNotFound(baseInfo: BaseInfo)
+    case nullValue(baseInfo: BaseInfo)
+    case typeMismatch(baseInfo: BaseInfo, extraInfo: ExtraInfo)
+    case specialCase(reason: String)
     
-    static public func produceError<T> (targetType:T.Type, json:JSON, key:String) -> JSONDecodeError {
+    static public func produceError<T> (targetType: T.Type, json: JSON, key: String) -> JSONDecodeError {
         let baseInfo = BaseInfo(keyPath: json.keypath, currentKey: key, json: json)
         guard let data = json[key].data else {
             return JSONDecodeError.keyNotFound(baseInfo: baseInfo)

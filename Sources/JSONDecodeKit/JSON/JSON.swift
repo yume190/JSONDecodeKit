@@ -9,21 +9,21 @@
 import Foundation
 
 public struct JSON {
-    internal var data:Any?
-    internal lazy var traceKeypath:[String] = []
-    internal var isTraceKeypath:Bool
+    internal var data: Any?
+    internal lazy var traceKeypath: [String] = []
+    internal var isTraceKeypath: Bool
     
-    public init(data:Data,isTraceKeypath:Bool = false) {
+    public init(data: Data, isTraceKeypath: Bool = false) {
         self.data = try? JSONSerialization.jsonObject(with: data, options: [.allowFragments])
         self.isTraceKeypath = isTraceKeypath
     }
     
-    public init(any:Any,isTraceKeypath:Bool = false) {
+    public init(any: Any, isTraceKeypath: Bool = false) {
         self.data = any
         self.isTraceKeypath = isTraceKeypath
     }
     
-    internal var keypath:String {
+    internal var keypath: String {
         var temp = self
         return temp.traceKeypath.joined(separator: "")
     }
