@@ -46,7 +46,7 @@ script:
   - set -o pipefail
   - echo $DESTINATION, $RELEASE
   - instruments -s devices
-  - xcodebuild -project JSONDecodeKit.xcodeproj -scheme $SCHEME -configuration $RELEASE ONLY_ACTIVE_ARCH=NO -sdk $SDK -destination "$DESTINATION" clean build test | xcpretty
+  - xcodebuild -project JSONDecodeKit.xcodeproj -scheme $SCHEME -configuration $RELEASE -sdk $SDK -destination "$DESTINATION" clean build test | xcpretty
 #clean test
 after_success:
   - bash <(curl -s https://codecov.io/bash)
