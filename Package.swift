@@ -2,16 +2,12 @@
 
 import PackageDescription
 
-// let package = Package(
-//     name: "JSONDecodeKit"
-// )
-
-let targets:[Target] = [
+let targets: [Target] = [
     .target(name: "JSONDecodeKit")
 ]
 
 let products: [Product] = [
-    .executable(name: "JSONDecodeKit", targets: ["JSONDecodeKit"])
+    .library(name: "JSONDecodeKit", type: .static, targets: ["JSONDecodeKit"])
 ]
 
 let package = Package(

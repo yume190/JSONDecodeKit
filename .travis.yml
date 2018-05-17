@@ -24,13 +24,9 @@ env:
     - SDK=iphonesimulator
       DESTINATION='platform=iOS Simulator,OS=10.3.1,name=iPhone 7 Plus'
     - SDK=iphonesimulator
+      DESTINATION='platform=iOS Simulator,OS=9.3,name=iPhone 6'
+    - SDK=iphonesimulator
       DESTINATION='platform=iOS Simulator,OS=9.0,name=iPhone 6'
-    - SDK=iphonesimulator
-      DESTINATION='platform=iOS Simulator,OS=8.4,name=iPhone 6'
-    - SDK=iphonesimulator
-      DESTINATION='platform=iOS Simulator,OS=8.1,name=iPhone 6'
-    #- SDK=iphonesimulator
-    #  DESTINATION='platform=iOS Simulator,OS=8.1,name=iPhone 4S'
 
     # - SDK=appletvsimulator
     #   DESTINATION='platform=tvOS Simulator,OS=11.1,name=Apple TV 1080p'
