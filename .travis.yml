@@ -26,7 +26,11 @@ env:
     - SDK=iphonesimulator
       DESTINATION='platform=iOS Simulator,OS=9.0,name=iPhone 6'
     - SDK=iphonesimulator
-      DESTINATION='platform=iOS Simulator,OS=8.1,name=iPhone 4S'
+      DESTINATION='platform=iOS Simulator,OS=8.4,name=iPhone 6'
+    - SDK=iphonesimulator
+      DESTINATION='platform=iOS Simulator,OS=8.1,name=iPhone 6'
+    #- SDK=iphonesimulator
+    #  DESTINATION='platform=iOS Simulator,OS=8.1,name=iPhone 4S'
 
     # - SDK=appletvsimulator
     #   DESTINATION='platform=tvOS Simulator,OS=11.1,name=Apple TV 1080p'
@@ -45,6 +49,7 @@ env:
 script:
   - set -o pipefail
   - echo $DESTINATION, $RELEASE
+  - instruments -s devices
   - xcodebuild -project JSONDecodeKit.xcodeproj -scheme $SCHEME -configuration $RELEASE -sdk $SDK -destination "$DESTINATION" clean build test | xcpretty
 #clean test
 after_success:
