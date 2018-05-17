@@ -25,3 +25,11 @@ extension JSON {
         return try json[key].array()
     }
 }
+
+@available(swift 4.1)
+extension Array: JSONDecodable where Element: JSONDecodable {
+    public static func decode(json: JSON) throws -> Array<Element> {
+        let result: [Element] = try json.array()
+        return result
+    }
+}

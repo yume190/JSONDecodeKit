@@ -29,3 +29,11 @@ extension JSON {
         return json[key].array()
     }
 }
+
+@available(swift 4.1)
+extension Array: JSONDecodable where Element: RawRepresentable, Element.RawValue: PrimitiveType {
+    public static func decode(json: JSON) throws -> Array<Element> {
+        let result: [Element] = json.array()
+        return result
+    }
+}
