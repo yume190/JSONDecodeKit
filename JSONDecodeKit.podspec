@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'JSONDecodeKit'
-  s.version  = '4.0.0'
+  s.version  = '4.1.0'
   s.license  = 'MIT'
   s.summary  = "A Light weight JSON Mapper"
   s.homepage = 'https://github.com/yume190/JSONDecodeKit'
