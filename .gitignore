@@ -85,3 +85,5 @@ DerivedData
 spm/
 MyPod/
 Cart/
+
+.build/

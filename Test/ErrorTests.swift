@@ -105,8 +105,6 @@ class ErrorTests: XCTestCase {
             default:
                 fatalError()
             }
-
-            return
         } catch {
             fatalError()
         }

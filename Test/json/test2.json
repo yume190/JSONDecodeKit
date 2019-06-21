@@ -1,7 +1,7 @@
 {
     "array": {
         "primitive":[1,2,3],
-        "decodeable":[{"res":1},{"res":2},{"res":3},],
+        "decodeable":[{"res":1},{"res":2},{"res":3}],
     },
     "dic": {
         "primitive":{

@@ -44,6 +44,18 @@ import XCTest
 
 class RawRepresentableTests: XCTestCase {
     
+    private static var bundle: Bundle { return Bundle(for: self) }
+    private static var data: Data {
+        let path = bundle.url(forResource: "test2", withExtension: "json")
+        let data = try! Data(contentsOf: path!)
+        return data
+    }
+    
+    override class func setUp() {
+        super.setUp()
+        _ = data
+    }
+    
     enum EnumInt:Int {
         case a = 1
         case b = 2
@@ -75,7 +87,7 @@ class RawRepresentableTests: XCTestCase {
     }
     
     func testOperator() {
-        let json = JSON(data: self.data)
+        let json = JSON(data: RawRepresentableTests.data)
         
         //    "dicArray": {
         //        "primitive":{
@@ -93,10 +105,4 @@ class RawRepresentableTests: XCTestCase {
         XCTAssertEqual(ResInt.a, optI)
         
     }
-    
-    private lazy var data:Data = {
-        let path = Bundle(for: type(of: self)).url(forResource: "test2", withExtension: "json")
-        let data = try! Data(contentsOf: path!)
-        return data
-    }()
 }

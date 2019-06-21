@@ -82,6 +82,10 @@ class DictionaryArrayTests: XCTestCase {
         XCTAssertEqual(target[2].res, 3)
     }
     
+    func testAASetup() {
+        _ = self.json
+    }
+    
     // JSON + Dictionary
     func testDictionaryPrimitive() {
         let target:[String:Int] = json["dic"]["primitive"].dictionary()
