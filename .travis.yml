@@ -25,6 +25,8 @@ env:
       DESTINATION='platform=iOS Simulator,OS=10.3.1,name=iPhone 7 Plus'
     - SDK=iphonesimulator
       DESTINATION='platform=iOS Simulator,OS=12.2,name=iPhone 6'
+    # Did find: /usr/lib/libauto.dylib: mach-o, but not built for iOS simulator
+    # https://stackoverflow.com/questions/55389080/xcode-10-2-failed-to-run-app-on-simulator-with-ios-10
     - SDK=iphonesimulator
       DESTINATION='platform=iOS Simulator,OS=12.2,name=iPhone 6'
 
